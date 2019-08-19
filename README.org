@@ -1,0 +1,139 @@
+# Created 2019-08-20 Tue 00:59
+#+TITLE: Programming for Data Science 2019
+#+DATE: August 20, 2019
+#+AUTHOR: Adolfo De Unanue
+* /Programming for DS/
+
+** /Syllabus/                                                        :readme:
+
+*** Contacto
+- *Nombre*: Adolfo De Unánue
+- *Oficina*:
+- *Horas de oficina*:
+- *Email*: =adolfo.deunanue@itam.mx=
+- Inicio de clases: 14 de agosto de 2019
+
+
+*** Lecturas recomendadas / Libros de texto
+Esta clase no requiere libros de texto, pero los siguientes son
+recomendados:
+
+- *[[https://leanpub.com/learnbashthehardway][Learn Bash the hard way]]*, Ian Mitchell, Leanpub, 2017
+- *PostgreSQL Uo and Running*, Regina O. Obe and Leo S. Hsu. O' Reilly, 2017.
+- *Data Science from the command line*, Jeroen Janssens, O'Reilly, 2014
+- *[[https://greenteapress.com/wp/think-python-2e/][Thinking Python 2e]]*, Allen B. Downey, Green Tea Press,
+
+*** Descripción del curso
+Este curso es una /introducción/ a las herramientas computacionales
+necesarias para poder resolver problemas de Ciencia de datos,
+/Machine Learning/ o Inteligencia Artificial de una manera eficiente y
+cómoda
+
+Este curso le enseñará a los estudiantes
+
+1. Sentirse cómodo con las herramientas necesarias para Ciencia de Datos.
+2. Obtener, manipular y almacenar datos que facilitarán los flujos de
+   Ciencia de Datos.
+3. Colaborar con otros Científicos de Datos en un proyecto.
+4. Contestar preguntas de Ciencia de Datos usando la herramienta apropiada
+5. Reproducibilidad del flujo de Ciencia de Datos.
+
+Este es un curso /hands-on/ en el que los estudiantes usarán la
+computadora para implementar la solución a varios problemas de Ciencia
+de datos.
+
+*** Pre-requisitos
+
+- Tener acceso a una /laptop/ o algún dispositivo de cómputo[fn:-1-1]
+
+- Experiencia en /cualquier/ lenguage de programación es recomedada,
+  pero no necesaria.
+
+[fn:-1-1] Si no tienes una /laptop/ pero tienes una /tablet/ o inclusive
+un teléfono móvil, podemos configurarlo de tal manera que te conectes
+a algún servidor remoto y puedas seguir las lecciones de este curso.
+
+*** Temas
+- Terminal y /Command line/
+- Git y Github
+- Programación: Automatizar cosas
+- Escalar ejecución de código
+- Almacenar datos: Bases de datos y SQL
+- Reproducibilidad: /Pipelines/ y Ambientes (=docker=)
+- /Web Scrapping/
+
+*** Material del curso
+
+El material de este curso es trabajo en progreso. El calendario es
+sujeto de cambio basado en los inteereses  de la clase y su
+progreso. Adicionalmente, podríamos tener invitados especiales a
+platicar o compartir su experiencia.
+
+Si tienes un tema en particular o invitados que te gustaría ver, por
+favor cuéntamelo.
+
+*** Tareas
+- Tareas y mini-exámenes cubriendo los temas vistos en clases.
+- Habrá un examen a la mitad del semestre (/Mid term/). Este examen
+  será para llevar a casa, con libro abierto, internet abierto.
+- *NO* habrá examen final. En su lugar cada equipo deberá entregar un
+  reporte y una presentación oral al final del semestre.
+
+*** Proyecto
+
+Los estudiantes formarán grupos (3-4 estudiantes) y trabajarán en un
+proyecto que ellos propondrán a partir de la semana 5. Yo,
+adicionalmente, proveeré un conjunto de ideas de proyectos para ser
+elegidos, pero siéntanse libres de traer sus propias ideas y
+discutiremos si su proyecto cubre el criterio en esa clase.
+
+Deberán de enviar una propuesta de proyecto (que será evaluada por sus
+/peers/), hacer una presentación del proyecto, enviar un /update/ del
+proyecto, reporte proyecto final y hacer una presentación oral.
+
+*** Calificaciones
+- Tareas y /Quizzes/: 40%
+- /Mid-term/: 15%
+- Participación en clase: 10%
+- Proyecto: 35%
+  - Propuesta y presentación de la propuesta: 5%
+  - Progreso del reporte: 5%
+  - Reporte final: 10%
+  - Presentación final: 15%
+
+
+** Calendario (Tentativo)                                            :readme:
+| Sesión | Fecha | Temas           | Otros                         |
+|--------+-------+-----------------+-------------------------------|
+|      1 | 14/08 | Introducción    |                               |
+|      2 | 21/08 | CLI             |                               |
+|      - | 28/08 | -               | No hay clases                 |
+|      3 | 4/09  | CLI             | Formar equipos                |
+|      4 |       | CLI             |                               |
+|      5 | 11/09 | =git=           | Presentación de proyectos     |
+|      6 | 18/09 | /Programming/   |                               |
+|      7 | 25/09 | /Programming/   |                               |
+|      8 | 2/10  | /Programming/   |                               |
+|      9 | 9/10  | /Programming/   |                               |
+|     10 | 16/10 | =SQL=           | /Mid-term/                    |
+|     11 | 23/10 | =SQL=           |                               |
+|     12 | 30/10 | =SQL=           |                               |
+|     13 | 6/11  | =SQL=           | /Update/ del proyecto         |
+|     14 | 13/11 | =SQL=           |                               |
+|     15 | 20/11 | /Pipelines/     |                               |
+|     16 | 27/11 | =docker=        |                               |
+|     17 | 4/12  | /Web scrapping/ | Entregar reporte del proyecto |
+|     18 | 11/12 | Proyecto        | Presentación oral             |
+
+
+** /Software/ que necesitas instalar                                 :readme:
+
+- Constructor de máquinas virtuales :: [[https://www.vagrantup.com/downloads.html][Vagrant]]
+- Administrador de máquinas virtuales :: [[https://www.virtualbox.org/wiki/Downloads][VirtualBox]]
+- Sistema de control de cambios :: [[https://git-scm.com/downloads][git]]
+- Adminsitrador de versiones de =python= :: [[https://github.com/pyenv/pyenv-installer][pyenv]]
+- Cliente de PostgreSQL :: [[https://www.compose.com/articles/postgresql-tips-installing-the-postgresql-client/][psql]]
+- Cliente general de base de datos :: [[https://dbeaver.io/][DBeaver]]
+- Una base de datos simple :: [[http://www.sqlitetutorial.net/download-install-sqlite/][sqlite3]]
+- Administrador de contenedores :: [[https://docs.docker.com/install/][docker]],  [[https://docs.docker.com/compose/install/][docker-compose]]
+- /Shell/ :: zsh ([[https://gingter.org/2016/08/17/install-and-run-zsh-on-windows/][Windows]]), ([[https://linuxhandbook.com/install-zsh/][GNU/Linux]]), ([[http://osxdaily.com/2018/12/29/use-zsh-default-terminal-mac-os-x/][MacOS]])
