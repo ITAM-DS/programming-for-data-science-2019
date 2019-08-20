@@ -1,0 +1,126 @@
+# Created 2019-08-20 Tue 01:15
+#+TITLE: Setup
+#+DATE: August 20, 2019
+#+AUTHOR: Adolfo De Unanue
+* Virtualbox
+
+* Preliminares
+
+#+begin_src shell
+mkdir -p vagrant-ds
+#+end_src
+
+#+begin_src shell
+vagrant box add generic/ubuntu1904
+#+end_src
+
+Listar las /boxes/:
+
+#+begin_src shell
+vagrant box list
+#+end_src
+
+
+Instalar /plugin/ para [[https://www.vagrantup.com/docs/share/#installation][compartir el ambiente]]
+
+#+begin_src shell
+vagrant plugin install vagrant-share
+#+end_src
+
+* /Bootstraping/
+
+#+begin_src shell
+#!/usr/bin/env bash
+
+# PostgreSQL and PostGIS
+apt-get -y update
+apt-get -y install postgresql-11 postgresql-11-postgis-2.5 postgis postgresql-11-pgrouting gdal-bin osm2pgsql libpq-dev postgresql-client-11
+
+# ZSH
+apt-get install curl zsh git sqlite3
+chsh -s /bin/zsh vagrant
+
+# pyenv
+apt-get -y install --no-install-recommends make build-essential libssl-dev zlib1g-dev\
+                    libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev\
+                    xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+#+end_src
+
+
+#+begin_src shell
+#!/usr/bin/env bash
+
+# zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# pyenv and python 3.7
+curl https://pyenv.run | bash
+
+cat >> /home/vagrant/.zshrc << 'EOF'
+
+export PATH="$PATH:/home/vagrant/.pyenv/bin"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+EOF
+
+source .zshrc
+
+# Python 3.7
+pyenv install 3.7.3
+
+pyenv global 3.7.3
+
+# Update pip
+#pip install --upgrade pip
+
+# Jupyter and IPython
+#pip install jupyter ipython
+#+end_src
+
+* Archivo de aprovisionamiento
+
+#+begin_src ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu1904"
+
+  # provisioning (as root)
+  config.vm.provision :shell, path: "bootstrap.sh"
+
+  # provisioning (as vagrant user)
+  #config.vm.provision :shell, path: "vagrant-bootstrap.sh", privileged: false
+
+  # dotfiles!
+  config.vm.provision "file", source: "dotfiles/.psqlrc", destination: ".psqlrc"
+  config.vm.provision "file", source: "dotfiles/.sqliterc", destination: ".sqliterc"
+  config.vm.provision "file", source: "dotfiles/.nanorc", destination: ".nanorc"
+
+  # sharing folders
+  config.vm.synced_folder ".", "/vagrant"
+
+  # Networking
+  # PostgreSQL
+  config.vm.network :forwarded_port, guest: 5432, host: 5555
+  # Jupyter
+  config.vm.network :forwarded_port, guest: 8888, host: 8888
+  config.ssh.forward_agent = true
+end
+#+end_src
+
+
+** /Levantar/ la máquina virtual:
+
+#+begin_src shell
+vagrant up
+#+end_src
+
+** Probando la máquina virtual
+
+#+begin_src shell
+vagrant ssh
+#+end_src
+
+Para concluir, tienes tres opciones
+- /suspending/ :: guarda el estado actual de la máquina, al iniciar de
+     nuevo hará /hot boot/.
+- /halting/ :: apaga la máquina de manera correcta, /cold boot/
+- /destroying/ :: remueve todo, si inicias de nuevo instalará desde cero.

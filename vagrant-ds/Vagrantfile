@@ -1,0 +1,24 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu1904"
+
+  # provisioning (as root)
+  config.vm.provision :shell, path: "bootstrap.sh"
+
+  # provisioning (as vagrant user)
+  #config.vm.provision :shell, path: "vagrant-bootstrap.sh", privileged: false
+
+  # dotfiles!
+  config.vm.provision "file", source: "dotfiles/.psqlrc", destination: ".psqlrc"
+  config.vm.provision "file", source: "dotfiles/.sqliterc", destination: ".sqliterc"
+  config.vm.provision "file", source: "dotfiles/.nanorc", destination: ".nanorc"
+
+  # sharing folders
+  config.vm.synced_folder ".", "/vagrant"
+
+  # Networking
+  # PostgreSQL
+  config.vm.network :forwarded_port, guest: 5432, host: 5555
+  # Jupyter
+  config.vm.network :forwarded_port, guest: 8888, host: 8888
+  config.ssh.forward_agent = true
+end
