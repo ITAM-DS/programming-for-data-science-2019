@@ -1,0 +1,35 @@
+set smooth
+
+set autoindent
+
+set backup
+
+set casesensitive
+
+set historylog
+
+set morespace
+
+set tabsize 4
+
+set tabstospaces
+
+set linenumbers
+
+# color
+
+set titlecolor brightwhite,blue
+
+set statuscolor brightwhite,green
+
+#set errorcolor brightwhite,red
+
+set selectedcolor brightwhite,magenta
+
+set numbercolor cyan
+
+set keycolor cyan
+
+set functioncolor green
+
+include "/usr/share/nano/*.nanorc"

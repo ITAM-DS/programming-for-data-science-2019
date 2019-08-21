@@ -21,7 +21,7 @@ pyenv install 3.7.3
 pyenv global 3.7.3
 
 # Update pip
-#pip install --upgrade pip
+pip install --upgrade pip
 
 # Jupyter and IPython
-#pip install jupyter ipython
+pip install jupyter ipython

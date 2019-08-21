@@ -1,0 +1,47 @@
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+-- \set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+
+-- PROMPT2 es lo que imprime cuando está esperando más input
+-- \set PROMPT2 '[more] %R > '
+
+
+\set PROMPT1 '%~%x%# '
+-- PROMPT2 es lo que imprime cuando está esperando más input
+-- \set PROMPT2 '[more] %R > '
+
+-- El mejor formato de salida
+-- NOTA: si vas a correr un script tpara sacar datos a un archivo, recuerda desactivar la configuración
+\x auto
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+\pset null '¤'
+\pset linestyle 'unicode'
+\pset unicode_border_linestyle single
+\pset unicode_column_linestyle single
+\pset unicode_header_linestyle double
+set intervalstyle to 'postgres_verbose';
+\setenv LESS '-iMFXSx4R'
+\setenv EDITOR 'nano'
+
+-- Muestra cuanto tarda un query en ejecutarse
+\timing on
+
+\set VERBOSITY verbose
+
+-- Un history largo
+\set HISTSIZE 5000
+
+-- Un history por base de datos
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- Ignora duplicados en el history
+\set HISTCONTROL ignoredups
+
+-- No me gusta SQL en mayúsculas
+\set COMP_KEYWORD_CASE lower
+
+
+-- Algunos shortcuts
+\set version 'select version();'
+
+\set status 'select pid, age(clock_timestamp(), query_start), usename, query from pg_stat_activity where query != ''<IDLE>'' and query not ilike ''%pg_stat_activity%'' order by query_start desc;'

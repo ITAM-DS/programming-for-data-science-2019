@@ -1,8 +1,8 @@
-# Created 2019-08-20 Tue 00:59
+# Created 2019-08-20 Tue 01:20
 #+TITLE: Programming for Data Science 2019
 #+DATE: August 20, 2019
 #+AUTHOR: Adolfo De Unanue
-* /Programming for DS/
+* /Programming for Data Science/ [2019]
 
 ** /Syllabus/                                                        :readme:
 
