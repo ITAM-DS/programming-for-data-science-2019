@@ -1,4 +1,4 @@
-# Created 2019-08-31 Sat 00:20
+# Created 2019-08-31 Sat 00:30
 #+TITLE: Setup
 #+DATE: August 20, 2019
 #+AUTHOR: Adolfo De Unanue
@@ -26,86 +26,15 @@ Instalar /plugin/ para [[https://www.vagrantup.com/docs/share/#installation][com
 vagrant plugin install vagrant-share
 #+end_src
 
-** /Bootstraping/
-
-#+begin_src shell
-#!/usr/bin/env bash
-
-# PostgreSQL and PostGIS
-apt-get -y update
-apt-get -y install postgresql-11 postgresql-11-postgis-2.5 postgis postgresql-11-pgrouting gdal-bin osm2pgsql libpq-dev postgresql-client-11
-
-# ZSH
-apt-get -y install curl zsh git sqlite3
-chsh -s /bin/zsh vagrant
-
-# pyenv
-apt-get -y install --no-install-recommends make build-essential libssl-dev zlib1g-dev\
-                    libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev\
-                    xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-#+end_src
-
-
-#+begin_src shell
-#!/usr/bin/env bash
-
-# zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# pyenv and python 3.7
-curl https://pyenv.run | bash
-
-cat >> /home/vagrant/.zshrc << 'EOF'
-
-export PATH="$PATH:/home/vagrant/.pyenv/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-EOF
-
-source .zshrc
-
-# Python 3.7
-pyenv install 3.7.3
-
-pyenv global 3.7.3
-
-# Update pip
-pip install --upgrade pip
-
-# Jupyter and IPython
-pip install jupyter ipython
-#+end_src
-
-** Archivo de aprovisionamiento
-
-#+begin_src ruby
-Vagrant.configure("2") do |config|
-  config.vm.box = "generic/ubuntu1904"
-
-  # provisioning (as root)
-  config.vm.provision :shell, path: "bootstrap.sh"
-
-  # provisioning (as vagrant user)
-  config.vm.provision :shell, path: "vagrant-bootstrap.sh", privileged: false
-
-  # dotfiles!
-  config.vm.provision "file", source: "dotfiles/.psqlrc", destination: ".psqlrc"
-  config.vm.provision "file", source: "dotfiles/.sqliterc", destination: ".sqliterc"
-  config.vm.provision "file", source: "dotfiles/.nanorc", destination: ".nanorc"
-
-  # sharing folders
-  config.vm.synced_folder ".", "/vagrant"
-
-  # Networking
-  # PostgreSQL
-  config.vm.network :forwarded_port, guest: 5432, host: 5555
-  # Jupyter
-  config.vm.network :forwarded_port, guest: 8888, host: 8888
-end
-#+end_src
-
-
 ** /Levantar/ la máquina virtual:
+
+Ingresa a la carpeta =vagrant-ds=
+
+#+begin_src shell
+cd vagrant-ds
+#+end_src
+
+Teclea lo siguiente
 
 #+begin_src shell
 vagrant up
@@ -117,11 +46,49 @@ vagrant up
 vagrant ssh
 #+end_src
 
-Para concluir, tienes tres opciones
-- /suspending/ :: guarda el estado actual de la máquina, al iniciar de
-     nuevo hará /hot boot/.
-- /halting/ :: apaga la máquina de manera correcta, /cold boot/
-- /destroying/ :: remueve todo, si inicias de nuevo instalará desde cero.
+Si quieres salir de la máquina virtual, usa la combinación de teclas
+=Ctrl + D=.
+
+** Administración de la máquina virtual
+
+*** Estado
+
+#+begin_src shell
+vagrant status
+#+end_src
+
+Para ver los puertos compartidos con el /host/
+
+#+begin_src shell
+vagrant port
+#+end_src
+
+*** /Suspending/
+
+Guardar el estado actual de la máquina, al iniciar de nuevo (con
+=vagrant resume=)  hará /hot boot/.
+
+#+begin_src shell
+vagrant suspend
+#+end_src
+
+*** /Halting/
+
+Apaga la máquina de manera correcta, al iniciar de nuevo (con =vagrant
+reload=) hará /cold boot/
+
+#+begin_src shell
+vagrant halt
+#+end_src
+
+*** /Destroying/
+
+Remover todo, si inicias de nuevo (con =vagrant up=) instalará desde  cero.
+
+#+begin_src shell
+vagrant destroy
+#+end_src
+
 
 
 * dotfiles
