@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
 
   # sharing folders
   config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder "../data", "/data"
 
   # Networking
   # PostgreSQL

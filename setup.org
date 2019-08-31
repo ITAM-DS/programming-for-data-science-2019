@@ -1,4 +1,4 @@
-# Created 2019-08-31 Sat 00:30
+# Created 2019-08-31 Sat 00:52
 #+TITLE: Setup
 #+DATE: August 20, 2019
 #+AUTHOR: Adolfo De Unanue
@@ -75,7 +75,7 @@ vagrant suspend
 *** /Halting/
 
 Apaga la máquina de manera correcta, al iniciar de nuevo (con =vagrant
-reload=) hará /cold boot/
+up= o =vagrant reload=) hará /cold boot/
 
 #+begin_src shell
 vagrant halt
