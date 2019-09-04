@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Programming for Data Science</title>
+<meta name="author" content="Adolfo De Unánue"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css" id="theme"/>
+
+<link rel="stylesheet" href="slides.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+
+          <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+          <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
+          <style type='text/css'>
+             body {
+                font-family: 'Source Sans Pro', sans-serif;
+             }
+             pre, code {
+                font-family: 'Source Code Pro', monospace;
+             }
+          </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-04 Wed 14:29</p>
+</section>
+<section>
+<section id="slide-1">
+<h2 id="1"><span class="section-number-2">1</span> <i>Lectures</i></h2>
+</section>
+</section>
+<section>
+<section id="slide-1-1">
+<h3 id="1-1"><span class="section-number-3">1.1</span> Licencia</h3>
+<p>
+Este trabajo se encuentra bajo la Licencia de
+</p>
+
+<p>
+<b>Creative Commons</b>
+</p>
+
+<p>
+<b>Attribution ShareAlike 4.0</b>
+</p>
+
+<p>
+<b>International License.</b>
+</p>
+
+<p>
+Para ver una copia de esta licencia, Visita:
+<a href="http://creativecommons.org/license/by-sa/4.0/">http://creativecommons.org/license/by-sa/4.0/</a>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-2">
+<h3 id="1-2"><span class="section-number-3">1.2</span> Introducción</h3>
+</section>
+<section id="slide-1-2-1">
+<h4 id="1-2-1"><span class="section-number-4">1.2.1</span> Una encuesta rápida</h4>
+
+</section>
+<section id="slide-1-2-2">
+<h4 id="1-2-2"><span class="section-number-4">1.2.2</span> <i>Data science</i> es &#x2026;</h4>
+<form><ul>
+<li>&#x2026; acerca de datos</li>
+<li>&#x2026; utilizar el método científico</li>
+<li>&#x2026; soportar la toma de decisiones</li>
+<li>&#x2026; aumentar la inteligencia</li>
+
+</ul></form>
+
+</section>
+<section id="slide-1-2-3">
+<h4 id="1-2-3"><span class="section-number-4">1.2.3</span> El científico de datos</h4>
+<form><ul>
+<li>No es acerca de   <code>R</code> o <code>python</code> únicamente</li>
+
+<li>No es acerca de <i>machine learning</i> únicamente</li>
+
+<li>El científico de datos <i>crea</i> <b>producto de datos</b>.</li>
+
+</ul></form>
+
+</section>
+<section id="slide-1-2-4">
+<h4 id="1-2-4"><span class="section-number-4">1.2.4</span> Productos de datos</h4>
+<form><ul>
+<li>Es un sistema tecno-social que procesa datos de sobre un sistema
+generador de los mismos para aumentar la inteligencia o capacidades
+de acción de un agente externo al sistema.</li>
+
+</ul></form>
+
+
+</section>
+<section id="slide-1-2-5">
+<h4 id="1-2-5"><span class="section-number-4">1.2.5</span> Disminución del <i>dolor</i></h4>
+<p>
+Cualquier barrera, impedancia entre tu cerebro y los datos hará tu
+trabajo menos efectivo y te causará mucho dolor.
+</p>
+
+<p>
+Tener las herramientas adecuadas, saber que esas herramientas existen
+y conocer cómo y cuándo utilizarlas es lo que distingue a una persona
+experta.
+</p>
+
+
+</section>
+<section id="slide-1-2-6">
+<h4 id="1-2-6"><span class="section-number-4">1.2.6</span> Filosóficamente: <i>Dataísmo</i></h4>
+<form><ul>
+<li><a href="https://aeon.co/ideas/believing-without-evidence-is-always-morally-wrong">Believing without evidence is always morally wrong</a>,Francisco Mejía
+Uribe, Aeon (2018)</li>
+<li><a href="https://www.nytimes.com/2013/02/05/opinion/brooks-the-philosophy-of-data.html">The Philosophy of Data</a>, David Brooks,The New York Times (2013)</li>
+<li><a href="http://dougengelbart.org/content/view/138">Augmenting Human Intellect: A Conceptual Framework </a>Douglas C. Engelbart (1962)</li>
+
+</ul></form>
+
+
+
+</section>
+<section id="slide-1-2-7">
+<h4 id="1-2-7"><span class="section-number-4">1.2.7</span> Filosóficamente: <i>Dataísmo</i></h4>
+<blockquote>
+<p>
+A <b>Dataist</b> is someone that trusts Big
+Data (above) and computer algorithms, in preference to human
+knowledge and wisdom.
+</p>
+
+<p>
+<b>Homo Deus: A Brief History of Tomorrow</b>. Yuval Noah Harare (2017)
+</p>
+</blockquote>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-3">
+<h3 id="1-3"><span class="section-number-3">1.3</span> Línea de comandos</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+</section>
+<section id="slide-1-3-1">
+<h4 id="1-3-1"><span class="section-number-4">1.3.1</span> La computadora</h4>
+<p>
+Las computadoras sólo hacen cuatro cosas:
+</p>
+
+<form><ul>
+<li>Ejecutan programas</li>
+<li>Almacenan datos</li>
+<li>Se comunican entre sí para hacer las cosas recién mencionadas.</li>
+<li>Interactúan con nosotros.
+<form><ul>
+<li>La interacción puede ser gráfica (como están acostumbrados)
+conocida también como <b>GUI</b> (<i>Graphical User Interface</i>) vía el
+ratón u otro periférico, o desde la línea de comandos, llamada
+como <b>CLI</b> (<i>Command Line Interface</i>).</li>
+
+</ul></form></li>
+
+</ul></form>
+
+</section>
+<section id="slide-1-3-2">
+<h4 id="1-3-2"><span class="section-number-4">1.3.2</span> ¿Por qué?</h4>
+<p>
+En muchas ocasiones, se verán en la necesidad de responder muy rápido y
+en una etapa muy temprana del proceso de <b>big data</b> . Las peticiones
+regularmente serán cosas muy sencillas, como estadística univariable y es
+aquí donde es posible responder con las herramientas mágicas de UNIX.
+</p>
+
+
+</section>
+<section id="slide-1-3-3">
+<h4 id="1-3-3"><span class="section-number-4">1.3.3</span> Línea de comandos</h4>
+<p>
+La línea de comandos es lo que estará entre nosotros y la computadora
+casi todo el tiempo en este curso. De hecho, una lectura obligada<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> es
+<a href="http://faculty.georgetown.edu/irvinem/theory/Stephenson-CommandLine-1999.pdf">In the beginning&#x2026;was de command line</a>
+de <b>Neal Stephenson</b>, el escritor de
+<a href="https://play.google.com/store/books/details/Neal_Stephenson_Cryptonomicon?id=dwAwSzmTHNEC"><b>Criptonomicon</b></a><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>.
+</p>
+
+
+<p>
+La <b>CLI</b> es otro programa más de la computadora y su función es
+ejecutar otros comandos. El más popular es <code>bash</code>, que es un acrónimo
+de <b>Bourne again shell</b>. Aunque en esta clase también usaremos <code>zsh</code><sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
+</p>
+
+</section>
+<section id="slide-1-3-4">
+<h4 id="1-3-4"><span class="section-number-4">1.3.4</span> Archivos y directorios</h4>
+<p>
+La computadora guarda la información de una manera ordenada. El
+sistema encargado de esto es el <code>file system</code>, el cual es básicamente un árbol
+de información<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup> que guarda los datos en
+una abstracción que llamamos <b>archivos</b> y ordena los archivos en
+<b>carpetas</b> o <b>directorios</b>, los cuales a su vez pueden contener otros
+<b>directorios</b>.
+</p>
+
+<div class="info">
+<p>
+<b>TODO</b> en los sistemas operativos <code>*nix</code> (como Unix, GNU/Linux,
+ FreeBSD, MacOS, etc)  es un <i>archivo</i>.
+</p>
+
+</div>
+
+
+<p>
+Muchos de los comandos del <b>CLI</b> o <code>shell</code> tienen que ver con la
+manipulación del <code>file system</code>.
+</p>
+
+</section>
+<section id="slide-1-3-5">
+<h4 id="1-3-5"><span class="section-number-4">1.3.5</span> Filosofía UNIX</h4>
+<p>
+Creada originalmente en 1978 por <b>Doug McIlroy</b>, la filosofía de UNIX es
+un acercamiento al diseño de software que enaltece el software modular
+y minimalista.
+</p>
+
+<p>
+Han existido varias adaptaciones<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>, pero la que más me gusta es la de
+<b>Peter H. Salus</b>,
+</p>
+
+<p>
+Es importante tener estos principios en mente, ya que ayuda a enmarcar
+los conceptos que siguen.
+</p>
+
+<blockquote>
+<form><ul>
+<li>Escribe programas que hagan una cosa y que la hagan bien</li>
+<li>Escribe programas que puedan trabajar en conjunto</li>
+<li>Escribe programas que puedan manipular <i>streams</i> de texto, ya que
+el texto es la interfaz universal.</li>
+
+</ul></form>
+</blockquote>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-4">
+<h3 id="1-4"><span class="section-number-3">1.4</span> Conocer los alrededores</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+</section>
+<section id="slide-1-4-1">
+<h4 id="1-4-1"><span class="section-number-4">1.4.1</span> Navegación en la terminal</h4>
+<p>
+Moverse rápidamente en la <b>CLI</b> es de vital importancia. Teclea en tu <i>terminal</i>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>Anita lava la tina</code>
+</pre>
+</div>
+
+<p>
+Y ahora intenta lo siguiente:
+</p>
+
+<form><dl>
+<dt><code>Ctrl + a</code></dt><dd>Inicio de la línea</dd>
+<dt><code>Ctrl + e</code></dt><dd>Fin de la línea</dd>
+<dt><code>Ctrl + r</code></dt><dd>Buscar hacia atrás<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup></dd>
+<dt><code>Ctrl + b</code></dt><dd>Mueve el cursor hacia atrás una letra a la vez</dd>
+<dt><code>Alt + b</code></dt><dd>Mueve el cursor hacia atrás una palabra a la vez</dd>
+<dt><code>Ctrl + f</code></dt><dd>Mueve el cursor hacia adelante una letra a la vez</dd>
+<dt><code>Alt + f</code></dt><dd>Mueve el cursor hacia adelante una palabra a la vez</dd>
+
+</dl></form>
+
+</section>
+<section>
+
+<form><dl>
+<dt><code>Ctrl + k</code></dt><dd>Elimina el resto de la línea (en realidad corta y pone en el búfer circular)</dd>
+<dt><code>Ctrl + y</code></dt><dd>Pega la último del búfer.</dd>
+<dt><code>Alt  + y</code> </dt><dd>Recorre el búfer circular.</dd>
+<dt><code>Ctrl + d</code></dt><dd>Cierra la terminal</dd>
+<dt><code>Ctrl + z</code></dt><dd>Manda a <i>background</i> el programa que se está ejecutando</dd>
+<dt><code>Ctrl + c</code></dt><dd>Intenta cancelar</dd>
+<dt><code>Ctrl + l</code></dt><dd>Limpia la pantalla</dd>
+
+</dl></form>
+
+</section>
+<section>
+
+<div class="warning">
+<p>
+Estas combinaciones de teclas (<i>keybindings</i>) son universales. Te
+recomiendo que las practiques y configures tus otras herramientas con
+estos mismas combinaciones, por ejemplo <a href="https://support.rstudio.com/hc/en-us/articles/210928128-Emacs-Editor-Keybindings">RStudio</a> ó <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html?highlight=emacs#keyboard-shortcuts">JupyterLab</a> .
+</p>
+
+</div>
+
+
+<div class="question">
+<p>
+¿Qué hacen las siguientes combinaciones?
+</p>
+
+<form><ul>
+<li><code>Alt  + t</code></li>
+<li><code>Alt  + d</code></li>
+<li><code>Ctrl + j</code></li>
+<li><code>Alt + 2 Alt + b</code></li>
+
+</ul></form>
+
+</div>
+
+<p>
+Para tener más información sobre los <i>bindings</i> consulta <a href="https://catonmat.net/bash-emacs-editing-mode-cheat-sheet">aquí</a>.
+</p>
+
+</section>
+<section id="slide-1-4-2">
+<h4 id="1-4-2"><span class="section-number-4">1.4.2</span> ¿Dónde estoy?</h4>
+<p>
+Imprime el nombre del <i>directorio</i> actual
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">pwd</span></code>
+</pre>
+</div>
+
+<p>
+Cambia el directorio un nivel arriba (a el directorio <i>padre</i> <sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span> ..</code>
+</pre>
+</div>
+
+<p>
+Si quieres regresar al directorio anterior
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span> -</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-4-3">
+<h4 id="1-4-3"><span class="section-number-4">1.4.3</span> Hogar dulce, hogar</h4>
+<p>
+Cambia el directorio <code>$HOME</code> (tu directorio) utilizando <code>~</code>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span> ~</code>
+</pre>
+</div>
+
+<p>
+o bien, no pasando ningún argumento
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-4-4">
+<h4 id="1-4-4"><span class="section-number-4">1.4.4</span> ¿Qué hay en mi directorio (<i>folder</i>) ?</h4>
+<p>
+<code>ls</code> Lista los contenidos (archivos y directorios) en el
+directorio actual, pero no los archivos <i>ocultos</i>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>ls</code>
+</pre>
+</div>
+
+<p>
+Lista los contenidos en formato <i>largo</i> (<code>-l</code>), muestra
+  el tamańo de los archivos, fecha de último cambio y permisos
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>ls -l</code>
+</pre>
+</div>
+
+<p>
+Lista los contendios en el directorio actual y todos los
+  sub-directorios en una estructura de <i>árbol</i>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tree</code>
+</pre>
+</div>
+
+<p>
+Límita la expansión del <i>árbol</i> a dos niveles
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tree -L 2</code>
+</pre>
+</div>
+
+<p>
+Muestra los archivosshows file sizes (<code>-s</code>) in
+  human-readable format (<code>-h</code>)
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tree -hs</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-4-5">
+<h4 id="1-4-5"><span class="section-number-4">1.4.5</span> ¿Qué hay en mi archivo?</h4>
+<p>
+Muestra el principio (<i>head</i>) del archivo, <code>-n</code> especifica el número de líneas (<code>10</code>).
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>head -n10 $<span style="color: #61afef;">f</span></code>
+</pre>
+</div>
+
+<p>
+Muestra la final (<i>tail</i>) del archivo.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tail -n10 $<span style="color: #61afef;">f</span></code>
+</pre>
+</div>
+
+<p>
+Muestra la parte final del archivo
+  cada segundo (usando <code>watch</code>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tail -n10 $<span style="color: #61afef;">f</span> | watch -n1</code>
+</pre>
+</div>
+
+
+<p>
+"seguir" (<i>follows</i>) (<code>-f</code>) la parte final del archivo, cada vez que hay cambios
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>tail -f -n10 $<span style="color: #61afef;">f</span></code>
+</pre>
+</div>
+
+<div class="info">
+<p>
+Seguir archivos es útil cuando estás ejecutando un programa que guarda
+    información a un archivo, por ejemplo un <i>log</i>
+</p>
+
+</div>
+
+<p>
+Cuenta las palabras, caracteres y líneas de un archivo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>wc $<span style="color: #61afef;">f</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-4-6">
+<h4 id="1-4-6"><span class="section-number-4">1.4.6</span> ¿Dónde está mi archivo?</h4>
+<p>
+Encuentra el archivo por nombre
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>find -name <span style="color: #98be65;">"&lt;lost_file_name&gt;"</span> -type f</code>
+</pre>
+</div>
+
+<p>
+Encuentra directorios por nombre
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>find -name <span style="color: #98be65;">"&lt;lost_dir_name&gt;"</span> -type d</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-4-7">
+<h4 id="1-4-7"><span class="section-number-4">1.4.7</span> <i>Wildcards</i>: Globbing</h4>
+<p>
+La línea de comandos permite usar comodines (<i>wildcards</i>)<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup>
+para encontrar  archivos:
+</p>
+
+<p>
+El primer <i>glob</i> que veremos es <code>*</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> *</code>
+</pre>
+</div>
+
+<p>
+El <code>shell</code> expandió <code>*</code> para identificarlo con todos los archivos del
+directorio actual.
+</p>
+
+<p>
+Obvio lo puedes usar con otros comandos, como <code>ls</code>:
+Listar todos los archivos que tienen una extensión <code>txt</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>ls *.txt</code>
+</pre>
+</div>
+
+<p>
+Listar todos los archivos que contienen <code>a</code> en el nombre y extensión
+<code>txt</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>ls *a*.txt</code>
+</pre>
+</div>
+
+<p>
+<code>*</code> no es el único carácter especial. <code>?</code> hace <i>match</i> con cualquier
+carácter individual.
+</p>
+
+<p>
+Listar todos los archivos que tienen 5 caracteres en el nombre:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>ls ?????,txt</code>
+</pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-5">
+<h3 id="1-5"><span class="section-number-3">1.5</span> Conectando comandos</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+</section>
+<section id="slide-1-5-1">
+<h4 id="1-5-1"><span class="section-number-4">1.5.1</span> Entubando</h4>
+<p>
+El símbolo  <code>|</code> (<i>pipe</i>)  “entuba” la salida de un comando al siguiente
+comando. Por ejemplo:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>ls -la | wc -l</code>
+</pre>
+</div>
+
+<p>
+La salida de <code>ls -la</code> en lugar de ser impresa en pantalla<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup> es
+enviada a <code>wc -l</code>
+</p>
+
+<p>
+El siguiente ejemplo utiliza <code>grep</code> para buscar y seleccionar cadenas o patrones
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>seq 50 | grep 3</code>
+</pre>
+</div>
+
+<p>
+Veremos más sobre <code>seq</code> y <code>grep</code> más adelante.
+</p>
+
+</section>
+<section id="slide-1-5-2">
+<h4 id="1-5-2"><span class="section-number-4">1.5.2</span> <code>stdin</code>, <code>stdout</code> y <code>stderr</code></h4>
+<p>
+<code>stdin</code> (entrada estándar), <code>stdout</code> (salida estándar) y <code>stderr</code>
+(error estándar) son <i>canales</i> de interacción de la terminal. En tu
+terminal, todos apuntan a la pantalla, pero es posible
+redireccionarlos hacia otros lados.
+</p>
+
+<p>
+Los tres canales están asignados a los siguientes <i>file descriptors</i><sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup>
+</p>
+
+<form><dl>
+<dt><code>0</code></dt><dd><code>stdin</code>, el teclado</dd>
+<dt><code>1</code></dt><dd><code>stdout</code>, la pantalla</dd>
+<dt><code>2</code></dt><dd><code>stderr</code>, la pantalla</dd>
+
+</dl></form>
+
+<p>
+Es posible redireccionar por ejemplo,  todos los mensajes de error a
+un archivo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>rm este_archivo_no_existe 2&gt; error.txt</code>
+</pre>
+</div>
+
+
+<p>
+Si quieres ignorar los errores, puedes mandarlos a un agujero negro<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup> estándar, i.e. <code>/dev/null</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>algun_comando 2&gt; /dev/null</code>
+</pre>
+</div>
+
+<p>
+o apuntar <code>stdout</code> y <code>stderr</code> al mismo lado (configuración por
+<i>default</i>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>algun_comando 2&gt;&amp;1</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-5-3">
+<h4 id="1-5-3"><span class="section-number-4">1.5.3</span> Redireccionando <i>hacia</i></h4>
+<p>
+Los símbolos <code>&gt;</code>, <code>&gt;&gt;</code> Redireccionan la salida de los comandos a un
+sumidero (<i>sink</i>), e.g. un archivo, o la pantalla o la impresora.
+</p>
+
+<p>
+La salida de <code>ls</code> se guarda en el archivo <code>prueba.bat</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>ls &gt;&gt; prueba.dat</code>
+</pre>
+</div>
+
+<p>
+Similar al ejemplo anterior
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>seq 10 &gt; numeros.txt</code>
+</pre>
+</div>
+
+
+<div class="question">
+<p>
+¿Cuál es la diferencia?
+</p>
+
+<p>
+<b>TIP</b>: Ejecuta varias veces los ejemplos anteriores
+</p>
+
+</div>
+
+</section>
+<section id="slide-1-5-4">
+<h4 id="1-5-4"><span class="section-number-4">1.5.4</span> Redireccionando <i>desde</i></h4>
+<p>
+<code>&lt;</code> Redirecciona desde el archivo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>sort &lt; prueba.dat <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">A la l&#237;nea de comandos acomoda con sort,</span></code>
+<code>sort &lt; prueba.dat &gt; prueba_sort.dat <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Guardar el sort a un archivo.</span></code>
+</pre>
+</div>
+
+<p>
+Incluso puedes hacer
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>&lt; prueba.dat wc -l</code>
+</pre>
+</div>
+
+<div class="info">
+<p>
+Esto suena muy similar a
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>cat prueba.dat | wc -l</code>
+</pre>
+</div>
+
+<p>
+<code>&lt; prueba.dat wc -l</code> es más eficiente, ya que no está generando
+un subproceso (lo cual puede ser muy importante en procesamiento intensivo.
+</p>
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-6">
+<h3 id="1-6"><span class="section-number-3">1.6</span> Algunos comandos útiles</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+</section>
+<section id="slide-1-6-1">
+<h4 id="1-6-1"><span class="section-number-4">1.6.1</span> seq</h4>
+<p>
+Genera secuencias de números
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>seq 5</code>
+</pre>
+</div>
+
+<p>
+La sintaxis es: <code>seq inicio step final</code>. Por ejemplo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>seq 1 2 10</code>
+</pre>
+</div>
+
+<p>
+genera la secuencia de 1 al 10 de dos en dos.
+</p>
+
+<p>
+Usando otro separador (<code>-s</code>) que no sea es caracter de espacio
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>seq -s <span style="color: #98be65;">'|'</span> 10</code>
+</pre>
+</div>
+
+<p>
+Agregando <i>padding</i>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>seq -w 1 10</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-2">
+<h4 id="1-6-2"><span class="section-number-4">1.6.2</span> tr</h4>
+<p>
+Cambia, reemplaza o borra caracteres del <code>stdin</code> al <code>stdout</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola mi nombre es Adolfo De Un&#225;nue"</span>  | tr <span style="color: #98be65;">'[:upper]'</span> <span style="color: #98be65;">'[:lower]'</span></code>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola mi nombre es Adolfo De Un&#225;nue"</span>  | tr -d <span style="color: #98be65;">' '</span></code>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola mi nombre es Adolfo De Un&#225;nue"</span>  | tr -s <span style="color: #98be65;">' '</span> <span style="color: #98be65;">'_'</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-3">
+<h4 id="1-6-3"><span class="section-number-4">1.6.3</span> wc</h4>
+<p>
+<code>wc</code> significa <i>word count</i>. Este comando cuenta las
+palabras,renglones, bytes en el archivo.
+</p>
+
+<p>
+En nuestro caso nos interesa la bandera <code>-l</code> la cual sirve para contar líneas.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>seq 30 | grep 3 | wc -l</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-4">
+<h4 id="1-6-4"><span class="section-number-4">1.6.4</span> head, tail</h4>
+<p>
+<code>head</code> y <code>tail</code> sirven para explorar visualmente las primeras diez
+(<i>default</i>) o las últimas diez (<i>default</i>) renglones del archivo,
+respectivamente.
+</p>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>head UFO-Dic-2014.tsv</code>
+<code></code>
+<code>tail -3 UFO-Dic-2014.tsv</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-5">
+<h4 id="1-6-5"><span class="section-number-4">1.6.5</span> cat</h4>
+<p>
+<code>cat</code> concatena archivos y/o imprime al <code>stdout</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">'Hola mundo'</span> &gt;&gt; test</code>
+<code></code>
+<code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">'Adios mundo cruel'</span> &gt;&gt; test</code>
+<code></code>
+<code>cat test</code>
+<code></code>
+<code>rm test</code>
+</pre>
+</div>
+
+<p>
+Podrías hacer lo mismo, sin utilizar <code>echo</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>cat &gt;&gt; test</code>
+<code></code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Teclea Hola mundo</span></code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Teclea Adios mundo cruel</span></code>
+<code></code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ctrl-C</span></code>
+</pre>
+</div>
+
+
+<p>
+También podemos concatenar archivos
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>cat UFO-Nov-2014.tsv UFO-Dic-2014.tsv  &gt; UFO-Nov-Dic-2014.tsv</code>
+<code>wc -l UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+<p>
+En el siguiente ejemplo redireccionamos al <code>stdin</code> el archivo como
+entrada del <code>wc -l</code> sin generar un nuevo proceso
+</p>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>&lt; numeros.txt wc -l</code>
+</pre>
+</div>
+
+
+
+</section>
+<section id="slide-1-6-6">
+<h4 id="1-6-6"><span class="section-number-4">1.6.6</span> split</h4>
+<p>
+<code>split</code> hace la función contraria de <code>cat</code>, divide archivos.
+Puede hacerlo por tamaño (bytes, <code>-b</code>) o por líneas (<code>-l</code>).
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>split -l 500 UFO-Nov-Dic-2014.tsv</code>
+<code>wc -l UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-7">
+<h4 id="1-6-7"><span class="section-number-4">1.6.7</span> cut</h4>
+<p>
+Con <code>cut</code> podemos dividir el archivo pero por columnas.
+Las columnas puede estar definidas como campo (<code>-f</code>, <code>-d</code>), carácter (<code>-c</code>) o bytes (<code>-b</code>).
+</p>
+
+<p>
+Creemos unos datos de prueba
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Adolfo|1978|F&#237;sico"</span> &gt;&gt; prueba.psv</code>
+<code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Paty|1984|Abogada"</span> &gt;&gt; prueba.psv</code>
+</pre>
+</div>
+
+<p>
+Ejecuta los siguientes ejemplos, ¿Cuál es la diferencia?
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>cut -d&#8217;|&#8217; -f1 prueba.psv</code>
+<code>cut -d&#8217;|&#8217; -f1,3 prueba.psv</code>
+<code>cut -d&#8217;|&#8217; -f1-3 prueba.psv</code>
+</pre>
+</div>
+
+
+
+</section>
+<section id="slide-1-6-8">
+<h4 id="1-6-8"><span class="section-number-4">1.6.8</span> uniq</h4>
+<form><ul>
+<li><code>uniq</code> Identifica aquellos renglones consecutivos que son iguales.</li>
+<li><code>uniq</code> puede contar (<code>-c</code>), eliminar (<code>-u</code>), imprimir sólo las
+duplicadas (<code>-d</code>), etc.</li>
+
+</ul></form>
+
+</section>
+<section id="slide-1-6-9">
+<h4 id="1-6-9"><span class="section-number-4">1.6.9</span> sort</h4>
+<form><ul>
+<li><code>sort</code> Ordena el archivo, es muy poderoso, puede ordenar por</li>
+
+</ul></form>
+<p>
+columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>-h</code>, <code>-n</code>), mes
+(<code>-M</code>), random (<code>-r</code>) etc.
+</p>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code>sort -t <span style="color: #98be65;">","</span> -k 2  UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-1-6-10">
+<h4 id="1-6-10"><span class="section-number-4">1.6.10</span> uniq y sort</h4>
+<form><ul>
+<li>Combinados podemos tener un <code>group by</code>:</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Group by por estado y fecha</span></code>
+<code>cat UFO-Dic-2014.tsv |<span style="color: #98be65;">\</span></code>
+<code>    cut -d$<span style="color: #98be65;">'\t'</span> -f1,3 |<span style="color: #98be65;">\</span></code>
+<code>    tr <span style="color: #98be65;">'\t'</span> <span style="color: #98be65;">' '</span> |<span style="color: #98be65;">\</span></code>
+<code>    cut-d<span style="color: #98be65;">' '</span> -f1,3 |<span style="color: #98be65;">\</span></code>
+<code>    sort -k 2 -k 1 |<span style="color: #98be65;">\</span></code>
+<code>    uniq -c |<span style="color: #98be65;">\</span></code>
+<code>    sort -n -r -k 1 |<span style="color: #98be65;">\</span></code>
+<code>    head</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-6-11">
+<h4 id="1-6-11"><span class="section-number-4">1.6.11</span> Hacer varias cosas a la vez</h4>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta un servidor web en el puerto 8888</span></code>
+<code>python -m http.server 8888</code>
+</pre>
+</div>
+
+<p>
+Ve a la dirección mostrada en la terminal en tu navegador
+</p>
+
+<p>
+Si presionas <code>Ctrl+z</code> <i>suspenderás</i> la ejecución de ese programa, pero
+no será <b>cancelado</b>. Observa que el <code>shell</code> te devolvió el control de
+la terminal. Trata de ver de nuevo la lista de archivos en el
+navegador &#x2026; y el navegador se quedará en <i>Waiting for 0.0.0.0 &#x2026;</i>
+</p>
+
+
+<p>
+Regresa a la terminal y ejecuta
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">jobs</span></code>
+</pre>
+</div>
+
+<p>
+<code>jobs</code> muestra que programas están ejecutándose
+y su estatus. En particular, el servidor <code>http</code> está detenido.
+</p>
+
+
+<p>
+Para activarlo usa
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">fg</span></code>
+</pre>
+</div>
+
+<p>
+<code>fg</code> significa <i>foreground</i>. Interrumpe la ejecución con <code>Ctrl+c</code>.
+</p>
+
+<p>
+Si quieres ejecutar el servidor y <b>no</b> bloquear la terminal agrega <code>&amp;</code>
+al final.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>python -m http.server 8888 &amp;</code>
+</pre>
+</div>
+
+<p>
+De esta manera el servidor está ejecutándose en el <i>background</i>.
+</p>
+
+<div class="warning">
+<p>
+Es importante saber que estos procesos o <i>jobs</i> estarán ejecutándose
+mientras tu sesión esté activa. Si te desconectas los procesos serán
+terminados.
+</p>
+
+<p>
+Más adelante veremos como solucionar esto.
+</p>
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-7">
+<h3 id="1-7"><span class="section-number-3">1.7</span> Descargar datos</h3>
+<p>
+Es posible hacer peticiones de HTTP (<i>http requests</i>)<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> desde la línea
+de comandos.
+</p>
+
+<p>
+El comando para hacerlo es <code>curl</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>curl http://www.gutenberg.org</code>
+</pre>
+</div>
+
+<div class="info">
+<p>
+Si hay redirecciones puedes usar <code>-L</code> para seguir la redirección (por
+ejemplo en los casos donde hay un <i>url shortener</i>, como <code>bit.ly</code>.
+</p>
+
+</div>
+
+</section>
+<section>
+
+<p>
+La respuesta (<i>response</i>) incluye el <i>body</i> (lo que ves en el
+navegador) y el <i>header</i> (metainformación sobre la petición y
+respuesta). Si sólo quieres ver el <i>header</i>
+</p>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>curl -I https://duckduckgo.com</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+El <i>header</i> contiene un pedazo de información crucialÑ:
+el <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">status code</a>. El <i>status code</i> te sirve para ver el estado de la
+página:
+</p>
+
+<form><ul>
+<li>¿La página respondió correctamente? <code>200 OK</code></li>
+<li>¿El recurso solicitado no existe? <code>404 File Not Found</code></li>
+<li>etc</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>curl -I https://duckduckgo.com 2&gt;/dev/null | head -n 1 | cut -d$<span style="color: #98be65;">' '</span> -f2</code>
+</pre>
+</div>
+
+<p>
+donde:
+</p>
+
+<form><ul>
+<li><code>2&gt;/dev/null</code>, redirecciona <code>stderr</code> a un agujero negro</li>
+<li><code>head -n 1</code>, lee la primera línea únicamente</li>
+<li><code>cut -d$' ' -f2</code>, separa la línea usando espacios (<code>' '</code>) y toma el
+segundo campo, que contiene el código de estatus <code>HTTP</code>.</li>
+
+</ul></form>
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-8">
+<h3 id="1-8"><span class="section-number-3">1.8</span> Expresiones regulares</h3>
+<blockquote>
+<p>
+In computing, regular expressions provide a concise and flexible means for
+identifying strings of text of interest, such as particular characters, words,
+or patterns of characters. Regular expressions (abbreviated as regex or
+regexp, with plural forms regexes, regexps, or regexen) are written in a
+formal language that can be interpreted by a regular expression processor,
+a program that either serves as a parser generator or examines text and
+identifies parts that match the provided specification.
+</p>
+
+<p>
+Wikipedia: Regular Expressions
+</p>
+</blockquote>
+
+
+</section>
+<section id="slide-1-8-1">
+<h4 id="1-8-1"><span class="section-number-4">1.8.1</span> Regexp: Básicos</h4>
+<form><ul>
+<li>Hay varios tipos POSIX, Perl, PHP, GNU/Emacs, etc. Nosotros nos
+enfocaremos en <code>POSIX</code>.</li>
+
+</ul></form>
+
+<div class="warning">
+<p>
+Conocer que tipo de expresiones regulares estás utilizando te quitará
+muchos dolores de cabeza.
+</p>
+
+<p>
+Lee la documentación de tu lenguaje favorito.
+</p>
+
+</div>
+
+<form><ul>
+<li>Pensar en patrones (<i>patterns</i>).</li>
+<li>Operadores básicos
+<form><dl>
+<dt>OR</dt><dd><code>gato|gata</code> hará match con gato o gata.</dd>
+<dt>Agrupamiento o precedencia de operadores</dt><dd><code>gat(a|o)</code> tiene el mismo significado que <code>gato|gata</code>.</dd>
+
+</dl></form></li>
+<li>Cuantificadores
+<form><dl>
+<dt><code>?</code></dt><dd>0 ó 1</dd>
+<dt><code>+</code></dt><dd>uno o más</dd>
+<dt><code>*</code></dt><dd>cero o más<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup></dd>
+
+</dl></form></li>
+
+</ul></form>
+
+</section>
+<section>
+
+<form><ul>
+<li>Expresiones básicas
+<form><dl>
+<dt><code>.</code></dt><dd>Cualquier carácter.</dd>
+<dt><code>[ ]</code></dt><dd>Cualquier carácter incluido en los corchetes, e.g. <code>[xyz]</code>, <code>[a-zA-Z0-9-]</code>.</dd>
+<dt><code>[^ ]</code></dt><dd>Cualquier caracter individual que n esté en los corchetes, e.g. <code>[^abc]</code>. También puede indicar inicio de líınea (fuera de los corchetes.).</dd>
+
+</dl></form></li>
+
+</ul></form>
+
+
+</section>
+<section>
+
+<form><dl>
+<dt><code>\( \)</code> ó <code>( )</code></dt><dd>crea una subexpresión que luego puede ser
+invocada con <code>\n</code> donde <code>n</code> es el número de la subexpresión.</dd>
+
+<dt><code>{m,n}</code></dt><dd>Repite lo anterior un número de al menos <code>m</code> veces pero no
+mayor a <code>n</code> veces.</dd>
+<dt><code>\b</code></dt><dd>representa el límite de palabra.</dd>
+
+</dl></form>
+
+
+</section>
+<section id="slide-1-8-2">
+<h4 id="1-8-2"><span class="section-number-4">1.8.2</span> Regexp: Ejemplos</h4>
+<form><ul>
+<li>username: <code>[a-z0-9 -]{3,16}</code></li>
+<li>contraseña: <code>[a-z0-9 -]{6,18}</code></li>
+
+<li>IP address:</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #8c8c8c;">(</span>25<span style="color: #93a8c6;">[</span>0-5<span style="color: #93a8c6;">]</span>|2<span style="color: #93a8c6;">[</span>0-4<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>|<span style="color: #93a8c6;">[</span>01<span style="color: #93a8c6;">]</span>?<span style="color: #93a8c6;">[</span>0-9<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>?<span style="color: #98be65;">\.</span><span style="color: #8c8c8c;">){</span>3<span style="color: #8c8c8c;">}(</span>25<span style="color: #93a8c6;">[</span>0-5<span style="color: #93a8c6;">]</span>|2<span style="color: #93a8c6;">[</span>0-4<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>|<span style="color: #93a8c6;">[</span>01<span style="color: #93a8c6;">]</span>?<span style="color: #93a8c6;">[</span>0-9<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>?<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-8-3">
+<h4 id="1-8-3"><span class="section-number-4">1.8.3</span> Regexp: Expresiones de caracteres</h4>
+<form><ul>
+<li><code>[:digit:]</code> Dígitos del 0 al 9.</li>
+<li><code>[:alnum:]</code> Cualquier caracter alfanumérico 0 al 9 OR A a la Z OR a a la z.</li>
+<li><code>[:alpha:]</code> Caracter alfabético A a la Z OR a a la z.</li>
+<li><code>[:blank:]</code> Espacio  o TAB únicamente.</li>
+
+</ul></form>
+
+
+</section>
+<section id="slide-1-8-4">
+<h4 id="1-8-4"><span class="section-number-4">1.8.4</span> Regexp: ¿Quieres saber más?</h4>
+<form><ul>
+<li><a href="http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/">Learn Regular Expressions in 20 minutes</a></li>
+<li><a href="http://www.codeproject.com/Articles/9099/The-Minute-Regex-Tutorial">The 30 minute regex tutorial</a></li>
+
+</ul></form>
+
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-9">
+<h3 id="1-9"><span class="section-number-3">1.9</span> Analizando datos<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>: Comandos avanzados</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+</section>
+<section id="slide-1-9-1">
+<h4 id="1-9-1"><span class="section-number-4">1.9.1</span> grep</h4>
+<p>
+<code>grep</code> nos permite buscar líneas que tengan un patrón específico. Es
+el equivalente a un filtro.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> grep <span style="color: #98be65;">"CA"</span> UFO-Nov-Dic-2014.tsv</code>
+<code> grep <span style="color: #98be65;">"HOAX"</span> UFO-Nov-Dic-2014.tsv</code>
+<code> grep -v <span style="color: #98be65;">"18:"</span> UFO-Nov-Dic-2014.tsv</code>
+<code> grep -E <span style="color: #98be65;">"18:|19:|20:"</span> UFO-Nov-Dic-2014.tsv</code>
+<code> grep -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
+<code>        | grep -v <span style="color: #98be65;">"Orangebug"</span> |</code>
+<code> grep -i -E <span style="color: #98be65;">"[blue|orange]"</span> UFO-Dic-2014.tsv</code>
+<code> grep -c -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta una bandera a la vez</span></code>
+<code> grep -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv | sort | uniq -c</code>
+<code> grep <span style="color: #98be65;">"\/[0-9]\{1,2\}\/"</span> UFO-Dic-2014.tsv <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Seleccionamos d&#237;as</span></code>
+<code> grep -v <span style="color: #98be65;">"\/[0-9]\{4\}"</span> UFO-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">A&#241;o mal formateado</span></code>
+<code> grep -E <span style="color: #98be65;">"([aeiou]).*\1"</span> names.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Vocal caracteres Misma vocal</span></code>
+<code> <span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola grupo &#191;C&#243;mo est&#225;n?"</span> | grep -oE <span style="color: #98be65;">'\w+'</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-1-9-2">
+<h4 id="1-9-2"><span class="section-number-4">1.9.2</span> awk</h4>
+<p>
+<code>awk</code> es un lenguaje de programación muy completo, orientado a
+archivos de texto que vengan en columnas, i.e. <i>dataframes</i>
+</p>
+
+<p>
+Un programa de <code>awk</code> consiste en una secuencia de enunciados del tipo patrón-acción:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk  <span style="color: #98be65;">'search pattern { action statement }'</span> <span style="color: #8c8c8c;">[</span>file<span style="color: #8c8c8c;">]</span></code>
+</pre>
+</div>
+
+
+<p>
+<code>awk</code> define algunas variables especiales:
+</p>
+<form><dl>
+<dt><code>$1,$2, $3, ...</code></dt><dd>Valores de las columnas</dd>
+<dt><code>$0</code></dt><dd>toda la línea</dd>
+<dt><code>FS</code></dt><dd>separador de entrada</dd>
+<dt><code>OFS</code></dt><dd>separador de salida</dd>
+<dt><code>NR</code></dt><dd>número de la línea actual</dd>
+<dt><code>NF</code></dt><dd>número de campos en la línea (record)</dd>
+
+</dl></form>
+
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> awk <span style="color: #98be65;">'END { print NR }'</span>  UFO-Nov-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo que wc -l</span></code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">N&#250;mero de columnas</span></code>
+<code> awk <span style="color: #98be65;">'BEGIN{FS = "\t" }; { print NF }'</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
+<code>      | sort -n | uniq |</code>
+<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF }'</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
+<code>      | sort -n | uniq |</code>
+<code> awk <span style="color: #98be65;">'BEGIN{ FS = "\t" }; { if(NF != 7){ print &gt;&gt; "UFO_fixme.tsv"} \</span></code>
+<code><span style="color: #98be65;"> else { print &gt;&gt; "UFO_OK.tsv" } }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Limpia el archivo con columnas de m&#225;s</span></code>
+<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF ":" $0 }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ $2 = ""; print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk <span style="color: #98be65;">'BEGIN{ FS = "," }; {sum += $1} END {print sum}'</span> data.txt</code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Suma de una columna (aunque aqu&#237; no tiene mucho sentido)</span></code>
+<code> awk -F, <span style="color: #98be65;">'{sum1+=$1; sum2+=$2;mul+=$2*$3} END {print sum1/NR,sum2/NR,mul/NR}'</span> numbers.dat</code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Promedios de varias columnas</span></code>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> awk <span style="color: #98be65;">'/CA/ { n++ }; END { print n+0 }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk -F, <span style="color: #98be65;">'$1 &gt; max { max=$1; maxline=$0 }; END { print max, maxline }'</span> numbers.dat</code>
+<code> awk <span style="color: #98be65;">'{ sub(/FL/,"Florida"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk <span style="color: #98be65;">'{ gsub(/foo/,"bar"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk <span style="color: #98be65;">'/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk <span style="color: #98be65;">'!/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk <span style="color: #98be65;">'a != $0; { a = $0 }'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Como uniq</span></code>
+<code> awk <span style="color: #98be65;">'!a[$0]++'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Remueve duplicados que no sean consecutivos</span></code>
+<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'$4 ~/Circle/'</span> UFO-Nov-Dic-2014.tsv</code>
+<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'BEGIN { conteo=0;} \</span></code>
+<code><span style="color: #98be65;">        $4 ~/Circle/ { conteo++; }</span></code>
+<code><span style="color: #98be65;">END { print "N&#250;mero de avistamientos circulares en el dataset =",conteo;}'</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+
+
+<p>
+Para saber más consulta el manual <a href="https://www.gnu.org/software/gawk/manual/"><b>GNU awk</b> <i>Effective AWK Programming</i></a>
+</p>
+
+</section>
+<section id="slide-1-9-3">
+<h4 id="1-9-3"><span class="section-number-4">1.9.3</span> sed</h4>
+<form><ul>
+<li><code>sed</code> significa <b>stream editor</b> . Permite editar archivos de manera automática.</li>
+<li>El comando tiene cuatro <b>espacios</b>
+<form><ul>
+<li>Flujo de entrada</li>
+<li>Patrón</li>
+<li><i>Búfer</i></li>
+<li>Flujo de salida</li>
+
+</ul></form></li>
+<li>Entonces, <code>sed</code> lee el <b>flujo de entrada</b> hasta que encuentra
+<code>\n</code>. Lo copia al <b>espacio patrón</b>, y es ahí donde se realizan las
+operaciones con los datos. El <b>búfer</b> está para su uso, pero es
+opcional, es un búfer, vamos. Y finalmente copia al <b>flujo de
+salida</b>.</li>
+
+</ul></form>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> sed <span style="color: #98be65;">'s/foo/bar/'</span> data3.txt   <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Sustituye foo por bar</span></code>
+<code> sed -n <span style="color: #98be65;">'s/foo/bar/'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo pero no imprime a la salida</span></code>
+<code> sed -n <span style="color: #98be65;">'s/foo/bar/; p'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo pero el comando "p", imprime</span></code>
+<code> sed -n <span style="color: #98be65;">'s/foo/bar/'</span> -e p data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Si no queremos separar por espacios</span></code>
+<code> sed <span style="color: #98be65;">'3s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">S&#243;lo la tercera linea</span></code>
+<code> sed <span style="color: #98be65;">'3!s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Excluye la tercera l&#237;nea</span></code>
+<code> sed <span style="color: #98be65;">'2,3s/foo/bar/'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Con rango</span></code>
+<code> sed -n <span style="color: #98be65;">'2,3p'</span> data3.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Imprime s&#243;lo las l&#237;neas de la 2 a la 3</span></code>
+<code> sed -n <span style="color: #98be65;">'$p'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Imprime la &#250;ltima l&#237;nea</span></code>
+<code> sed <span style="color: #98be65;">'/abc/,/-foo-/d'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina todas las l&#237;neas entre "abc" y "-foo-"</span></code>
+<code> sed <span style="color: #98be65;">'/123/s/foo/bar/g'</span>  data3.txt</code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Sustituye globalmente "foo" por "bar" en las l&#237;neas que tengan 123</span></code>
+<code> sed 1d data2.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo</span></code>
+<code> sed -i 1d data2.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo de manera interactiva</span></code>
+</pre>
+</div>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-1-10">
+<h3 id="1-10"><span class="section-number-3">1.10</span> <i>Bash programming</i></h3>
+<p>
+La mayor parte del tiempo usaremos el <code>shell</code>, para hacer pequeños
+<i>scripts</i>, pero existen ocasiones en las cuales es necesario tratar al
+<code>shell</code> como un lenguaje de programación<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>
+</p>
+
+</section>
+<section id="slide-1-10-1">
+<h4 id="1-10-1"><span class="section-number-4">1.10.1</span> Estructuras de datos</h4>
+<p>
+Las variables son declaradas
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef;">nombre</span>=<span style="color: #98be65;">"Adolfo"</span></code>
+</pre>
+</div>
+
+<p>
+Nota que no hay espacios alrededor del signo de igual. El valor de la
+variable se obtiene con el signo de dólares
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #61afef;">nombre</span></code>
+</pre>
+</div>
+
+
+<p>
+Es posible definir variables que no sean escalares, llamadas arreglos (<code>arrays</code>).
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef;">array</span>=<span style="color: #8c8c8c;">(</span>abc 123 def <span style="color: #98be65;">"programming for data science"</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+<p>
+Para acceder a elementos en el arreglo usa la posición e.g. <code>3</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #8c8c8c;">{</span><span style="color: #61afef;">array</span><span style="color: #93a8c6;">[</span>3<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">}</span></code>
+</pre>
+</div>
+
+<p>
+Tambien es posible usar <i>globs</i>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #8c8c8c;">{</span><span style="color: #61afef;">array</span><span style="color: #93a8c6;">[</span>*<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">}</span></code>
+</pre>
+</div>
+
+<p>
+Para conocer el número de elementos del arreglo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #8c8c8c;">{</span>#<span style="color: #61afef;">array</span><span style="color: #8c8c8c;">}</span></code>
+</pre>
+</div>
+
+<div class="warning">
+<p>
+Los arreglos es un punto donde los diferentes <i>shells</i> ejecutan
+diferente.
+<code>bash</code> tiene índices basados en <code>0</code>, <code>zsh</code> en <code>1</code>.
+</p>
+
+</div>
+
+</section>
+<section id="slide-1-10-2">
+<h4 id="1-10-2"><span class="section-number-4">1.10.2</span> Bucles de ejecución, (<i>Loops</i>)</h4>
+<p>
+Los <code>for-loops</code> en <code>bash</code> tienen una estructura muy similar a los de
+<code>python</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">for</span> var<span style="color: #c678dd; font-weight: bold;"> in</span> iterable; <span style="color: #c678dd; font-weight: bold;">do</span></code>
+<code>instrucci&#243;n</code>
+<code>instrucci&#243;n</code>
+<code>...</code>
+<code><span style="color: #c678dd; font-weight: bold;">done</span></code>
+</pre>
+</div>
+
+<p>
+Donde <code>iterable</code> puede construirse con <i>globs</i>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">for</span> i<span style="color: #c678dd; font-weight: bold;"> in</span> *; <span style="color: #c678dd; font-weight: bold;">do</span></code>
+<code>  <span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #61afef;">i</span>;</code>
+<code><span style="color: #c678dd; font-weight: bold;">done</span></code>
+</pre>
+</div>
+
+<p>
+listas,
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">for</span> i<span style="color: #c678dd; font-weight: bold;"> in</span> hola adios mundo cruel; <span style="color: #c678dd; font-weight: bold;">do</span></code>
+<code>  <span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #61afef;">i</span>;</code>
+<code><span style="color: #c678dd; font-weight: bold;">done</span></code>
+</pre>
+</div>
+
+<p>
+arreglos,
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">for</span> i<span style="color: #c678dd; font-weight: bold;"> in</span> $<span style="color: #61afef;">array</span>; <span style="color: #c678dd; font-weight: bold;">do</span></code>
+<code>  <span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #61afef;">i</span>;</code>
+<code><span style="color: #c678dd; font-weight: bold;">done</span></code>
+</pre>
+</div>
+
+<p>
+E inclusive el horrible formato de <code>C</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">for</span> <span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">(</span> <span style="color: #61afef;">i</span> = 0; i &lt; 10; i++ <span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> <span style="color: #c678dd; font-weight: bold;">do</span></code>
+<code>    <span style="color: #61afef; font-weight: bold;">echo</span> $<span style="color: #61afef;">i</span>;</code>
+<code><span style="color: #c678dd; font-weight: bold;">done</span></code>
+</pre>
+</div>
+
+<div class="info">
+<p>
+No tiene que estar en varias líneas:  <code>for i in {a..z}; do echo $i; done</code>
+</p>
+
+</div>
+
+</section>
+<section id="slide-1-10-3">
+<h4 id="1-10-3"><span class="section-number-4">1.10.3</span> Funciones</h4>
+<p>
+Las funciones son símbolo de buena programación, ya que encapsulan
+comportamiento.
+</p>
+
+<p>
+La sintaxis es muy simple:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #c678dd; font-weight: bold;">function</span> <span style="color: #61afef;">function_name</span> <span style="color: #8c8c8c;">{</span></code>
+<code>    <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">cuerpo de la funci&#243;n</span></code>
+<code><span style="color: #8c8c8c;">}</span></code>
+</pre>
+</div>
+
+<p>
+A diferencia de otros lenguajes de programación, no se definen los
+argumentos de la función.
+</p>
+
+<p>
+Para ejecutar la función
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>function_name <span style="color: #98be65;">"Hola mundo"</span> 123</code>
+</pre>
+</div>
+
+<p>
+En este caso <code>"Hola mundo"</code> y <code>123</code> son pasados como argumentos a la
+función. Estos pueden ser usados en el cuerpo de la función usando la
+posición de los mismos e.g. <code>$1</code> es <code>"Hola mundo"</code>, <code>$2</code> es <code>123</code>, etc.
+</p>
+
+
+</section>
+<section id="slide-1-10-4">
+<h4 id="1-10-4"><span class="section-number-4">1.10.4</span> Ejecutar scripts</h4>
+<p>
+Para cualquier archivo <i>script</i> es importante que la primera línea del
+archivo le diga al <code>shell</code>  que comando usar para ejecutarlo.
+</p>
+
+<p>
+A la primera línea se conoce como <b>shebang</b> y se representa por <code>#!</code>
+seguido de la ruta al ejecutable, eg. <code>#!/usr/bin/python</code>,
+<code>#!/bin/bash</code>, <code>#!/usr/bin/env Rscript</code>
+</p>
+
+<p>
+Por ejemplo:
+</p>
+
+<p>
+Sin el <code>shebang</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>python ejemplo.py</code>
+</pre>
+</div>
+
+<p>
+con el <code>shebang</code>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>./ejemplo.py</code>
+</pre>
+</div>
+
+
+<div class="warning">
+<p>
+Para que el ejemplo funcione es necesario dar permisos de ejecución al archivo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>chmod u+x ejemplo.py</code>
+</pre>
+</div>
+
+</div>
+
+<p>
+¿Cómo conecto estos <i>scripts</i> con los demás usando <code>|</code>, <code>&gt;</code>, etc?
+</p>
+
+<p>
+Sencillo: Hay que modificar nuestros <i>scripts</i> de <code>python</code>, <code>R</code> y <code>bash</code> para
+leer del <code>stdin</code>.
+</p>
+
+</section>
+<section id="slide-1-10-5">
+<h4 id="1-10-5"><span class="section-number-4">1.10.5</span> Python, leyendo de <code>stdin</code></h4>
+<p>
+Un ejemplo mínimo de <code>python</code> es el siguiente:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #687080; font-style: italic;">#</span><span style="color: #687080; font-style: italic;">!/usr/bin/env python</span></code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">import</span> sys</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">process</span><span style="color: #8c8c8c;">(</span>linea<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #61afef;">linea</span> = <span style="color: #61afef; font-weight: bold;">int</span><span style="color: #8c8c8c;">(</span>linea.strip<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #98be65;">"El triple de {linea} es {linea*3}"</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">for</span> linea <span style="color: #c678dd; font-weight: bold;">in</span> sys.stdin:</code>
+<code>    process<span style="color: #8c8c8c;">(</span>linea<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+<p>
+Abre <code>nano</code>, copia este código y guarda el archivo como
+<code>script.py</code>. Un ejemplo de uso es el que sigue:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>seq 1 1000 | script.py</code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-1-10-6">
+<h4 id="1-10-6"><span class="section-number-4">1.10.6</span> R, leyendo de <code>stdin</code></h4>
+<p>
+El ejemplo en <code>R</code> se ve así:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-R"><code><span style="color: #687080; font-style: italic;">#</span><span style="color: #687080; font-style: italic;">!/usr/bin/env Rscript</span></code>
+<code></code>
+<code>f <span style="color: #da8548; font-weight: bold;">&lt;-</span> file<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"stdin"</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>x <span style="color: #da8548; font-weight: bold;">&lt;-</span> c<span style="color: #8c8c8c;">()</span></code>
+<code></code>
+<code>open<span style="color: #8c8c8c;">(</span>f<span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">while</span><span style="color: #8c8c8c;">(</span>length<span style="color: #93a8c6;">(</span>line <span style="color: #da8548; font-weight: bold;">&lt;-</span> readLines<span style="color: #b0b1a3;">(</span>f, n = 1<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> &gt; 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span></code>
+<code></code>
+<code>  x <span style="color: #da8548; font-weight: bold;">&lt;-</span> c<span style="color: #93a8c6;">(</span>x, as,numeric<span style="color: #b0b1a3;">(</span>line<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span></code>
+<code>  print<span style="color: #93a8c6;">(</span>summary<span style="color: #b0b1a3;">(</span>x<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span></code>
+<code><span style="color: #8c8c8c;">}</span></code>
+<code></code>
+<code></code>
+<code>close<span style="color: #8c8c8c;">(</span>f<span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>print<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Final summary:"</span><span style="color: #8c8c8c;">)</span></code>
+<code>summary<span style="color: #8c8c8c;">(</span>x<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+
+<p>
+Ejemplo de uso:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>&lt; /data/numbers.txt script.R</code>
+</pre>
+</div>
+</div>
+</div>
+Adolfo De Unánue
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+width: 1920,
+height: 1080,
+margin: 0.00,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'fade', // see README of reveal.js for options
+transitionSpeed: 'fast',
+controlsTutorial: false, controlsLayout: 'edges',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+</script>
+</body>
+</html>
