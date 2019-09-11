@@ -40,7 +40,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-04 Wed 14:29</p>
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-11 Wed 14:43</p>
 </section>
 <section>
 <section id="slide-1">
@@ -920,6 +920,9 @@ respectivamente.
 </pre>
 </div>
 
+</section>
+<section>
+
 <p>
 Podrías hacer lo mismo, sin utilizar <code>echo</code>
 </p>
@@ -935,6 +938,8 @@ Podrías hacer lo mismo, sin utilizar <code>echo</code>
 </pre>
 </div>
 
+</section>
+<section>
 
 <p>
 También podemos concatenar archivos
@@ -946,6 +951,9 @@ También podemos concatenar archivos
 <code>wc -l UFO-Nov-Dic-2014.tsv</code>
 </pre>
 </div>
+
+</section>
+<section>
 
 <p>
 En el siguiente ejemplo redireccionamos al <code>stdin</code> el archivo como
@@ -1061,6 +1069,7 @@ columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>
 </pre>
 </div>
 
+
 </section>
 <section id="slide-1-6-11">
 <h4 id="1-6-11"><span class="section-number-4">1.6.11</span> Hacer varias cosas a la vez</h4>
@@ -1082,6 +1091,8 @@ la terminal. Trata de ver de nuevo la lista de archivos en el
 navegador &#x2026; y el navegador se quedará en <i>Waiting for 0.0.0.0 &#x2026;</i>
 </p>
 
+</section>
+<section>
 
 <p>
 Regresa a la terminal y ejecuta
@@ -1098,6 +1109,8 @@ Regresa a la terminal y ejecuta
 y su estatus. En particular, el servidor <code>http</code> está detenido.
 </p>
 
+</section>
+<section>
 
 <p>
 Para activarlo usa
@@ -1127,6 +1140,9 @@ al final.
 <p>
 De esta manera el servidor está ejecutándose en el <i>background</i>.
 </p>
+
+</section>
+<section>
 
 <div class="warning">
 <p>
@@ -1267,11 +1283,11 @@ Lee la documentación de tu lenguaje favorito.
 <form><ul>
 <li>Pensar en patrones (<i>patterns</i>).</li>
 <li>Operadores básicos
-<form><dl>
-<dt>OR</dt><dd><code>gato|gata</code> hará match con gato o gata.</dd>
-<dt>Agrupamiento o precedencia de operadores</dt><dd><code>gat(a|o)</code> tiene el mismo significado que <code>gato|gata</code>.</dd>
+<form><ul>
+<li><b>OR</b>  <code>gato|gata</code> hará match con gato o gata.</li>
+<li><i>Agrupamiento o precedencia de operadores</i> <code>gat(a|o)</code> tiene el mismo significado que <code>gato|gata</code>.</li>
 
-</dl></form></li>
+</ul></form></li>
 <li>Cuantificadores
 <form><dl>
 <dt><code>?</code></dt><dd>0 ó 1</dd>
@@ -1368,20 +1384,152 @@ mayor a <code>n</code> veces.</dd>
 el equivalente a un filtro.
 </p>
 
+<p>
+La sintáxis es sencilla:
+</p>
+
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code> grep <span style="color: #98be65;">"CA"</span> UFO-Nov-Dic-2014.tsv</code>
-<code> grep <span style="color: #98be65;">"HOAX"</span> UFO-Nov-Dic-2014.tsv</code>
-<code> grep -v <span style="color: #98be65;">"18:"</span> UFO-Nov-Dic-2014.tsv</code>
-<code> grep -E <span style="color: #98be65;">"18:|19:|20:"</span> UFO-Nov-Dic-2014.tsv</code>
-<code> grep -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
-<code>        | grep -v <span style="color: #98be65;">"Orangebug"</span> |</code>
-<code> grep -i -E <span style="color: #98be65;">"[blue|orange]"</span> UFO-Dic-2014.tsv</code>
-<code> grep -c -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta una bandera a la vez</span></code>
-<code> grep -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv | sort | uniq -c</code>
-<code> grep <span style="color: #98be65;">"\/[0-9]\{1,2\}\/"</span> UFO-Dic-2014.tsv <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Seleccionamos d&#237;as</span></code>
-<code> grep -v <span style="color: #98be65;">"\/[0-9]\{4\}"</span> UFO-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">A&#241;o mal formateado</span></code>
-<code> grep -E <span style="color: #98be65;">"([aeiou]).*\1"</span> names.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Vocal caracteres Misma vocal</span></code>
+<pre  class="src src-shell"><code>grep <span style="color: #8c8c8c;">[</span>banderas<span style="color: #8c8c8c;">]</span> patron <span style="color: #8c8c8c;">[</span>archivo<span style="color: #8c8c8c;">]</span></code>
+</pre>
+</div>
+
+
+<p>
+Por ejemplo, todos los avistamientos en California en Noviembre y
+Diciembre de 2014:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>grep <span style="color: #98be65;">"CA"</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+<p>
+En una vuelta irónica de esta historia, ellos clasifican posibles
+avistamientos como "fraudes" (<i>hoax</i>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>grep <span style="color: #98be65;">"HOAX"</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Dos banderas importantes de <code>grep</code> son <code>-v</code> (negación/complemento):
+</p>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>grep <span style="color: #98be65;">"HOAX"</span> UFO-Nov-Dic-2014.tsv</code>
+<code>grep -v <span style="color: #98be65;">"18:"</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+<p>
+y <code>-E</code> (interpretar el patrón como una regex).
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>grep -E <span style="color: #98be65;">"18:|19:|20:"</span> UFO-Nov-Dic-2014.tsv</code>
+<code>grep -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+
+</section>
+<section>
+
+<p>
+Otras banderas importantes son las siguientes
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">bandera</th>
+<th scope="col" class="org-left">significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-i</td>
+<td class="org-left">Ignora mayúsculas / minúsculas</td>
+</tr>
+
+<tr>
+<td class="org-left">-o</td>
+<td class="org-left">Regresa <b>todos</b> los <i>match</i> en lugar de la línea que contiene el <i>match</i></td>
+</tr>
+
+<tr>
+<td class="org-left">-c</td>
+<td class="org-left">Cuenta el resultado</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section>
+
+<p>
+Usando estas banderas tenemos una versión más simple que el filtrado anterior
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> grep -i -E <span style="color: #98be65;">"[blue|orange]"</span> UFO-Dic-2014.tsv</code>
+</pre>
+</div>
+
+
+<p>
+¿Por qué son diferentes los siguientes comandos?
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> grep -c -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta una bandera a la vez</span></code>
+</pre>
+</div>
+
+<p>
+y
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> grep -o -E <span style="color: #98be65;">"[B|b]lue|[O|o]range"</span> UFO-Nov-Dic-2014.tsv | sort | uniq -c</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Más diversión con expresiones regulares
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> grep <span style="color: #98be65;">"\/[0-9]\{1,2\}\/"</span> UFO-Dic-2014.tsv</code>
+<code> grep -v <span style="color: #98be65;">"\/[0-9]\{4\}"</span> UFO-Dic-2014.tsv</code>
+<code> grep -E <span style="color: #98be65;">"([aeiou]).*\1"</span> names.txt</code>
 <code> <span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola grupo &#191;C&#243;mo est&#225;n?"</span> | grep -oE <span style="color: #98be65;">'\w+'</span></code>
 </pre>
 </div>
@@ -1391,16 +1539,16 @@ el equivalente a un filtro.
 <h4 id="1-9-2"><span class="section-number-4">1.9.2</span> awk</h4>
 <p>
 <code>awk</code> es un lenguaje de programación muy completo, orientado a
-archivos de texto que vengan en columnas, i.e. <i>dataframes</i>
+archivos de texto que vengan en columnas<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>
 </p>
 
 <p>
-Un programa de <code>awk</code> consiste en una secuencia de enunciados del tipo patrón-acción:
+Un <i>programa</i> de <code>awk</code> consiste en una secuencia de enunciados del tipo patrón-acción:
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code>awk  <span style="color: #98be65;">'search pattern { action statement }'</span> <span style="color: #8c8c8c;">[</span>file<span style="color: #8c8c8c;">]</span></code>
+<pre  class="src src-shell"><code>awk  <span style="color: #98be65;">'search pattern { action statement }'</span> <span style="color: #8c8c8c;">[</span>archivo<span style="color: #8c8c8c;">]</span></code>
 </pre>
 </div>
 
@@ -1414,50 +1562,194 @@ Un programa de <code>awk</code> consiste en una secuencia de enunciados del tipo
 <dt><code>FS</code></dt><dd>separador de entrada</dd>
 <dt><code>OFS</code></dt><dd>separador de salida</dd>
 <dt><code>NR</code></dt><dd>número de la línea actual</dd>
-<dt><code>NF</code></dt><dd>número de campos en la línea (record)</dd>
+<dt><code>NF</code></dt><dd>número de campos en la línea<sup><a id="fnr.16" class="footref" href="#fn.16">16</a></sup></dd>
 
 </dl></form>
 
+</section>
+<section>
+
+<p>
+Imprime la Ciudad (<code>City</code>) del avistamiento
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print $2 }'</span> UFO-Nov-2014.tsv</code>
+</pre>
+</div>
+
+<p>
+Otros ejemplos:
+</p>
+
+<p>
+Verificar el número de columnas en todo el archivo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF }'</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
+<code>      | sort -n | uniq</code>
+</pre>
+</div>
+
+<p>
+Imprimir el número de columnas de cada renglón
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF ":" $0 }'</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Es posible usar <i>tests</i> para imprimir o hacer otra operación:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ $2 = ""; print }'</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+<p>
+En este ejemplo, sólo se imprimen las líneas que no contienen Ciudad
+(<code>City</code>)
+</p>
+
+
+
+<div class="question">
+<p>
+¿Cómo verificas que estas líneas tengan 7 columnas, a pesar de no
+tener ciudad?
+</p>
+
+</div>
+
+
+</section>
+<section>
+
+<p>
+Además de <i>tests</i> es posible usar bloques <code>if-then-else</code>:
+</p>
 
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code> awk <span style="color: #98be65;">'END { print NR }'</span>  UFO-Nov-Dic-2014.tsv  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo que wc -l</span></code>
-<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">N&#250;mero de columnas</span></code>
-<code> awk <span style="color: #98be65;">'BEGIN{FS = "\t" }; { print NF }'</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
-<code>      | sort -n | uniq |</code>
-<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF }'</span> UFO-Nov-Dic-2014.tsv <span style="color: #98be65;">\</span></code>
-<code>      | sort -n | uniq |</code>
-<code> awk <span style="color: #98be65;">'BEGIN{ FS = "\t" }; { if(NF != 7){ print &gt;&gt; "UFO_fixme.tsv"} \</span></code>
+<pre  class="src src-shell"><code>awk <span style="color: #98be65;">'BEGIN{ FS = "\t" }; { if(NF != 7){ print &gt;&gt; "UFO_fixme.tsv"} \</span></code>
 <code><span style="color: #98be65;"> else { print &gt;&gt; "UFO_OK.tsv" } }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Limpia el archivo con columnas de m&#225;s</span></code>
-<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ print NF ":" $0 }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'{ $2 = ""; print }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk <span style="color: #98be65;">'BEGIN{ FS = "," }; {sum += $1} END {print sum}'</span> data.txt</code>
-<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Suma de una columna (aunque aqu&#237; no tiene mucho sentido)</span></code>
-<code> awk -F, <span style="color: #98be65;">'{sum1+=$1; sum2+=$2;mul+=$2*$3} END {print sum1/NR,sum2/NR,mul/NR}'</span> numbers.dat</code>
-<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Promedios de varias columnas</span></code>
 </pre>
 </div>
 
+<p>
+Este es un truco que uso <b>todo</b> el tiempo para mover las líneas con
+columnas de más o de menos a otro archivo.
+</p>
+
+
+</section>
+<section>
+
+<p>
+<code>awk</code> tiene otros dos modificadores: <code>BEGIN</code> y <code>END</code> que indican
+<i>cuando</i> debe de ejecutarse las instrucciones, si antes de leer el
+archivo (<code>BEGIN</code>) o al terminar de leer el archivo (<code>END</code>)
+</p>
+
+<p>
+Como un ejemplo sencillo, lo siguiente es equivalente a <code>wc -l</code>
+</p>
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code> awk <span style="color: #98be65;">'/CA/ { n++ }; END { print n+0 }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk -F, <span style="color: #98be65;">'$1 &gt; max { max=$1; maxline=$0 }; END { print max, maxline }'</span> numbers.dat</code>
-<code> awk <span style="color: #98be65;">'{ sub(/FL/,"Florida"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk <span style="color: #98be65;">'{ gsub(/foo/,"bar"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk <span style="color: #98be65;">'/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk <span style="color: #98be65;">'!/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk <span style="color: #98be65;">'a != $0; { a = $0 }'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Como uniq</span></code>
-<code> awk <span style="color: #98be65;">'!a[$0]++'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Remueve duplicados que no sean consecutivos</span></code>
-<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'$4 ~/Circle/'</span> UFO-Nov-Dic-2014.tsv</code>
-<code> awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'BEGIN { conteo=0;} \</span></code>
-<code><span style="color: #98be65;">        $4 ~/Circle/ { conteo++; }</span></code>
-<code><span style="color: #98be65;">END { print "N&#250;mero de avistamientos circulares en el dataset =",conteo;}'</span> UFO-Nov-Dic-2014.tsv</code>
+<pre  class="src src-shell"><code>awk <span style="color: #98be65;">'END { print NR }'</span>  UFO-Nov-Dic-2014.tsv</code>
 </pre>
 </div>
 
+<p>
+La manera de interpretarlo es: <i>luego de leer todo el archivo</i> (<code>END</code>)
+<i>imprime el número de línea</i>.
+</p>
+
+</section>
+<section>
+
+<p>
+Podemos hacer operaciones con los datos en las columnas:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk <span style="color: #98be65;">'BEGIN{ FS = "," }; {sum += $1} END {print sum}'</span> data.txt</code>
+<code>awk -F, <span style="color: #98be65;">'{sum1+=$1; sum2+=$2;mul+=$2*$3} END {print sum1/NR,sum2/NR,mul/NR}'</span> numbers.dat</code>
+<code>awk -F, <span style="color: #98be65;">'$1 &gt; max { max=$1; maxline=$0 }; END { print max, maxline }'</span> numbers.dat</code>
+</pre>
+</div>
+
+
+
+</section>
+<section>
+
+<p>
+También podemos usar <i>regexs</i> como condicionales, para substituir o para
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>awk <span style="color: #98be65;">'/CA/ { n++ }; END { print n+0 }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk <span style="color: #98be65;">'{ sub(/FL/,"Florida"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk <span style="color: #98be65;">'{ gsub(/foo/,"bar"); print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk <span style="color: #98be65;">'/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk <span style="color: #98be65;">'!/baz/ { gsub(/foo/, "bar") }; { print }'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk <span style="color: #98be65;">'a != $0; { a = $0 }'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Como uniq</span></code>
+<code>awk <span style="color: #98be65;">'!a[$0]++'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Remueve duplicados que no sean consecutivos</span></code>
+<code>awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'$4 ~/Circle/'</span> UFO-Nov-Dic-2014.tsv</code>
+<code>awk -F<span style="color: #98be65;">"[\t]"</span> <span style="color: #98be65;">'</span></code>
+<code><span style="color: #98be65;">    BEGIN { conteo=0;}</span></code>
+<code><span style="color: #98be65;">        $4 ~/Circle/ { conteo++; }</span></code>
+<code><span style="color: #98be65;">    END {</span></code>
+<code><span style="color: #98be65;">        print "N&#250;mero de avistamientos circulares en el dataset =",conteo;</span></code>
+<code><span style="color: #98be65;">    }'</span> UFO-Nov-Dic-2014.tsv</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="warning">
+<p>
+
+</p>
+
+<p>
+Existen (al menos) 3 implementaciones de <code>awk</code>:
+</p>
+
+<form><ul>
+<li><b>POSIX</b> <code>awk</code>. El estándar</li>
+
+<li><code>gawk</code>, <b><b>GNU awk</b></b> lleno de funcionalidad, más potente y soporta archivos gigantes.</li>
+
+<li><code>mawk</code>, <b><b>Minimal awk</b></b> tiene el mínimo de funcionalidad pero es más rápido.</li>
+
+</ul></form>
+
+<p>
+Si estás teniendo problemas para ejecutar algo (como quedarte sin
+memoria o que haya funciones que no existen) probablemente no estás
+usando <code>gawk</code>. Verifica que tengas esa implementación instalada. Te
+ahorrará muchos dolores de cabeza.
+</p>
+
+</div>
 
 
 <p>
@@ -1467,41 +1759,199 @@ Para saber más consulta el manual <a href="https://www.gnu.org/software/gawk/ma
 </section>
 <section id="slide-1-9-3">
 <h4 id="1-9-3"><span class="section-number-4">1.9.3</span> sed</h4>
-<form><ul>
-<li><code>sed</code> significa <b>stream editor</b> . Permite editar archivos de manera automática.</li>
-<li>El comando tiene cuatro <b>espacios</b>
-<form><ul>
-<li>Flujo de entrada</li>
-<li>Patrón</li>
-<li><i>Búfer</i></li>
-<li>Flujo de salida</li>
+<p>
+A veces queremos <i>editar</i> o cambiar el contenido de nuestros
+<i>datasets</i>, por ejemplo, quizá queramos deshacernos de ciertos
+renglones (e.g. <i>headers</i> repetidos) o queremos cambiar el valor de
+una columna (e.g. cambiar el código <code>1</code> a <code>rojo</code>), <code>sed</code> es la
+herramienta que nos ayudará a hacer esto. <code>sed</code> significa <b>stream
+editor</b> . Permite editar archivos de manera automática.
+</p>
 
-</ul></form></li>
-<li>Entonces, <code>sed</code> lee el <b>flujo de entrada</b> hasta que encuentra
+<p>
+<code>sed</code> lee el <b>flujo de entrada</b> hasta que encuentra
 <code>\n</code>. Lo copia al <b>espacio patrón</b>, y es ahí donde se realizan las
-operaciones con los datos. El <b>búfer</b> está para su uso, pero es
-opcional, es un búfer, vamos. Y finalmente copia al <b>flujo de
-salida</b>.</li>
+operaciones con los datos. <code>sed</code> contiene un <b>búfer</b> que puede ser
+utilizado para mantener una memoria, pero es
+opcional, finalmente copia al <b>flujo de salida</b>.
+</p>
 
-</ul></form>
 
+<p>
+Hay mucho, mucho poder en esta herramienta. La sintaxis es
+</p>
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code> sed <span style="color: #98be65;">'s/foo/bar/'</span> data3.txt   <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Sustituye foo por bar</span></code>
-<code> sed -n <span style="color: #98be65;">'s/foo/bar/'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo pero no imprime a la salida</span></code>
-<code> sed -n <span style="color: #98be65;">'s/foo/bar/; p'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Lo mismo pero el comando "p", imprime</span></code>
-<code> sed -n <span style="color: #98be65;">'s/foo/bar/'</span> -e p data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Si no queremos separar por espacios</span></code>
-<code> sed <span style="color: #98be65;">'3s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">S&#243;lo la tercera linea</span></code>
-<code> sed <span style="color: #98be65;">'3!s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Excluye la tercera l&#237;nea</span></code>
-<code> sed <span style="color: #98be65;">'2,3s/foo/bar/'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Con rango</span></code>
-<code> sed -n <span style="color: #98be65;">'2,3p'</span> data3.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Imprime s&#243;lo las l&#237;neas de la 2 a la 3</span></code>
+<pre  class="src src-shell"><code>sed <span style="color: #8c8c8c;">[</span>banderas<span style="color: #8c8c8c;">]</span> comando/patr&#243;n/<span style="color: #8c8c8c;">[</span>reemplazo<span style="color: #8c8c8c;">]</span>/<span style="color: #8c8c8c;">[</span>modificador<span style="color: #8c8c8c;">]</span> <span style="color: #8c8c8c;">[</span>archivo<span style="color: #8c8c8c;">]</span></code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Iniciemos con el comando para sustituir: <code>s</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s/foo/bar/'</span> data3.txt</code>
+</pre>
+</div>
+
+<p>
+Si queremos guardar la salida a un archivo, no olvides que hay redirecciones
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s/foo/bar/'</span> &lt; data3.txt &gt; data4.txt</code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">O tambi&#233;n &lt; data3.txt sed 's/foo/bar/'  &gt; data4.txt</span></code>
+</pre>
+</div>
+
+
+</section>
+<section>
+
+<p>
+Nota lo que sucede en el siguiente ejemplo:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s/uno/UNO/'</span> &lt; texto.txt</code>
+</pre>
+</div>
+
+<p>
+este es el funcionamiento por omisión de <code>sed</code>.
+</p>
+
+<div class="info">
+<p>
+
+</p>
+
+<p>
+Estamos usando <code>/</code>  como separador ya que es el que usa <code>vim</code> o <code>man</code>
+(¿Recuerdas el primer ejercicio?), pero en realidad puedes usar
+cualquier otro caracter:
+</p>
+
+<p>
+Guión bajo (<i>underscore</i>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s_uno_UNO_'</span> &lt; texto.txt</code>
+</pre>
+</div>
+
+<p>
+o también dos puntos (<code>:</code>)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s:uno:UNO:'</span> &lt; texto.txt</code>
+</pre>
+</div>
+
+<p>
+son opciones relativamente populares.
+</p>
+
+</div>
+
+
+</section>
+<section>
+
+
+<p>
+Para hacer la sustitución global (i.e. todas las ocurrencias del
+patrón en la línea), usamos el modificador <code>g</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'s/uno/UNO/g'</span> &lt; texto.txt</code>
+</pre>
+</div>
+
+<p>
+También es posible hacerlo en <i>algunas</i> partes del archivo,
+especificando la líneas. Por ejemplo en los siguientes ejemplo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'3s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">S&#243;lo la tercera linea</span></code>
+<code>sed <span style="color: #98be65;">'3!s/foo/bar/'</span>  data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Excluye la tercera l&#237;nea</span></code>
+<code>sed <span style="color: #98be65;">'2,3s/foo/bar/'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Con rango</span></code>
+</pre>
+</div>
+
+<p>
+Si observas bien, el número de línea funciona como un <i>filtro</i>. Es
+posible extender la idea y usar <i>patrones</i>: Sustituir globalmente
+<i>foo</i> por <i>bar</i> en las líneas que tengan <code>123</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'/123/s/foo/bar/g'</span>  data3.txt</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Podemos mezclar ambas ideas y seleccionar partes del archivo usando
+rangos y patrones
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed <span style="color: #98be65;">'/abc/,/456/s/foo/BAR/g'</span>  data3.txt</code>
+</pre>
+</div>
+
+
+
+</section>
+<section>
+
+<p>
+Otro modificadores importantes son <code>d</code> (<i>delete</i>) y <code>p</code> (<i>print</i>)<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> sed -n <span style="color: #98be65;">'2,3p'</span> data3.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Imprime s&#243;lo las l&#237;neas de la 2 a la 3</span></code>
 <code> sed -n <span style="color: #98be65;">'$p'</span> <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Imprime la &#250;ltima l&#237;nea</span></code>
 <code> sed <span style="color: #98be65;">'/abc/,/-foo-/d'</span> data3.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina todas las l&#237;neas entre "abc" y "-foo-"</span></code>
-<code> sed <span style="color: #98be65;">'/123/s/foo/bar/g'</span>  data3.txt</code>
-<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Sustituye globalmente "foo" por "bar" en las l&#237;neas que tengan 123</span></code>
 <code> sed 1d data2.txt <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo</span></code>
-<code> sed -i 1d data2.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo de manera interactiva</span></code>
+</pre>
+</div>
+
+
+</section>
+<section>
+
+<p>
+En todos los ejemplos anteriores, <code>sed</code> leía la fuente y emitía el
+resultado modificado a <code>stdout</code>.  De esta manera, la fuente original no
+es modificada. La manera de hacerlo <i>in place</i> con la bandera <code>-i</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>sed -i 1d data2.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo de manera interactiva</span></code>
 </pre>
 </div>
 
@@ -1516,7 +1966,7 @@ salida</b>.</li>
 <p>
 La mayor parte del tiempo usaremos el <code>shell</code>, para hacer pequeños
 <i>scripts</i>, pero existen ocasiones en las cuales es necesario tratar al
-<code>shell</code> como un lenguaje de programación<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>
+<code>shell</code> como un lenguaje de programación<sup><a id="fnr.18" class="footref" href="#fn.18">18</a></sup>
 </p>
 
 </section>
@@ -1623,6 +2073,8 @@ Donde <code>iterable</code> puede construirse con <i>globs</i>
 </pre>
 </div>
 
+</section>
+<section>
 <p>
 listas,
 </p>
@@ -1647,6 +2099,9 @@ arreglos,
 </pre>
 </div>
 
+</section>
+<section>
+
 <p>
 E inclusive el horrible formato de <code>C</code>:
 </p>
@@ -1661,7 +2116,7 @@ E inclusive el horrible formato de <code>C</code>:
 
 <div class="info">
 <p>
-No tiene que estar en varias líneas:  <code>for i in {a..z}; do echo $i; done</code>
+También puedes escribirlo en una sola línea:  <code>for i in {a..z}; do echo $i; done</code>
 </p>
 
 </div>
@@ -1685,6 +2140,9 @@ La sintaxis es muy simple:
 <code><span style="color: #8c8c8c;">}</span></code>
 </pre>
 </div>
+
+</section>
+<section>
 
 <p>
 A diferencia de otros lenguajes de programación, no se definen los
@@ -1710,7 +2168,7 @@ posición de los mismos e.g. <code>$1</code> es <code>"Hola mundo"</code>, <code
 
 </section>
 <section id="slide-1-10-4">
-<h4 id="1-10-4"><span class="section-number-4">1.10.4</span> Ejecutar scripts</h4>
+<h4 id="1-10-4"><span class="section-number-4">1.10.4</span> Ejecutar <i>scripts</i></h4>
 <p>
 Para cualquier archivo <i>script</i> es importante que la primera línea del
 archivo le diga al <code>shell</code>  que comando usar para ejecutarlo.
@@ -1737,8 +2195,9 @@ Sin el <code>shebang</code>
 </div>
 
 <p>
-con el <code>shebang</code>
+si agregamos el <code>shebang</code> <sup><a id="fnr.19" class="footref" href="#fn.19">19</a></sup>
 </p>
+
 <div class="org-src-container">
 
 <pre  class="src src-shell"><code>./ejemplo.py</code>
@@ -1746,21 +2205,9 @@ con el <code>shebang</code>
 </div>
 
 
-<div class="warning">
-<p>
-Para que el ejemplo funcione es necesario dar permisos de ejecución al archivo
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-shell"><code>chmod u+x ejemplo.py</code>
-</pre>
-</div>
-
-</div>
 
 <p>
-¿Cómo conecto estos <i>scripts</i> con los demás usando <code>|</code>, <code>&gt;</code>, etc?
+Te preguntarás ¿Cómo conecto estos <i>scripts</i> con los demás usando <code>|</code>, <code>&gt;</code>, etc?
 </p>
 
 <p>
@@ -1833,6 +2280,8 @@ El ejemplo en <code>R</code> se ve así:
 </pre>
 </div>
 
+</section>
+<section>
 
 <p>
 Ejemplo de uso:
@@ -1842,6 +2291,279 @@ Ejemplo de uso:
 
 <pre  class="src src-shell"><code>&lt; /data/numbers.txt script.R</code>
 </pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-1-11">
+<h3 id="1-11"><span class="section-number-3">1.11</span> Controlador de versiones <code>git</code></h3>
+</section>
+<section id="slide-1-11-1">
+<h4 id="1-11-1"><span class="section-number-4">1.11.1</span> <i>"Solo" Workflow</i></h4>
+<div class="outline-text-4" id="text-1-11-1">
+</div>
+<ol class="org-ol">
+<li><a id="1-11-1-1"></a>Crear un repositorio<br />
+<p>
+El <b>repositorio</b> es la carpeta donde <code>git</code> guarda y gestiona todas
+las versiones de los archivos.
+</p>
+
+<p>
+Crea una carpeta en tu <code>$HOME</code> llamada <code>ds-test</code>, ingresa a
+ella e inicializa el repositorio con <code>git init</code>. ¿Notas algún cambio?
+¿Qué comando usarías? Hay una carpeta ahí ¿no la ves? ¿Cómo puedes ver
+una carpeta oculta?
+</p>
+
+<p>
+La carpeta <code>.git</code> es la carpeta donde se guarda todo el historial, si
+la borras, toda la historia del repositorio se perderá.
+</p>
+
+<p>
+Podemos verificar que todo esté bien, con el comando <code>status</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git status</code>
+</pre>
+</div>
+</li>
+
+<li><a id="1-11-1-2"></a>Llevando registro de los cambios a archivo<br />
+<p>
+Crea un archivo llamado <code>hola.txt</code> en la carpeta <code>ds-test</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>touch hola.txt</code>
+<code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"&#161;hola mundo!"</span> &gt; hola.txt</code>
+</pre>
+</div>
+
+<p>
+Ahora ejecuta el siguiente comando
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git status</code>
+</pre>
+</div>
+
+<p>
+El mensaje de <code>untracked files</code> significa que hay archivos en el
+repositorio de los cuales  <code>git</code> no está llevando registro, i.e. el
+repositorio está <i>sucio</i>.
+</p>
+
+</section>
+<section>
+
+<p>
+<code>Git</code> sigue este flujo:
+</p>
+
+
+<div class="figure">
+<p><img src="file:///home/nanounanue/projects/ITAM/programming-for-data-science-2019/images/git-solo.png" alt="git-solo.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Git "solo workflow"</p>
+</div>
+
+
+
+</section>
+<section>
+
+<p>
+Para que <code>git</code> lleve el registro (<i>tracking</i>) del archivo, debes de
+<b>agregarlo</b> (<code>add</code>):
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git add hola.txt</code>
+<code>git status</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Ahora <code>git</code> sabe que debe de llevar registro de los cambios de
+<code>hola.txt</code>, pero aún se <b>comprometen</b> los cambios al repositorio
+(<code>Changes to be commited: ...</code>). Para <i>comitearlos</i><sup><a id="fnr.20" class="footref" href="#fn.20">20</a></sup>:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git commit -m <span style="color: #98be65;">"Commit inicial"</span></code>
+</pre>
+</div>
+
+<p>
+Usamos la bandera <code>-m</code> para agregar un mensaje que nos ayude a
+recordar más tarde que se hizo y por qué.
+</p>
+
+</section>
+<section>
+
+<p>
+Si ejecutamos
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git status</code>
+</pre>
+</div>
+
+<p>
+nos indica que todo está actualizado (<code>up to date</code>). Podemos ver la
+historia de cambio con <code>git log</code>.
+</p>
+
+</section>
+<section>
+
+<p>
+Edita <code>hola.txt</code> luego, ejecuta <code>git status</code>. ¿Qué observas ahora?
+</p>
+
+<p>
+La parte clave es <code>no changes added to commit</code>. Hemos cambiado el
+archivo, pero aún no están "comprometidas" o guardadas en el repositorio.
+Para ver que ha cambiado usamos lo siguiente
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> git diff</code>
+</pre>
+</div>
+
+<p>
+Hagamos <code>commit</code> de estos cambios.
+</p>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git commit -m <span style="color: #98be65;">'actualizamos hola.txt'</span></code>
+</pre>
+</div>
+
+<p>
+Pero <code>git</code> no nos dejará hacer el <i>commit</i>, ya que no lo agregamos antes al índice del
+repositorio. Agrégalo y repite el <code>commit</code>
+</p>
+
+</section>
+<section>
+
+<p>
+Modifica de nuevo <code>hola.txt</code>. Observa los cambios y agrégalo. ¿Qué
+sucede si vuelves a ejecutar <code>git diff</code>?
+</p>
+
+<p>
+<code>Git</code> dice que no hay nada, ya que para <code>git</code> no hay diferencia entre
+el área de <b>staging</b> y el último <b>commit</b> (llamado <code>HEAD</code>).
+Para ver los cambios, ejecuta
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> git diff --staged</code>
+</pre>
+</div>
+
+
+<p>
+esto muestra las diferencias entre los últimos cambios <b>comiteados</b> y
+lo que está en el área de <b>staging</b>. Ahora realiza el <code>commit</code>, verifica
+el estatus y revisa la historia.
+</p>
+</li>
+
+<li><a id="1-11-1-3"></a>Explorando el pasado<br />
+<p>
+Podemos ver los cambios entre diferentes <b>revisiones</b>, podemos usar
+la siguiente notación: <code>HEAD~1</code>, <code>HEAD~2</code>, etc. como sigue:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code> git diff HEAD~1 hola.txt</code>
+<code> git diff HEAD~2 hola.txt</code>
+</pre>
+</div>
+
+<p>
+También podemos utilizar el identificador único (el número enorme que
+aparece en el <code>git log</code>), inténtalo.
+</p>
+
+</section>
+<section>
+
+<p>
+Modifiquemos de nuevo el archivo <code>hola.txt</code>. ¿Qué tal si nos
+equivocamos y queremos regresar los cambios? Podemos ejecutar el
+comando
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git checkout HEAD hola.txt</code>
+</pre>
+</div>
+
+<div class="info">
+<p>
+Nota que <code>git</code> recomienda un <b>shortcut</b> para esta operación: <code>(use
+"git checkout -- &lt;file&gt;..." to discard changes in working directory)</code>)
+</p>
+
+</div>
+
+<p>
+Obviamente aquí podemos regresarnos las versiones que queramos, por lo
+que podemos utilizar el identificador único o <code>HEAD~2</code> por ejemplo.
+</p>
+
+<p>
+Por último, <code>git</code> tiene comandos <code>mv</code> y <code>rm</code> que deben de ser usados
+cuando queremos mover o borrar un archivo del repositorio, i.e. <code>git
+mv</code> y <code>git rm</code>.
+</p>
+</li>
+</ol>
+
+
+</section>
+<section id="slide-1-11-2">
+<h4 id="1-11-2"><span class="section-number-4">1.11.2</span> <i>Git flow</i></h4>
+<p>
+Ahora trabajaremos en equipo, el flujo cambia respecto al <i>solo
+flow</i>. El cambio se debe a la introducción de nuevos conceptos:
+<b>clonar</b>, <b>push/pull</b>, <b>issue</b> y <b>branch</b>.
+</p>
+
+
+<div class="figure">
+<p><img src="file:///home/nanounanue/projects/ITAM/programming-for-data-science-2019/images/git-flow.png" alt="git-flow.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Git flow</p>
 </div>
 </div>
 </div>
@@ -1875,7 +2597,7 @@ transition: Reveal.getQueryHash().transition || 'fade', // see README of reveal.
 transitionSpeed: 'fast',
 controlsTutorial: false, controlsLayout: 'edges',
 
-// Optional libraries used to extend on reveal.js
+// Optional libraries used to extend reveal.js
 dependencies: [
  { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
