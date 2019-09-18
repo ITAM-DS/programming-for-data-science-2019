@@ -40,7 +40,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-11 Wed 14:43</p>
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-18 Wed 15:00</p>
 </section>
 <section>
 <section id="slide-1">
@@ -162,10 +162,8 @@ knowledge and wisdom.
 </section>
 </section>
 <section>
-<section id="slide-1-3">
-<h3 id="1-3"><span class="section-number-3">1.3</span> Línea de comandos</h3>
-<div class="outline-text-3" id="text-1-3">
-</div>
+<section id="slide-cli">
+<h3 id="cli"><span class="section-number-3">1.3</span> Línea de comandos</h3>
 </section>
 <section id="slide-1-3-1">
 <h4 id="1-3-1"><span class="section-number-4">1.3.1</span> La computadora</h4>
@@ -276,15 +274,12 @@ el texto es la interfaz universal.</li>
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-4">
-<h3 id="1-4"><span class="section-number-3">1.4</span> Conocer los alrededores</h3>
-<div class="outline-text-3" id="text-1-4">
+<section id="slide-1-3-6">
+<h4 id="1-3-6"><span class="section-number-4">1.3.6</span> Conocer los alrededores</h4>
+<div class="outline-text-4" id="text-1-3-6">
 </div>
-</section>
-<section id="slide-1-4-1">
-<h4 id="1-4-1"><span class="section-number-4">1.4.1</span> Navegación en la terminal</h4>
+<ol class="org-ol">
+<li><a id="1-3-6-1"></a>Navegación en la terminal<br />
 <p>
 Moverse rápidamente en la <b>CLI</b> es de vital importancia. Teclea en tu <i>terminal</i>
 </p>
@@ -355,10 +350,9 @@ estos mismas combinaciones, por ejemplo <a href="https://support.rstudio.com/hc/
 <p>
 Para tener más información sobre los <i>bindings</i> consulta <a href="https://catonmat.net/bash-emacs-editing-mode-cheat-sheet">aquí</a>.
 </p>
+</li>
 
-</section>
-<section id="slide-1-4-2">
-<h4 id="1-4-2"><span class="section-number-4">1.4.2</span> ¿Dónde estoy?</h4>
+<li><a id="1-3-6-2"></a>¿Dónde estoy?<br />
 <p>
 Imprime el nombre del <i>directorio</i> actual
 </p>
@@ -388,10 +382,9 @@ Si quieres regresar al directorio anterior
 <pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span> -</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-4-3">
-<h4 id="1-4-3"><span class="section-number-4">1.4.3</span> Hogar dulce, hogar</h4>
+<li><a id="1-3-6-3"></a>Hogar dulce, hogar<br />
 <p>
 Cambia el directorio <code>$HOME</code> (tu directorio) utilizando <code>~</code>
 </p>
@@ -410,10 +403,9 @@ o bien, no pasando ningún argumento
 <pre  class="src src-shell"><code><span style="color: #61afef; font-weight: bold;">cd</span></code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-4-4">
-<h4 id="1-4-4"><span class="section-number-4">1.4.4</span> ¿Qué hay en mi directorio (<i>folder</i>) ?</h4>
+<li><a id="1-3-6-4"></a>¿Qué hay en mi directorio (<i>folder</i>) ?<br />
 <p>
 <code>ls</code> Lista los contenidos (archivos y directorios) en el
 directorio actual, pero no los archivos <i>ocultos</i>.
@@ -463,10 +455,9 @@ Muestra los archivosshows file sizes (<code>-s</code>) in
 <pre  class="src src-shell"><code>tree -hs</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-4-5">
-<h4 id="1-4-5"><span class="section-number-4">1.4.5</span> ¿Qué hay en mi archivo?</h4>
+<li><a id="1-3-6-5"></a>¿Qué hay en mi archivo?<br />
 <p>
 Muestra el principio (<i>head</i>) del archivo, <code>-n</code> especifica el número de líneas (<code>10</code>).
 </p>
@@ -525,10 +516,9 @@ Cuenta las palabras, caracteres y líneas de un archivo
 <pre  class="src src-shell"><code>wc $<span style="color: #61afef;">f</span></code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-4-6">
-<h4 id="1-4-6"><span class="section-number-4">1.4.6</span> ¿Dónde está mi archivo?</h4>
+<li><a id="1-3-6-6"></a>¿Dónde está mi archivo?<br />
 <p>
 Encuentra el archivo por nombre
 </p>
@@ -548,10 +538,9 @@ Encuentra directorios por nombre
 <pre  class="src src-shell"><code>find -name <span style="color: #98be65;">"&lt;lost_dir_name&gt;"</span> -type d</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-4-7">
-<h4 id="1-4-7"><span class="section-number-4">1.4.7</span> <i>Wildcards</i>: Globbing</h4>
+<li><a id="1-3-6-7"></a><i>Wildcards</i>: Globbing<br />
 <p>
 La línea de comandos permite usar comodines (<i>wildcards</i>)<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup>
 para encontrar  archivos:
@@ -608,18 +597,17 @@ Listar todos los archivos que tienen 5 caracteres en el nombre:
 <pre  class="src src-sh"><code>ls ?????,txt</code>
 </pre>
 </div>
+</li>
+</ol>
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-5">
-<h3 id="1-5"><span class="section-number-3">1.5</span> Conectando comandos</h3>
-<div class="outline-text-3" id="text-1-5">
+<section id="slide-1-3-7">
+<h4 id="1-3-7"><span class="section-number-4">1.3.7</span> Conectando comandos</h4>
+<div class="outline-text-4" id="text-1-3-7">
 </div>
-</section>
-<section id="slide-1-5-1">
-<h4 id="1-5-1"><span class="section-number-4">1.5.1</span> Entubando</h4>
+<ol class="org-ol">
+<li><a id="1-3-7-1"></a>Entubando<br />
 <p>
 El símbolo  <code>|</code> (<i>pipe</i>)  “entuba” la salida de un comando al siguiente
 comando. Por ejemplo:
@@ -649,10 +637,9 @@ El siguiente ejemplo utiliza <code>grep</code> para buscar y seleccionar cadenas
 <p>
 Veremos más sobre <code>seq</code> y <code>grep</code> más adelante.
 </p>
+</li>
 
-</section>
-<section id="slide-1-5-2">
-<h4 id="1-5-2"><span class="section-number-4">1.5.2</span> <code>stdin</code>, <code>stdout</code> y <code>stderr</code></h4>
+<li><a id="1-3-7-2"></a><code>stdin</code>, <code>stdout</code> y <code>stderr</code><br />
 <p>
 <code>stdin</code> (entrada estándar), <code>stdout</code> (salida estándar) y <code>stderr</code>
 (error estándar) son <i>canales</i> de interacción de la terminal. En tu
@@ -703,10 +690,9 @@ o apuntar <code>stdout</code> y <code>stderr</code> al mismo lado (configuració
 <pre  class="src src-shell"><code>algun_comando 2&gt;&amp;1</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-5-3">
-<h4 id="1-5-3"><span class="section-number-4">1.5.3</span> Redireccionando <i>hacia</i></h4>
+<li><a id="1-3-7-3"></a>Redireccionando <i>hacia</i><br />
 <p>
 Los símbolos <code>&gt;</code>, <code>&gt;&gt;</code> Redireccionan la salida de los comandos a un
 sumidero (<i>sink</i>), e.g. un archivo, o la pantalla o la impresora.
@@ -743,10 +729,9 @@ Similar al ejemplo anterior
 </p>
 
 </div>
+</li>
 
-</section>
-<section id="slide-1-5-4">
-<h4 id="1-5-4"><span class="section-number-4">1.5.4</span> Redireccionando <i>desde</i></h4>
+<li><a id="1-3-7-4"></a>Redireccionando <i>desde</i><br />
 <p>
 <code>&lt;</code> Redirecciona desde el archivo
 </p>
@@ -785,18 +770,17 @@ un subproceso (lo cual puede ser muy importante en procesamiento intensivo.
 </p>
 
 </div>
+</li>
+</ol>
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-6">
-<h3 id="1-6"><span class="section-number-3">1.6</span> Algunos comandos útiles</h3>
-<div class="outline-text-3" id="text-1-6">
+<section id="slide-1-3-8">
+<h4 id="1-3-8"><span class="section-number-4">1.3.8</span> Algunos comandos útiles</h4>
+<div class="outline-text-4" id="text-1-3-8">
 </div>
-</section>
-<section id="slide-1-6-1">
-<h4 id="1-6-1"><span class="section-number-4">1.6.1</span> seq</h4>
+<ol class="org-ol">
+<li><a id="1-3-8-1"></a>seq<br />
 <p>
 Genera secuencias de números
 </p>
@@ -839,10 +823,9 @@ Agregando <i>padding</i>
 <pre  class="src src-sh"><code>seq -w 1 10</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-6-2">
-<h4 id="1-6-2"><span class="section-number-4">1.6.2</span> tr</h4>
+<li><a id="1-3-8-2"></a>tr<br />
 <p>
 Cambia, reemplaza o borra caracteres del <code>stdin</code> al <code>stdout</code>
 </p>
@@ -864,10 +847,9 @@ Cambia, reemplaza o borra caracteres del <code>stdin</code> al <code>stdout</cod
 <pre  class="src src-sh"><code><span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola mi nombre es Adolfo De Un&#225;nue"</span>  | tr -s <span style="color: #98be65;">' '</span> <span style="color: #98be65;">'_'</span></code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-6-3">
-<h4 id="1-6-3"><span class="section-number-4">1.6.3</span> wc</h4>
+<li><a id="1-3-8-3"></a>wc<br />
 <p>
 <code>wc</code> significa <i>word count</i>. Este comando cuenta las
 palabras,renglones, bytes en el archivo.
@@ -882,10 +864,9 @@ En nuestro caso nos interesa la bandera <code>-l</code> la cual sirve para conta
 <pre  class="src src-sh"><code>seq 30 | grep 3 | wc -l</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-6-4">
-<h4 id="1-6-4"><span class="section-number-4">1.6.4</span> head, tail</h4>
+<li><a id="1-3-8-4"></a>head, tail<br />
 <p>
 <code>head</code> y <code>tail</code> sirven para explorar visualmente las primeras diez
 (<i>default</i>) o las últimas diez (<i>default</i>) renglones del archivo,
@@ -900,10 +881,9 @@ respectivamente.
 <code>tail -3 UFO-Dic-2014.tsv</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-6-5">
-<h4 id="1-6-5"><span class="section-number-4">1.6.5</span> cat</h4>
+<li><a id="1-3-8-5"></a>cat<br />
 <p>
 <code>cat</code> concatena archivos y/o imprime al <code>stdout</code>
 </p>
@@ -966,12 +946,11 @@ entrada del <code>wc -l</code> sin generar un nuevo proceso
 <pre  class="src src-shell"><code>&lt; numeros.txt wc -l</code>
 </pre>
 </div>
+</li>
 
 
 
-</section>
-<section id="slide-1-6-6">
-<h4 id="1-6-6"><span class="section-number-4">1.6.6</span> split</h4>
+<li><a id="1-3-8-6"></a>split<br />
 <p>
 <code>split</code> hace la función contraria de <code>cat</code>, divide archivos.
 Puede hacerlo por tamaño (bytes, <code>-b</code>) o por líneas (<code>-l</code>).
@@ -983,10 +962,9 @@ Puede hacerlo por tamaño (bytes, <code>-b</code>) o por líneas (<code>-l</code
 <code>wc -l UFO-Nov-Dic-2014.tsv</code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-6-7">
-<h4 id="1-6-7"><span class="section-number-4">1.6.7</span> cut</h4>
+<li><a id="1-3-8-7"></a>cut<br />
 <p>
 Con <code>cut</code> podemos dividir el archivo pero por columnas.
 Las columnas puede estar definidas como campo (<code>-f</code>, <code>-d</code>), carácter (<code>-c</code>) o bytes (<code>-b</code>).
@@ -1014,22 +992,20 @@ Ejecuta los siguientes ejemplos, ¿Cuál es la diferencia?
 <code>cut -d&#8217;|&#8217; -f1-3 prueba.psv</code>
 </pre>
 </div>
+</li>
 
 
 
-</section>
-<section id="slide-1-6-8">
-<h4 id="1-6-8"><span class="section-number-4">1.6.8</span> uniq</h4>
+<li><a id="1-3-8-8"></a>uniq<br />
 <form><ul>
 <li><code>uniq</code> Identifica aquellos renglones consecutivos que son iguales.</li>
 <li><code>uniq</code> puede contar (<code>-c</code>), eliminar (<code>-u</code>), imprimir sólo las
 duplicadas (<code>-d</code>), etc.</li>
 
 </ul></form>
+</li>
 
-</section>
-<section id="slide-1-6-9">
-<h4 id="1-6-9"><span class="section-number-4">1.6.9</span> sort</h4>
+<li><a id="1-3-8-9"></a>sort<br />
 <form><ul>
 <li><code>sort</code> Ordena el archivo, es muy poderoso, puede ordenar por</li>
 
@@ -1045,11 +1021,10 @@ columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>
 <pre  class="src src-sh"><code>sort -t <span style="color: #98be65;">","</span> -k 2  UFO-Nov-Dic-2014.tsv</code>
 </pre>
 </div>
+</li>
 
 
-</section>
-<section id="slide-1-6-10">
-<h4 id="1-6-10"><span class="section-number-4">1.6.10</span> uniq y sort</h4>
+<li><a id="1-3-8-10"></a>uniq y sort<br />
 <form><ul>
 <li>Combinados podemos tener un <code>group by</code>:</li>
 
@@ -1068,11 +1043,10 @@ columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>
 <code>    head</code>
 </pre>
 </div>
+</li>
 
 
-</section>
-<section id="slide-1-6-11">
-<h4 id="1-6-11"><span class="section-number-4">1.6.11</span> Hacer varias cosas a la vez</h4>
+<li><a id="1-3-8-11"></a>Hacer varias cosas a la vez<br />
 <div class="org-src-container">
 
 <pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta un servidor web en el puerto 8888</span></code>
@@ -1156,13 +1130,13 @@ Más adelante veremos como solucionar esto.
 </p>
 
 </div>
+</li>
+</ol>
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-7">
-<h3 id="1-7"><span class="section-number-3">1.7</span> Descargar datos</h3>
+<section id="slide-1-3-9">
+<h4 id="1-3-9"><span class="section-number-4">1.3.9</span> Descargar datos</h4>
 <p>
 Es posible hacer peticiones de HTTP (<i>http requests</i>)<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> desde la línea
 de comandos.
@@ -1238,10 +1212,8 @@ segundo campo, que contiene el código de estatus <code>HTTP</code>.</li>
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-8">
-<h3 id="1-8"><span class="section-number-3">1.8</span> Expresiones regulares</h3>
+<section id="slide-1-3-10">
+<h4 id="1-3-10"><span class="section-number-4">1.3.10</span> Expresiones regulares</h4>
 <blockquote>
 <p>
 In computing, regular expressions provide a concise and flexible means for
@@ -1259,9 +1231,8 @@ Wikipedia: Regular Expressions
 </blockquote>
 
 
-</section>
-<section id="slide-1-8-1">
-<h4 id="1-8-1"><span class="section-number-4">1.8.1</span> Regexp: Básicos</h4>
+<ol class="org-ol">
+<li><a id="1-3-10-1"></a>Regexp: Básicos<br />
 <form><ul>
 <li>Hay varios tipos POSIX, Perl, PHP, GNU/Emacs, etc. Nosotros nos
 enfocaremos en <code>POSIX</code>.</li>
@@ -1325,11 +1296,10 @@ mayor a <code>n</code> veces.</dd>
 <dt><code>\b</code></dt><dd>representa el límite de palabra.</dd>
 
 </dl></form>
+</li>
 
 
-</section>
-<section id="slide-1-8-2">
-<h4 id="1-8-2"><span class="section-number-4">1.8.2</span> Regexp: Ejemplos</h4>
+<li><a id="1-3-10-2"></a>Regexp: Ejemplos<br />
 <form><ul>
 <li>username: <code>[a-z0-9 -]{3,16}</code></li>
 <li>contraseña: <code>[a-z0-9 -]{6,18}</code></li>
@@ -1343,10 +1313,9 @@ mayor a <code>n</code> veces.</dd>
 <pre  class="src src-shell"><code><span style="color: #8c8c8c;">(</span>25<span style="color: #93a8c6;">[</span>0-5<span style="color: #93a8c6;">]</span>|2<span style="color: #93a8c6;">[</span>0-4<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>|<span style="color: #93a8c6;">[</span>01<span style="color: #93a8c6;">]</span>?<span style="color: #93a8c6;">[</span>0-9<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>?<span style="color: #98be65;">\.</span><span style="color: #8c8c8c;">){</span>3<span style="color: #8c8c8c;">}(</span>25<span style="color: #93a8c6;">[</span>0-5<span style="color: #93a8c6;">]</span>|2<span style="color: #93a8c6;">[</span>0-4<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>|<span style="color: #93a8c6;">[</span>01<span style="color: #93a8c6;">]</span>?<span style="color: #93a8c6;">[</span>0-9<span style="color: #93a8c6;">][</span>0-9<span style="color: #93a8c6;">]</span>?<span style="color: #8c8c8c;">)</span></code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-8-3">
-<h4 id="1-8-3"><span class="section-number-4">1.8.3</span> Regexp: Expresiones de caracteres</h4>
+<li><a id="1-3-10-3"></a>Regexp: Expresiones de caracteres<br />
 <form><ul>
 <li><code>[:digit:]</code> Dígitos del 0 al 9.</li>
 <li><code>[:alnum:]</code> Cualquier caracter alfanumérico 0 al 9 OR A a la Z OR a a la z.</li>
@@ -1354,31 +1323,29 @@ mayor a <code>n</code> veces.</dd>
 <li><code>[:blank:]</code> Espacio  o TAB únicamente.</li>
 
 </ul></form>
+</li>
 
 
-</section>
-<section id="slide-1-8-4">
-<h4 id="1-8-4"><span class="section-number-4">1.8.4</span> Regexp: ¿Quieres saber más?</h4>
+<li><a id="1-3-10-4"></a>Regexp: ¿Quieres saber más?<br />
 <form><ul>
 <li><a href="http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/">Learn Regular Expressions in 20 minutes</a></li>
 <li><a href="http://www.codeproject.com/Articles/9099/The-Minute-Regex-Tutorial">The 30 minute regex tutorial</a></li>
 
 </ul></form>
+</li>
+</ol>
 
 
 
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-9">
-<h3 id="1-9"><span class="section-number-3">1.9</span> Analizando datos<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>: Comandos avanzados</h3>
-<div class="outline-text-3" id="text-1-9">
+<section id="slide-1-3-11">
+<h4 id="1-3-11"><span class="section-number-4">1.3.11</span> Analizando datos<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>: Comandos avanzados</h4>
+<div class="outline-text-4" id="text-1-3-11">
 </div>
-</section>
-<section id="slide-1-9-1">
-<h4 id="1-9-1"><span class="section-number-4">1.9.1</span> grep</h4>
+<ol class="org-ol">
+<li><a id="1-3-11-1"></a>grep<br />
 <p>
 <code>grep</code> nos permite buscar líneas que tengan un patrón específico. Es
 el equivalente a un filtro.
@@ -1533,10 +1500,9 @@ Más diversión con expresiones regulares
 <code> <span style="color: #61afef; font-weight: bold;">echo</span> <span style="color: #98be65;">"Hola grupo &#191;C&#243;mo est&#225;n?"</span> | grep -oE <span style="color: #98be65;">'\w+'</span></code>
 </pre>
 </div>
+</li>
 
-</section>
-<section id="slide-1-9-2">
-<h4 id="1-9-2"><span class="section-number-4">1.9.2</span> awk</h4>
+<li><a id="1-3-11-2"></a>awk<br />
 <p>
 <code>awk</code> es un lenguaje de programación muy completo, orientado a
 archivos de texto que vengan en columnas<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>
@@ -1755,10 +1721,9 @@ ahorrará muchos dolores de cabeza.
 <p>
 Para saber más consulta el manual <a href="https://www.gnu.org/software/gawk/manual/"><b>GNU awk</b> <i>Effective AWK Programming</i></a>
 </p>
+</li>
 
-</section>
-<section id="slide-1-9-3">
-<h4 id="1-9-3"><span class="section-number-4">1.9.3</span> sed</h4>
+<li><a id="1-3-11-3"></a>sed<br />
 <p>
 A veces queremos <i>editar</i> o cambiar el contenido de nuestros
 <i>datasets</i>, por ejemplo, quizá queramos deshacernos de ciertos
@@ -1954,24 +1919,23 @@ es modificada. La manera de hacerlo <i>in place</i> con la bandera <code>-i</cod
 <pre  class="src src-shell"><code>sed -i 1d data2.txt  <span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Elimina la primera l&#237;nea del archivo de manera interactiva</span></code>
 </pre>
 </div>
+</li>
+</ol>
 
 
 
 
 </section>
-</section>
-<section>
-<section id="slide-1-10">
-<h3 id="1-10"><span class="section-number-3">1.10</span> <i>Bash programming</i></h3>
+<section id="slide-1-3-12">
+<h4 id="1-3-12"><span class="section-number-4">1.3.12</span> <i>Bash programming</i></h4>
 <p>
 La mayor parte del tiempo usaremos el <code>shell</code>, para hacer pequeños
 <i>scripts</i>, pero existen ocasiones en las cuales es necesario tratar al
 <code>shell</code> como un lenguaje de programación<sup><a id="fnr.18" class="footref" href="#fn.18">18</a></sup>
 </p>
 
-</section>
-<section id="slide-1-10-1">
-<h4 id="1-10-1"><span class="section-number-4">1.10.1</span> Estructuras de datos</h4>
+<ol class="org-ol">
+<li><a id="1-3-12-1"></a>Estructuras de datos<br />
 <p>
 Las variables son declaradas
 </p>
@@ -2042,10 +2006,9 @@ diferente.
 </p>
 
 </div>
+</li>
 
-</section>
-<section id="slide-1-10-2">
-<h4 id="1-10-2"><span class="section-number-4">1.10.2</span> Bucles de ejecución, (<i>Loops</i>)</h4>
+<li><a id="1-3-12-2"></a>Bucles de ejecución, (<i>Loops</i>)<br />
 <p>
 Los <code>for-loops</code> en <code>bash</code> tienen una estructura muy similar a los de
 <code>python</code>:
@@ -2120,10 +2083,9 @@ También puedes escribirlo en una sola línea:  <code>for i in {a..z}; do echo $
 </p>
 
 </div>
+</li>
 
-</section>
-<section id="slide-1-10-3">
-<h4 id="1-10-3"><span class="section-number-4">1.10.3</span> Funciones</h4>
+<li><a id="1-3-12-3"></a>Funciones<br />
 <p>
 Las funciones son símbolo de buena programación, ya que encapsulan
 comportamiento.
@@ -2164,11 +2126,10 @@ En este caso <code>"Hola mundo"</code> y <code>123</code> son pasados como argum
 función. Estos pueden ser usados en el cuerpo de la función usando la
 posición de los mismos e.g. <code>$1</code> es <code>"Hola mundo"</code>, <code>$2</code> es <code>123</code>, etc.
 </p>
+</li>
 
 
-</section>
-<section id="slide-1-10-4">
-<h4 id="1-10-4"><span class="section-number-4">1.10.4</span> Ejecutar <i>scripts</i></h4>
+<li><a id="1-3-12-4"></a>Ejecutar <i>scripts</i><br />
 <p>
 Para cualquier archivo <i>script</i> es importante que la primera línea del
 archivo le diga al <code>shell</code>  que comando usar para ejecutarlo.
@@ -2214,10 +2175,9 @@ Te preguntarás ¿Cómo conecto estos <i>scripts</i> con los demás usando <code
 Sencillo: Hay que modificar nuestros <i>scripts</i> de <code>python</code>, <code>R</code> y <code>bash</code> para
 leer del <code>stdin</code>.
 </p>
+</li>
 
-</section>
-<section id="slide-1-10-5">
-<h4 id="1-10-5"><span class="section-number-4">1.10.5</span> Python, leyendo de <code>stdin</code></h4>
+<li><a id="1-3-12-5"></a>Python, leyendo de <code>stdin</code><br />
 <p>
 Un ejemplo mínimo de <code>python</code> es el siguiente:
 </p>
@@ -2247,11 +2207,10 @@ Abre <code>nano</code>, copia este código y guarda el archivo como
 <pre  class="src src-shell"><code>seq 1 1000 | script.py</code>
 </pre>
 </div>
+</li>
 
 
-</section>
-<section id="slide-1-10-6">
-<h4 id="1-10-6"><span class="section-number-4">1.10.6</span> R, leyendo de <code>stdin</code></h4>
+<li><a id="1-3-12-6"></a>R, leyendo de <code>stdin</code><br />
 <p>
 El ejemplo en <code>R</code> se ve así:
 </p>
@@ -2292,19 +2251,22 @@ Ejemplo de uso:
 <pre  class="src src-shell"><code>&lt; /data/numbers.txt script.R</code>
 </pre>
 </div>
+</li>
+</ol>
+
 
 </section>
 </section>
 <section>
-<section id="slide-1-11">
-<h3 id="1-11"><span class="section-number-3">1.11</span> Controlador de versiones <code>git</code></h3>
+<section id="slide-git">
+<h3 id="git"><span class="section-number-3">1.4</span> Controlador de versiones <code>git</code></h3>
 </section>
-<section id="slide-1-11-1">
-<h4 id="1-11-1"><span class="section-number-4">1.11.1</span> <i>"Solo" Workflow</i></h4>
-<div class="outline-text-4" id="text-1-11-1">
+<section id="slide-1-4-1">
+<h4 id="1-4-1"><span class="section-number-4">1.4.1</span> <i>"Solo" Workflow</i></h4>
+<div class="outline-text-4" id="text-1-4-1">
 </div>
 <ol class="org-ol">
-<li><a id="1-11-1-1"></a>Crear un repositorio<br />
+<li><a id="1-4-1-1"></a>Crear un repositorio<br />
 <p>
 El <b>repositorio</b> es la carpeta donde <code>git</code> guarda y gestiona todas
 las versiones de los archivos.
@@ -2333,7 +2295,7 @@ Podemos verificar que todo esté bien, con el comando <code>status</code>.
 </div>
 </li>
 
-<li><a id="1-11-1-2"></a>Llevando registro de los cambios a archivo<br />
+<li><a id="1-4-1-2"></a>Llevando registro de los cambios a archivo<br />
 <p>
 Crea un archivo llamado <code>hola.txt</code> en la carpeta <code>ds-test</code>
 </p>
@@ -2495,7 +2457,7 @@ el estatus y revisa la historia.
 </p>
 </li>
 
-<li><a id="1-11-1-3"></a>Explorando el pasado<br />
+<li><a id="1-4-1-3"></a>Explorando el pasado<br />
 <p>
 Podemos ver los cambios entre diferentes <b>revisiones</b>, podemos usar
 la siguiente notación: <code>HEAD~1</code>, <code>HEAD~2</code>, etc. como sigue:
@@ -2549,10 +2511,9 @@ mv</code> y <code>git rm</code>.
 </li>
 </ol>
 
-
 </section>
-<section id="slide-1-11-2">
-<h4 id="1-11-2"><span class="section-number-4">1.11.2</span> <i>Git flow</i></h4>
+<section id="slide-1-4-2">
+<h4 id="1-4-2"><span class="section-number-4">1.4.2</span> <i>Github flow</i></h4>
 <p>
 Ahora trabajaremos en equipo, el flujo cambia respecto al <i>solo
 flow</i>. El cambio se debe a la introducción de nuevos conceptos:
@@ -2563,8 +2524,149 @@ flow</i>. El cambio se debe a la introducción de nuevos conceptos:
 <div class="figure">
 <p><img src="file:///home/nanounanue/projects/ITAM/programming-for-data-science-2019/images/git-flow.png" alt="git-flow.png" />
 </p>
-<p><span class="figure-number">Figure 2: </span>Git flow</p>
+<p><span class="figure-number">Figure 2: </span>Github flow</p>
 </div>
+
+
+<p>
+Para entender este diagrama, necesitamos explicar estos nuevos
+<b>verbos</b>.
+</p>
+
+</section>
+<section>
+
+<p>
+En <i>github flow</i> es muy importante que:
+</p>
+
+<form><ul>
+<li>Crees <i>issues</i> y trabajes en ellos.</li>
+<li>Idealmente un <i>issue</i> está relacionado con una sóla cosa (arreglar
+algo, agregar algo)</li>
+<li>Idealmente un <i>issue</i> debe de durar menos de 8 horas.</li>
+<li>Hagas muchos <i>commits</i> al día</li>
+
+</ul></form>
+
+<div class="info">
+<p>
+Hacer  <i>commits</i>  frecuentemente permite que podamos hacer control de
+versiones de manera granular. Si un <i>bug</i> aparece, podemos regresar a
+versiones pasadas dónde el <i>bug</i> no existía.
+</p>
+
+<p>
+Otra ventaja es que <i>commits</i> pequeños y frecuentes ayudan a tus
+compañeros de trabajo (y tu futuro tú) entiendan mejor cuál es tu
+intención.
+</p>
+
+</div>
+
+<form><ul>
+<li>¡Usa mensajes que tengan sentido!</li>
+
+</ul></form>
+
+</section>
+<section>
+
+<p>
+En serio, escribe mensajes que tengan sentido
+</p>
+
+
+<div class="figure">
+<p><img src="file:///home/nanounanue/projects/ITAM/programming-for-data-science-2019/images/git_commit.png" alt="git_commit.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Imagen de XKCD</p>
+</div>
+
+</section>
+<section id="slide-1-4-3">
+<h4 id="1-4-3"><span class="section-number-4">1.4.3</span> Ejercicio en equipo</h4>
+<div class="outline-text-4" id="text-1-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="1-4-3-1"></a>Setup<br />
+<form><ul>
+<li>Cuatro personas por equipo, los llamaremos <b>A</b>, <b>B</b>, <b>C</b> y <b>D</b> en lo
+que sigue.</li>
+<li>Seleccionen a una persona para crear el repositorio, esta será <b>A</b></li>
+<li><b>A</b> crea el repositorio <i>privado</i> en su cuenta de <a href="https://github.com">Github</a>, llamado <code>pds-2019</code>.</li>
+<li><b>A</b> debe de agregar como <i>colaboradores</i> a <b>B</b>, <b>C</b> y <b>D</b>.</li>
+<li><b>A</b> debe de agregarme (<code>@nanounanue</code>) como colaborador de <i>solo
+lectura</i>.</li>
+<li><b>B</b>, <b>C</b> y <b>D</b> deben de <i>clonar</i> el repositorio</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git clone https://github.com/usernameA/pds-2019.git /repositorios/pds-2019.git</code>
+</pre>
+</div>
+</li>
+
+<li><a id="1-4-3-2"></a>Interactuando<br />
+<form><ul>
+<li><b>A</b> crea el archivo <code>ml.py</code> (o <code>ml.R</code>) y agrega las siguientes 4
+funciones vacías:
+
+<form><ul>
+<li><code>load_data</code>, <code>clean_data</code>, <code>store_data</code>, <code>run_ml_pipeline</code></li>
+
+</ul></form></li>
+
+<li><b>B</b>, <b>C</b> y <b>D</b> hagan <code>pull</code> para obtener los cambios más recientes.</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git pull origin master</code>
+</pre>
+</div>
+
+<form><ul>
+<li><b>TODOS</b> vean lo cambios con <code>git status</code>, <code>git log</code></li>
+
+</ul></form>
+
+</section>
+<section>
+
+<form><ul>
+<li><b>TODOS</b>: Repártanse el trabajo y cada uno cree uno de los 4 <i>issues</i>
+en github con el título <i>Completar función &#x2026;</i> donde $&#x2026;$ es el
+nombre de la función.</li>
+<li><b>TODOS</b>: En su <i>virtual machine</i>, creen un nuevo <i>branch</i>:</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git checkout -b issue-N</code>
+</pre>
+</div>
+
+<p>
+donde <code>N</code> es el número de <i>issue</i> correspondiente.
+</p>
+
+<form><ul>
+<li><b>TODOS</b>: Verifica que ahora estás en un nuevo <i>branch</i>:</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git branch</code>
+</pre>
+</div>
+</li>
+</ol>
 </div>
 </div>
 Adolfo De Unánue
