@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <title>Programming for Data Science</title>
 <meta name="author" content="Adolfo De Unánue"/>
-<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -40,7 +39,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-18 Wed 15:00</p>
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-25 Wed 14:32</p>
 </section>
 <section>
 <section id="slide-1">
@@ -1133,7 +1132,6 @@ Más adelante veremos como solucionar esto.
 </li>
 </ol>
 
-
 </section>
 <section id="slide-1-3-9">
 <h4 id="1-3-9"><span class="section-number-4">1.3.9</span> Descargar datos</h4>
@@ -1418,9 +1416,8 @@ y <code>-E</code> (interpretar el patrón como una regex).
 Otras banderas importantes son las siguientes
 </p>
 
-
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
+<caption class="t-above"><span class="table-number">Table 1:</span> Banderas útiles de <code>grep</code></caption>
 
 <colgroup>
 <col  class="org-left" />
@@ -1435,17 +1432,17 @@ Otras banderas importantes son las siguientes
 </thead>
 <tbody>
 <tr>
-<td class="org-left">-i</td>
+<td class="org-left"><code>-i</code></td>
 <td class="org-left">Ignora mayúsculas / minúsculas</td>
 </tr>
 
 <tr>
-<td class="org-left">-o</td>
+<td class="org-left"><code>-o</code></td>
 <td class="org-left">Regresa <b>todos</b> los <i>match</i> en lugar de la línea que contiene el <i>match</i></td>
 </tr>
 
 <tr>
-<td class="org-left">-c</td>
+<td class="org-left"><code>-c</code></td>
 <td class="org-left">Cuenta el resultado</td>
 </tr>
 </tbody>
@@ -1924,7 +1921,6 @@ es modificada. La manera de hacerlo <i>in place</i> con la bandera <code>-i</cod
 
 
 
-
 </section>
 <section id="slide-1-3-12">
 <h4 id="1-3-12"><span class="section-number-4">1.3.12</span> <i>Bash programming</i></h4>
@@ -2137,16 +2133,20 @@ archivo le diga al <code>shell</code>  que comando usar para ejecutarlo.
 
 <p>
 A la primera línea se conoce como <b>shebang</b> y se representa por <code>#!</code>
-seguido de la ruta al ejecutable, eg. <code>#!/usr/bin/python</code>,
-<code>#!/bin/bash</code>, <code>#!/usr/bin/env Rscript</code>
+seguido de la ruta al ejecutable, e.g.:
 </p>
 
-<p>
-Por ejemplo:
-</p>
+<form><ul>
+<li><code>#!/usr/bin/python</code>,</li>
+<li><code>#!/bin/bash</code>,</li>
+<li><code>#!/usr/bin/env Rscript</code>,</li>
+<li>etc.</li>
+
+</ul></form>
+
 
 <p>
-Sin el <code>shebang</code>
+Sin el <code>shebang</code>, para ejecutar el archivo <code>ejemplo.py</code> debes de hacer:
 </p>
 
 <div class="org-src-container">
@@ -2156,7 +2156,8 @@ Sin el <code>shebang</code>
 </div>
 
 <p>
-si agregamos el <code>shebang</code> <sup><a id="fnr.19" class="footref" href="#fn.19">19</a></sup>
+pero, si agregamos el <code>shebang</code> <sup><a id="fnr.19" class="footref" href="#fn.19">19</a></sup>, puedes ejecutar el archivo de
+la siguiente manera:
 </p>
 
 <div class="org-src-container">
@@ -2164,8 +2165,6 @@ si agregamos el <code>shebang</code> <sup><a id="fnr.19" class="footref" href="#
 <pre  class="src src-shell"><code>./ejemplo.py</code>
 </pre>
 </div>
-
-
 
 <p>
 Te preguntarás ¿Cómo conecto estos <i>scripts</i> con los demás usando <code>|</code>, <code>&gt;</code>, etc?
@@ -2639,7 +2638,7 @@ funciones vacías:
 
 <form><ul>
 <li><b>TODOS</b>: Repártanse el trabajo y cada uno cree uno de los 4 <i>issues</i>
-en github con el título <i>Completar función &#x2026;</i> donde $&#x2026;$ es el
+en github con el título <i>Completar función</i> <code>...</code> donde <code>...</code> es el
 nombre de la función.</li>
 <li><b>TODOS</b>: En su <i>virtual machine</i>, creen un nuevo <i>branch</i>:</li>
 
@@ -2665,6 +2664,33 @@ donde <code>N</code> es el número de <i>issue</i> correspondiente.
 <pre  class="src src-shell"><code>git branch</code>
 </pre>
 </div>
+
+</section>
+<section>
+
+<form><ul>
+<li><b>TODOS</b>: completen sus funciones y creen un <i>pull-request</i>, asignen
+a un <code>reviewer</code> a uno de sus compañeros. Asígnen el <i>pull-request</i> a
+ustedes mismos. El mensaje del <i>pull-request</i> debe de ser <code>Closes #N</code>.</li>
+<li><b>TODOS</b>: El <i>reviewer</i> debe de solicitar un cambio. El responsable
+del <i>pull-request</i> debe de modificarlo en su laptop y hacer <code>push</code>
+de nuevo. Agrega un comentario en el <i>thread</i> de comunicación del <i>pull-request</i>.</li>
+<li><b>TODOS</b> El <i>reviewer</i> acepta los cambios.</li>
+<li><b>TODOS</b> El responsable hace <i>merge</i> del <i>pullrequest</i> a
+<code>master</code>. Borra el <i>branch</i> remoto y bórralo localmente.</li>
+
+</ul></form>
+
+</section>
+<section>
+
+<form><ul>
+<li><b>TODOS</b> Cambien a <code>master</code> localmente y actualicen su versión local
+con <code>pull</code>.</li>
+<li><b>TODOS</b> Verifiquen que <code>Github</code> y sus versiones locales están sincronizadas.</li>
+<li><b>TODOS</b> Festeja con tus compañeros de equipo que llegaron hasta el final.</li>
+
+</ul></form>
 </li>
 </ol>
 </div>
