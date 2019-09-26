@@ -39,7 +39,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-26 Thu 09:13</p>
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-26 Thu 09:22</p>
 </section>
 <section>
 <section id="slide-1">
@@ -2618,6 +2618,18 @@ funciones vacías:
 
 </ul></form></li>
 
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git add ml.py</code>
+<code>git commit -m <span style="color: #98be65;">"Pipeline de ML"</span></code>
+<code>git push origin master</code>
+</pre>
+</div>
+
+
+<form><ul>
 <li><b>B</b>, <b>C</b> y <b>D</b> hagan <code>pull</code> para obtener los cambios más recientes.</li>
 
 </ul></form>
@@ -2671,15 +2683,55 @@ donde <code>N</code> es el número de <i>issue</i> correspondiente.
 <form><ul>
 <li><b>TODOS</b>: completen sus funciones y creen un <i>pull-request</i>, asignen
 a un <code>reviewer</code> a uno de sus compañeros. Asígnen el <i>pull-request</i> a
-ustedes mismos. El mensaje del <i>pull-request</i> debe de ser <code>Closes #N</code>.</li>
+ustedes mismos. El mensaje del <i>pull-request</i> debe de ser <code>Closes
+  #N</code>.</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">En el branch correspondiente (i.e. issue-N)</span></code>
+<code>git add ml.py</code>
+<code>git commit -m <span style="color: #98be65;">"Completada la funci&#243;n XXXX"</span> <span style="color: #687080; font-style: italic;">#</span><span style="color: #687080; font-style: italic;">Donde XXX es el nombre de la funci&#243;n</span></code>
+<code>git push origin issue-M</code>
+</pre>
+</div>
+
+<form><ul>
 <li><b>TODOS</b>: El <i>reviewer</i> debe de solicitar un cambio. El responsable
 del <i>pull-request</i> debe de modificarlo en su laptop y hacer <code>push</code>
-de nuevo. Agrega un comentario en el <i>thread</i> de comunicación del <i>pull-request</i>.</li>
+de nuevo. Agrega un comentario en el <i>thread</i> de comunicación del
+<i>pull-request</i>.</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">La persona encargada del PR ...</span></code>
+<code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">En el branch correspondiente (i.e. issue-N)</span></code>
+<code>git add ml.py</code>
+<code>git commit -m <span style="color: #98be65;">"Incorporando los cambios del reviewer"</span> <span style="color: #687080; font-style: italic;">#</span><span style="color: #687080; font-style: italic;">Donde XXX es el nombre de la funci&#243;n</span></code>
+<code>git push origin issue-M</code>
+</pre>
+</div>
+
+</section>
+<section>
+
+<form><ul>
 <li><b>TODOS</b> El <i>reviewer</i> acepta los cambios.</li>
 <li><b>TODOS</b> El responsable hace <i>merge</i> del <i>pullrequest</i> a
 <code>master</code>. Borra el <i>branch</i> remoto y bórralo localmente.</li>
 
 </ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">En la computadora del encargado del PR ...</span></code>
+<code>git checkout master</code>
+<code>git branch -D issue-N</code>
+</pre>
+</div>
 
 </section>
 <section>
@@ -2687,6 +2739,17 @@ de nuevo. Agrega un comentario en el <i>thread</i> de comunicación del <i>pull-
 <form><ul>
 <li><b>TODOS</b> Cambien a <code>master</code> localmente y actualicen su versión local
 con <code>pull</code>.</li>
+
+</ul></form>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>git checkout master</code>
+<code>git pull origin master</code>
+</pre>
+</div>
+
+<form><ul>
 <li><b>TODOS</b> Verifiquen que <code>Github</code> y sus versiones locales están sincronizadas.</li>
 <li><b>TODOS</b> Festeja con tus compañeros de equipo que llegaron hasta el final.</li>
 
