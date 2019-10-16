@@ -1,4 +1,4 @@
-# Created 2019-08-20 Tue 01:20
+# Created 2019-10-16 Wed 13:02
 #+TITLE: Programming for Data Science 2019
 #+DATE: August 20, 2019
 #+AUTHOR: Adolfo De Unanue
@@ -8,9 +8,9 @@
 
 *** Contacto
 - *Nombre*: Adolfo De Unánue
-- *Oficina*:
+- *Oficina*: Pasillo de estadística, al final
 - *Horas de oficina*:
-- *Email*: =adolfo.deunanue@itam.mx=
+- *Email*: =unanue@itam.mx=
 - Inicio de clases: 14 de agosto de 2019
 
 
@@ -103,27 +103,28 @@ proyecto, reporte proyecto final y hacer una presentación oral.
 
 
 ** Calendario (Tentativo)                                            :readme:
-| Sesión | Fecha | Temas           | Otros                         |
-|--------+-------+-----------------+-------------------------------|
-|      1 | 14/08 | Introducción    |                               |
-|      2 | 21/08 | CLI             |                               |
-|      - | 28/08 | -               | No hay clases                 |
-|      3 | 4/09  | CLI             | Formar equipos                |
-|      4 |       | CLI             |                               |
-|      5 | 11/09 | =git=           | Presentación de proyectos     |
-|      6 | 18/09 | /Programming/   |                               |
-|      7 | 25/09 | /Programming/   |                               |
-|      8 | 2/10  | /Programming/   |                               |
-|      9 | 9/10  | /Programming/   |                               |
-|     10 | 16/10 | =SQL=           | /Mid-term/                    |
-|     11 | 23/10 | =SQL=           |                               |
-|     12 | 30/10 | =SQL=           |                               |
-|     13 | 6/11  | =SQL=           | /Update/ del proyecto         |
-|     14 | 13/11 | =SQL=           |                               |
-|     15 | 20/11 | /Pipelines/     |                               |
-|     16 | 27/11 | =docker=        |                               |
-|     17 | 4/12  | /Web scrapping/ | Entregar reporte del proyecto |
-|     18 | 11/12 | Proyecto        | Presentación oral             |
+| Sesión | Fecha | Temas           | Otros                                     |
+|--------+-------+-----------------+-------------------------------------------|
+|      1 | 14/08 | Introducción    |                                           |
+|      2 | 21/08 | CLI             |                                           |
+|      - | 28/08 | -               | No hay clases                             |
+|      3 | 4/09  | CLI             | Formar equipos                            |
+|      4 | 11/09 | CLI             |                                           |
+|      5 | 18/09 | =git=           |                                           |
+|      6 | 25/09 | =git=           |                                           |
+|      7 | 2/10  | /Programming/   |                                           |
+|      - | 9/10  | -               | No hay clase: 🏥 (Ausente por enfermedad) |
+|      8 | 16/10 | /Programming/   |                                           |
+|      - | 23/10 | -               | No hay clase: Viaje a Chile               |
+|      9 | 30/10 | /Programming/   |                                           |
+|     10 | 6/11  | /Programming/   | /Update/ del proyecto                     |
+|     11 | 9/11  | =SQL=           | Reposición (3h)  8am-11am                 |
+|     12 | 13/11 | =SQL=           |                                           |
+|     13 | 20/11 | =SQL=           |                                           |
+|     14 | 23/11 | /Pipelines/     | Reposición (3h)  8am-11am                 |
+|     15 | 27/11 | =docker=        |                                           |
+|     16 | 4/12  | /Web scrapping/ | Entregar reporte del proyecto             |
+|     17 | 11/12 | Proyecto        | Presentación oral                         |
 
 
 ** /Software/ que necesitas instalar                                 :readme:
