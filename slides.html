@@ -9,9 +9,34 @@
 </style>
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
 
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css" id="theme"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
 
-<link rel="stylesheet" href="slides.css"/>
+<link rel="stylesheet" href="mozilla-dark.css"/>
+<link rel="stylesheet" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"/>
+<style>
+/* Position computations of klipse get confused by reveal.js's scaling.
+   Hence, scaling should be disabled with this code.  Fix height of code area
+   with scrollbar (use overflow instead of overflow-y to restore CodeMirror
+   setting afterwards): */
+.reveal section pre { max-height: 70vh; height: auto; overflow: auto; }
+/* Reset some reveal.js and oer-reveal settings: */
+.reveal section pre .CodeMirror pre { font-size: 2em; box-shadow: none; width: auto; padding: 0.4em; display: block; overflow: visible; }
+/* Enlarge cursor: */
+.CodeMirror-cursor { border-left: 3px solid black; }
+</style>
+<script>
+    window.klipse_settings = {
+        selector: '.language-klipse',
+        selector_eval_html: '.language-klipse-html',
+        selector_eval_js: '.language-klipse-javascript',
+        selector_eval_js: '.language-klipse-js',
+        selector_eval_php: '.language-klipse-php',
+        selector_eval_python_client: '.language-klipse-python',
+        selector_eval_ruby: '.language-klipse-ruby',
+        selector_eval_scheme: '.language-klipse-scheme',
+        selector_sql: '.language-klipse-sql'
+    };
+</script>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -23,6 +48,8 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<meta name="description" content="Programación para ciencia de datos.">
 
           <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
           <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
@@ -39,16 +66,26 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-09-26 Thu 09:22</p>
+<h1 class="title">Programming for Data Science</h1><h2 class="author">Adolfo De Unánue</h2><h2 class="date">2019</h2><p class="date">Created: 2019-10-02 Wed 15:10</p>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org0b98480"><i>Lectures</i></a></li>
+</ul>
+</div>
+</div>
 </section>
 <section>
-<section id="slide-1">
-<h2 id="1"><span class="section-number-2">1</span> <i>Lectures</i></h2>
+<section id="slide-org0b98480">
+<h2 id="org0b98480"><i>Lectures</i></h2>
 </section>
 </section>
 <section>
-<section id="slide-1-1">
-<h3 id="1-1"><span class="section-number-3">1.1</span> Licencia</h3>
+<section id="slide-orgc05e89c">
+<h3 id="orgc05e89c">Licencia</h3>
 <p>
 Este trabajo se encuentra bajo la Licencia de
 </p>
@@ -74,15 +111,15 @@ Para ver una copia de esta licencia, Visita:
 </section>
 </section>
 <section>
-<section id="slide-1-2">
-<h3 id="1-2"><span class="section-number-3">1.2</span> Introducción</h3>
+<section id="slide-org7ec6c75">
+<h3 id="org7ec6c75">Introducción</h3>
 </section>
-<section id="slide-1-2-1">
-<h4 id="1-2-1"><span class="section-number-4">1.2.1</span> Una encuesta rápida</h4>
+<section id="slide-orgcfdac50">
+<h4 id="orgcfdac50">Una encuesta rápida</h4>
 
 </section>
-<section id="slide-1-2-2">
-<h4 id="1-2-2"><span class="section-number-4">1.2.2</span> <i>Data science</i> es &#x2026;</h4>
+<section id="slide-org60ca0b0">
+<h4 id="org60ca0b0"><i>Data science</i> es &#x2026;</h4>
 <form><ul>
 <li>&#x2026; acerca de datos</li>
 <li>&#x2026; utilizar el método científico</li>
@@ -92,8 +129,8 @@ Para ver una copia de esta licencia, Visita:
 </ul></form>
 
 </section>
-<section id="slide-1-2-3">
-<h4 id="1-2-3"><span class="section-number-4">1.2.3</span> El científico de datos</h4>
+<section id="slide-org8fffc5a">
+<h4 id="org8fffc5a">El científico de datos</h4>
 <form><ul>
 <li>No es acerca de   <code>R</code> o <code>python</code> únicamente</li>
 
@@ -104,8 +141,8 @@ Para ver una copia de esta licencia, Visita:
 </ul></form>
 
 </section>
-<section id="slide-1-2-4">
-<h4 id="1-2-4"><span class="section-number-4">1.2.4</span> Productos de datos</h4>
+<section id="slide-org4e0a20c">
+<h4 id="org4e0a20c">Productos de datos</h4>
 <form><ul>
 <li>Es un sistema tecno-social que procesa datos de sobre un sistema
 generador de los mismos para aumentar la inteligencia o capacidades
@@ -115,8 +152,8 @@ de acción de un agente externo al sistema.</li>
 
 
 </section>
-<section id="slide-1-2-5">
-<h4 id="1-2-5"><span class="section-number-4">1.2.5</span> Disminución del <i>dolor</i></h4>
+<section id="slide-org59753f7">
+<h4 id="org59753f7">Disminución del <i>dolor</i></h4>
 <p>
 Cualquier barrera, impedancia entre tu cerebro y los datos hará tu
 trabajo menos efectivo y te causará mucho dolor.
@@ -130,8 +167,8 @@ experta.
 
 
 </section>
-<section id="slide-1-2-6">
-<h4 id="1-2-6"><span class="section-number-4">1.2.6</span> Filosóficamente: <i>Dataísmo</i></h4>
+<section id="slide-org181e1fb">
+<h4 id="org181e1fb">Filosóficamente: <i>Dataísmo</i></h4>
 <form><ul>
 <li><a href="https://aeon.co/ideas/believing-without-evidence-is-always-morally-wrong">Believing without evidence is always morally wrong</a>,Francisco Mejía
 Uribe, Aeon (2018)</li>
@@ -143,8 +180,8 @@ Uribe, Aeon (2018)</li>
 
 
 </section>
-<section id="slide-1-2-7">
-<h4 id="1-2-7"><span class="section-number-4">1.2.7</span> Filosóficamente: <i>Dataísmo</i></h4>
+<section id="slide-org157c864">
+<h4 id="org157c864">Filosóficamente: <i>Dataísmo</i></h4>
 <blockquote>
 <p>
 A <b>Dataist</b> is someone that trusts Big
@@ -162,10 +199,10 @@ knowledge and wisdom.
 </section>
 <section>
 <section id="slide-cli">
-<h3 id="cli"><span class="section-number-3">1.3</span> Línea de comandos</h3>
+<h3 id="cli">Línea de comandos</h3>
 </section>
-<section id="slide-1-3-1">
-<h4 id="1-3-1"><span class="section-number-4">1.3.1</span> La computadora</h4>
+<section id="slide-org3befae9">
+<h4 id="org3befae9">La computadora</h4>
 <p>
 Las computadoras sólo hacen cuatro cosas:
 </p>
@@ -186,8 +223,8 @@ como <b>CLI</b> (<i>Command Line Interface</i>).</li>
 </ul></form>
 
 </section>
-<section id="slide-1-3-2">
-<h4 id="1-3-2"><span class="section-number-4">1.3.2</span> ¿Por qué?</h4>
+<section id="slide-org0662c92">
+<h4 id="org0662c92">¿Por qué?</h4>
 <p>
 En muchas ocasiones, se verán en la necesidad de responder muy rápido y
 en una etapa muy temprana del proceso de <b>big data</b> . Las peticiones
@@ -197,8 +234,8 @@ aquí donde es posible responder con las herramientas mágicas de UNIX.
 
 
 </section>
-<section id="slide-1-3-3">
-<h4 id="1-3-3"><span class="section-number-4">1.3.3</span> Línea de comandos</h4>
+<section id="slide-orgbc12418">
+<h4 id="orgbc12418">Línea de comandos</h4>
 <p>
 La línea de comandos es lo que estará entre nosotros y la computadora
 casi todo el tiempo en este curso. De hecho, una lectura obligada<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> es
@@ -215,8 +252,8 @@ de <b>Bourne again shell</b>. Aunque en esta clase también usaremos <code>zsh</
 </p>
 
 </section>
-<section id="slide-1-3-4">
-<h4 id="1-3-4"><span class="section-number-4">1.3.4</span> Archivos y directorios</h4>
+<section id="slide-orgaa3c671">
+<h4 id="orgaa3c671">Archivos y directorios</h4>
 <p>
 La computadora guarda la información de una manera ordenada. El
 sistema encargado de esto es el <code>file system</code>, el cual es básicamente un árbol
@@ -241,8 +278,8 @@ manipulación del <code>file system</code>.
 </p>
 
 </section>
-<section id="slide-1-3-5">
-<h4 id="1-3-5"><span class="section-number-4">1.3.5</span> Filosofía UNIX</h4>
+<section id="slide-org41c6b35">
+<h4 id="org41c6b35">Filosofía UNIX</h4>
 <p>
 Creada originalmente en 1978 por <b>Doug McIlroy</b>, la filosofía de UNIX es
 un acercamiento al diseño de software que enaltece el software modular
@@ -273,12 +310,12 @@ el texto es la interfaz universal.</li>
 
 
 </section>
-<section id="slide-1-3-6">
-<h4 id="1-3-6"><span class="section-number-4">1.3.6</span> Conocer los alrededores</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<section id="slide-orgbf0b1b3">
+<h4 id="orgbf0b1b3">Conocer los alrededores</h4>
+<div class="outline-text-4" id="text-orgbf0b1b3">
 </div>
-<ol class="org-ol">
-<li><a id="1-3-6-1"></a>Navegación en la terminal<br />
+<ul class="org-ul">
+<li><a id="org13b5f50"></a>Navegación en la terminal<br />
 <p>
 Moverse rápidamente en la <b>CLI</b> es de vital importancia. Teclea en tu <i>terminal</i>
 </p>
@@ -351,7 +388,7 @@ Para tener más información sobre los <i>bindings</i> consulta <a href="https:/
 </p>
 </li>
 
-<li><a id="1-3-6-2"></a>¿Dónde estoy?<br />
+<li><a id="orgb36e1c4"></a>¿Dónde estoy?<br />
 <p>
 Imprime el nombre del <i>directorio</i> actual
 </p>
@@ -383,7 +420,7 @@ Si quieres regresar al directorio anterior
 </div>
 </li>
 
-<li><a id="1-3-6-3"></a>Hogar dulce, hogar<br />
+<li><a id="org4b66604"></a>Hogar dulce, hogar<br />
 <p>
 Cambia el directorio <code>$HOME</code> (tu directorio) utilizando <code>~</code>
 </p>
@@ -404,7 +441,7 @@ o bien, no pasando ningún argumento
 </div>
 </li>
 
-<li><a id="1-3-6-4"></a>¿Qué hay en mi directorio (<i>folder</i>) ?<br />
+<li><a id="orgbeb84c9"></a>¿Qué hay en mi directorio (<i>folder</i>) ?<br />
 <p>
 <code>ls</code> Lista los contenidos (archivos y directorios) en el
 directorio actual, pero no los archivos <i>ocultos</i>.
@@ -456,7 +493,7 @@ Muestra los archivosshows file sizes (<code>-s</code>) in
 </div>
 </li>
 
-<li><a id="1-3-6-5"></a>¿Qué hay en mi archivo?<br />
+<li><a id="org2e4e305"></a>¿Qué hay en mi archivo?<br />
 <p>
 Muestra el principio (<i>head</i>) del archivo, <code>-n</code> especifica el número de líneas (<code>10</code>).
 </p>
@@ -517,7 +554,7 @@ Cuenta las palabras, caracteres y líneas de un archivo
 </div>
 </li>
 
-<li><a id="1-3-6-6"></a>¿Dónde está mi archivo?<br />
+<li><a id="org838180e"></a>¿Dónde está mi archivo?<br />
 <p>
 Encuentra el archivo por nombre
 </p>
@@ -539,7 +576,7 @@ Encuentra directorios por nombre
 </div>
 </li>
 
-<li><a id="1-3-6-7"></a><i>Wildcards</i>: Globbing<br />
+<li><a id="org5951d52"></a><i>Wildcards</i>: Globbing<br />
 <p>
 La línea de comandos permite usar comodines (<i>wildcards</i>)<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup>
 para encontrar  archivos:
@@ -597,16 +634,16 @@ Listar todos los archivos que tienen 5 caracteres en el nombre:
 </pre>
 </div>
 </li>
-</ol>
+</ul>
 
 
 </section>
-<section id="slide-1-3-7">
-<h4 id="1-3-7"><span class="section-number-4">1.3.7</span> Conectando comandos</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<section id="slide-org840e20c">
+<h4 id="org840e20c">Conectando comandos</h4>
+<div class="outline-text-4" id="text-org840e20c">
 </div>
-<ol class="org-ol">
-<li><a id="1-3-7-1"></a>Entubando<br />
+<ul class="org-ul">
+<li><a id="org2bff99b"></a>Entubando<br />
 <p>
 El símbolo  <code>|</code> (<i>pipe</i>)  “entuba” la salida de un comando al siguiente
 comando. Por ejemplo:
@@ -638,7 +675,7 @@ Veremos más sobre <code>seq</code> y <code>grep</code> más adelante.
 </p>
 </li>
 
-<li><a id="1-3-7-2"></a><code>stdin</code>, <code>stdout</code> y <code>stderr</code><br />
+<li><a id="orga93dbe3"></a><code>stdin</code>, <code>stdout</code> y <code>stderr</code><br />
 <p>
 <code>stdin</code> (entrada estándar), <code>stdout</code> (salida estándar) y <code>stderr</code>
 (error estándar) son <i>canales</i> de interacción de la terminal. En tu
@@ -691,7 +728,7 @@ o apuntar <code>stdout</code> y <code>stderr</code> al mismo lado (configuració
 </div>
 </li>
 
-<li><a id="1-3-7-3"></a>Redireccionando <i>hacia</i><br />
+<li><a id="org22aaab0"></a>Redireccionando <i>hacia</i><br />
 <p>
 Los símbolos <code>&gt;</code>, <code>&gt;&gt;</code> Redireccionan la salida de los comandos a un
 sumidero (<i>sink</i>), e.g. un archivo, o la pantalla o la impresora.
@@ -730,7 +767,7 @@ Similar al ejemplo anterior
 </div>
 </li>
 
-<li><a id="1-3-7-4"></a>Redireccionando <i>desde</i><br />
+<li><a id="orgd49037e"></a>Redireccionando <i>desde</i><br />
 <p>
 <code>&lt;</code> Redirecciona desde el archivo
 </p>
@@ -770,16 +807,16 @@ un subproceso (lo cual puede ser muy importante en procesamiento intensivo.
 
 </div>
 </li>
-</ol>
+</ul>
 
 
 </section>
-<section id="slide-1-3-8">
-<h4 id="1-3-8"><span class="section-number-4">1.3.8</span> Algunos comandos útiles</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<section id="slide-org121bab9">
+<h4 id="org121bab9">Algunos comandos útiles</h4>
+<div class="outline-text-4" id="text-org121bab9">
 </div>
-<ol class="org-ol">
-<li><a id="1-3-8-1"></a>seq<br />
+<ul class="org-ul">
+<li><a id="org308e87d"></a>seq<br />
 <p>
 Genera secuencias de números
 </p>
@@ -824,7 +861,7 @@ Agregando <i>padding</i>
 </div>
 </li>
 
-<li><a id="1-3-8-2"></a>tr<br />
+<li><a id="org1045ffd"></a>tr<br />
 <p>
 Cambia, reemplaza o borra caracteres del <code>stdin</code> al <code>stdout</code>
 </p>
@@ -848,7 +885,7 @@ Cambia, reemplaza o borra caracteres del <code>stdin</code> al <code>stdout</cod
 </div>
 </li>
 
-<li><a id="1-3-8-3"></a>wc<br />
+<li><a id="org7214e78"></a>wc<br />
 <p>
 <code>wc</code> significa <i>word count</i>. Este comando cuenta las
 palabras,renglones, bytes en el archivo.
@@ -865,7 +902,7 @@ En nuestro caso nos interesa la bandera <code>-l</code> la cual sirve para conta
 </div>
 </li>
 
-<li><a id="1-3-8-4"></a>head, tail<br />
+<li><a id="orgb0665be"></a>head, tail<br />
 <p>
 <code>head</code> y <code>tail</code> sirven para explorar visualmente las primeras diez
 (<i>default</i>) o las últimas diez (<i>default</i>) renglones del archivo,
@@ -882,7 +919,7 @@ respectivamente.
 </div>
 </li>
 
-<li><a id="1-3-8-5"></a>cat<br />
+<li><a id="orge4e3bbb"></a>cat<br />
 <p>
 <code>cat</code> concatena archivos y/o imprime al <code>stdout</code>
 </p>
@@ -949,7 +986,7 @@ entrada del <code>wc -l</code> sin generar un nuevo proceso
 
 
 
-<li><a id="1-3-8-6"></a>split<br />
+<li><a id="org6d2deb6"></a>split<br />
 <p>
 <code>split</code> hace la función contraria de <code>cat</code>, divide archivos.
 Puede hacerlo por tamaño (bytes, <code>-b</code>) o por líneas (<code>-l</code>).
@@ -963,7 +1000,7 @@ Puede hacerlo por tamaño (bytes, <code>-b</code>) o por líneas (<code>-l</code
 </div>
 </li>
 
-<li><a id="1-3-8-7"></a>cut<br />
+<li><a id="org34c6767"></a>cut<br />
 <p>
 Con <code>cut</code> podemos dividir el archivo pero por columnas.
 Las columnas puede estar definidas como campo (<code>-f</code>, <code>-d</code>), carácter (<code>-c</code>) o bytes (<code>-b</code>).
@@ -995,7 +1032,7 @@ Ejecuta los siguientes ejemplos, ¿Cuál es la diferencia?
 
 
 
-<li><a id="1-3-8-8"></a>uniq<br />
+<li><a id="org89bf6a1"></a>uniq<br />
 <form><ul>
 <li><code>uniq</code> Identifica aquellos renglones consecutivos que son iguales.</li>
 <li><code>uniq</code> puede contar (<code>-c</code>), eliminar (<code>-u</code>), imprimir sólo las
@@ -1004,7 +1041,7 @@ duplicadas (<code>-d</code>), etc.</li>
 </ul></form>
 </li>
 
-<li><a id="1-3-8-9"></a>sort<br />
+<li><a id="org47511f6"></a>sort<br />
 <form><ul>
 <li><code>sort</code> Ordena el archivo, es muy poderoso, puede ordenar por</li>
 
@@ -1023,7 +1060,7 @@ columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>
 </li>
 
 
-<li><a id="1-3-8-10"></a>uniq y sort<br />
+<li><a id="orge15dbef"></a>uniq y sort<br />
 <form><ul>
 <li>Combinados podemos tener un <code>group by</code>:</li>
 
@@ -1045,7 +1082,7 @@ columnas (<code>-k</code>), usar ordenamiento numérico (<code>-g</code>, <code>
 </li>
 
 
-<li><a id="1-3-8-11"></a>Hacer varias cosas a la vez<br />
+<li><a id="org827d2fc"></a>Hacer varias cosas a la vez<br />
 <div class="org-src-container">
 
 <pre  class="src src-shell"><code><span style="color: #687080; font-style: italic;"># </span><span style="color: #687080; font-style: italic;">Ejecuta un servidor web en el puerto 8888</span></code>
@@ -1130,11 +1167,11 @@ Más adelante veremos como solucionar esto.
 
 </div>
 </li>
-</ol>
+</ul>
 
 </section>
-<section id="slide-1-3-9">
-<h4 id="1-3-9"><span class="section-number-4">1.3.9</span> Descargar datos</h4>
+<section id="slide-orge85a187">
+<h4 id="orge85a187">Descargar datos</h4>
 <p>
 Es posible hacer peticiones de HTTP (<i>http requests</i>)<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> desde la línea
 de comandos.
@@ -1178,7 +1215,7 @@ respuesta). Si sólo quieres ver el <i>header</i>
 <section>
 
 <p>
-El <i>header</i> contiene un pedazo de información crucialÑ:
+El <i>header</i> contiene un pedazo de información crucial:
 el <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">status code</a>. El <i>status code</i> te sirve para ver el estado de la
 página:
 </p>
@@ -1210,8 +1247,8 @@ segundo campo, que contiene el código de estatus <code>HTTP</code>.</li>
 
 
 </section>
-<section id="slide-1-3-10">
-<h4 id="1-3-10"><span class="section-number-4">1.3.10</span> Expresiones regulares</h4>
+<section id="slide-org69f00b8">
+<h4 id="org69f00b8">Expresiones regulares</h4>
 <blockquote>
 <p>
 In computing, regular expressions provide a concise and flexible means for
@@ -1229,8 +1266,8 @@ Wikipedia: Regular Expressions
 </blockquote>
 
 
-<ol class="org-ol">
-<li><a id="1-3-10-1"></a>Regexp: Básicos<br />
+<ul class="org-ul">
+<li><a id="orgb4303f2"></a>Regexp: Básicos<br />
 <form><ul>
 <li>Hay varios tipos POSIX, Perl, PHP, GNU/Emacs, etc. Nosotros nos
 enfocaremos en <code>POSIX</code>.</li>
@@ -1297,7 +1334,7 @@ mayor a <code>n</code> veces.</dd>
 </li>
 
 
-<li><a id="1-3-10-2"></a>Regexp: Ejemplos<br />
+<li><a id="orge83ff61"></a>Regexp: Ejemplos<br />
 <form><ul>
 <li>username: <code>[a-z0-9 -]{3,16}</code></li>
 <li>contraseña: <code>[a-z0-9 -]{6,18}</code></li>
@@ -1313,7 +1350,7 @@ mayor a <code>n</code> veces.</dd>
 </div>
 </li>
 
-<li><a id="1-3-10-3"></a>Regexp: Expresiones de caracteres<br />
+<li><a id="org7356398"></a>Regexp: Expresiones de caracteres<br />
 <form><ul>
 <li><code>[:digit:]</code> Dígitos del 0 al 9.</li>
 <li><code>[:alnum:]</code> Cualquier caracter alfanumérico 0 al 9 OR A a la Z OR a a la z.</li>
@@ -1324,26 +1361,26 @@ mayor a <code>n</code> veces.</dd>
 </li>
 
 
-<li><a id="1-3-10-4"></a>Regexp: ¿Quieres saber más?<br />
+<li><a id="org7bcc279"></a>Regexp: ¿Quieres saber más?<br />
 <form><ul>
 <li><a href="http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/">Learn Regular Expressions in 20 minutes</a></li>
 <li><a href="http://www.codeproject.com/Articles/9099/The-Minute-Regex-Tutorial">The 30 minute regex tutorial</a></li>
 
 </ul></form>
 </li>
-</ol>
+</ul>
 
 
 
 
 
 </section>
-<section id="slide-1-3-11">
-<h4 id="1-3-11"><span class="section-number-4">1.3.11</span> Analizando datos<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>: Comandos avanzados</h4>
-<div class="outline-text-4" id="text-1-3-11">
+<section id="slide-org6d14200">
+<h4 id="org6d14200">Analizando datos<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>: Comandos avanzados</h4>
+<div class="outline-text-4" id="text-org6d14200">
 </div>
-<ol class="org-ol">
-<li><a id="1-3-11-1"></a>grep<br />
+<ul class="org-ul">
+<li><a id="org4287c65"></a>grep<br />
 <p>
 <code>grep</code> nos permite buscar líneas que tengan un patrón específico. Es
 el equivalente a un filtro.
@@ -1499,7 +1536,7 @@ Más diversión con expresiones regulares
 </div>
 </li>
 
-<li><a id="1-3-11-2"></a>awk<br />
+<li><a id="org2bc8b84"></a>awk<br />
 <p>
 <code>awk</code> es un lenguaje de programación muy completo, orientado a
 archivos de texto que vengan en columnas<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>
@@ -1720,7 +1757,7 @@ Para saber más consulta el manual <a href="https://www.gnu.org/software/gawk/ma
 </p>
 </li>
 
-<li><a id="1-3-11-3"></a>sed<br />
+<li><a id="orgc9a443b"></a>sed<br />
 <p>
 A veces queremos <i>editar</i> o cambiar el contenido de nuestros
 <i>datasets</i>, por ejemplo, quizá queramos deshacernos de ciertos
@@ -1917,21 +1954,21 @@ es modificada. La manera de hacerlo <i>in place</i> con la bandera <code>-i</cod
 </pre>
 </div>
 </li>
-</ol>
+</ul>
 
 
 
 </section>
-<section id="slide-1-3-12">
-<h4 id="1-3-12"><span class="section-number-4">1.3.12</span> <i>Bash programming</i></h4>
+<section id="slide-orgdc5126d">
+<h4 id="orgdc5126d"><i>Bash programming</i></h4>
 <p>
 La mayor parte del tiempo usaremos el <code>shell</code>, para hacer pequeños
 <i>scripts</i>, pero existen ocasiones en las cuales es necesario tratar al
 <code>shell</code> como un lenguaje de programación<sup><a id="fnr.18" class="footref" href="#fn.18">18</a></sup>
 </p>
 
-<ol class="org-ol">
-<li><a id="1-3-12-1"></a>Estructuras de datos<br />
+<ul class="org-ul">
+<li><a id="orge233bea"></a>Estructuras de datos<br />
 <p>
 Las variables son declaradas
 </p>
@@ -2004,7 +2041,7 @@ diferente.
 </div>
 </li>
 
-<li><a id="1-3-12-2"></a>Bucles de ejecución, (<i>Loops</i>)<br />
+<li><a id="orgbb9a12b"></a>Bucles de ejecución, (<i>Loops</i>)<br />
 <p>
 Los <code>for-loops</code> en <code>bash</code> tienen una estructura muy similar a los de
 <code>python</code>:
@@ -2081,7 +2118,7 @@ También puedes escribirlo en una sola línea:  <code>for i in {a..z}; do echo $
 </div>
 </li>
 
-<li><a id="1-3-12-3"></a>Funciones<br />
+<li><a id="org1ac268c"></a>Funciones<br />
 <p>
 Las funciones son símbolo de buena programación, ya que encapsulan
 comportamiento.
@@ -2125,7 +2162,7 @@ posición de los mismos e.g. <code>$1</code> es <code>"Hola mundo"</code>, <code
 </li>
 
 
-<li><a id="1-3-12-4"></a>Ejecutar <i>scripts</i><br />
+<li><a id="orgcdfe67d"></a>Ejecutar <i>scripts</i><br />
 <p>
 Para cualquier archivo <i>script</i> es importante que la primera línea del
 archivo le diga al <code>shell</code>  que comando usar para ejecutarlo.
@@ -2176,7 +2213,7 @@ leer del <code>stdin</code>.
 </p>
 </li>
 
-<li><a id="1-3-12-5"></a>Python, leyendo de <code>stdin</code><br />
+<li><a id="org2aa620a"></a>Python, leyendo de <code>stdin</code><br />
 <p>
 Un ejemplo mínimo de <code>python</code> es el siguiente:
 </p>
@@ -2209,7 +2246,7 @@ Abre <code>nano</code>, copia este código y guarda el archivo como
 </li>
 
 
-<li><a id="1-3-12-6"></a>R, leyendo de <code>stdin</code><br />
+<li><a id="org37cafa4"></a>R, leyendo de <code>stdin</code><br />
 <p>
 El ejemplo en <code>R</code> se ve así:
 </p>
@@ -2251,21 +2288,21 @@ Ejemplo de uso:
 </pre>
 </div>
 </li>
-</ol>
+</ul>
 
 
 </section>
 </section>
 <section>
 <section id="slide-git">
-<h3 id="git"><span class="section-number-3">1.4</span> Controlador de versiones <code>git</code></h3>
+<h3 id="git">Controlador de versiones <code>git</code></h3>
 </section>
-<section id="slide-1-4-1">
-<h4 id="1-4-1"><span class="section-number-4">1.4.1</span> <i>"Solo" Workflow</i></h4>
-<div class="outline-text-4" id="text-1-4-1">
+<section id="slide-org835cc96">
+<h4 id="org835cc96"><i>"Solo" Workflow</i></h4>
+<div class="outline-text-4" id="text-org835cc96">
 </div>
-<ol class="org-ol">
-<li><a id="1-4-1-1"></a>Crear un repositorio<br />
+<ul class="org-ul">
+<li><a id="org1240cb2"></a>Crear un repositorio<br />
 <p>
 El <b>repositorio</b> es la carpeta donde <code>git</code> guarda y gestiona todas
 las versiones de los archivos.
@@ -2294,7 +2331,7 @@ Podemos verificar que todo esté bien, con el comando <code>status</code>.
 </div>
 </li>
 
-<li><a id="1-4-1-2"></a>Llevando registro de los cambios a archivo<br />
+<li><a id="orga6bbad0"></a>Llevando registro de los cambios a archivo<br />
 <p>
 Crea un archivo llamado <code>hola.txt</code> en la carpeta <code>ds-test</code>
 </p>
@@ -2456,7 +2493,7 @@ el estatus y revisa la historia.
 </p>
 </li>
 
-<li><a id="1-4-1-3"></a>Explorando el pasado<br />
+<li><a id="org0d0befe"></a>Explorando el pasado<br />
 <p>
 Podemos ver los cambios entre diferentes <b>revisiones</b>, podemos usar
 la siguiente notación: <code>HEAD~1</code>, <code>HEAD~2</code>, etc. como sigue:
@@ -2508,11 +2545,11 @@ cuando queremos mover o borrar un archivo del repositorio, i.e. <code>git
 mv</code> y <code>git rm</code>.
 </p>
 </li>
-</ol>
+</ul>
 
 </section>
-<section id="slide-1-4-2">
-<h4 id="1-4-2"><span class="section-number-4">1.4.2</span> <i>Github flow</i></h4>
+<section id="slide-orgaf487c8">
+<h4 id="orgaf487c8"><i>Github flow</i></h4>
 <p>
 Ahora trabajaremos en equipo, el flujo cambia respecto al <i>solo
 flow</i>. El cambio se debe a la introducción de nuevos conceptos:
@@ -2583,12 +2620,12 @@ En serio, escribe mensajes que tengan sentido
 </div>
 
 </section>
-<section id="slide-1-4-3">
-<h4 id="1-4-3"><span class="section-number-4">1.4.3</span> Ejercicio en equipo</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<section id="slide-org6aac9c7">
+<h4 id="org6aac9c7">Ejercicio en equipo</h4>
+<div class="outline-text-4" id="text-org6aac9c7">
 </div>
-<ol class="org-ol">
-<li><a id="1-4-3-1"></a>Setup<br />
+<ul class="org-ul">
+<li><a id="org874d31a"></a>Setup<br />
 <form><ul>
 <li>Cuatro personas por equipo, los llamaremos <b>A</b>, <b>B</b>, <b>C</b> y <b>D</b> en lo
 que sigue.</li>
@@ -2608,7 +2645,7 @@ lectura</i>.</li>
 </div>
 </li>
 
-<li><a id="1-4-3-2"></a>Interactuando<br />
+<li><a id="orgfc16e01"></a>Interactuando<br />
 <form><ul>
 <li><b>A</b> crea el archivo <code>ml.py</code> (o <code>ml.R</code>) y agrega las siguientes 4
 funciones vacías:
@@ -2755,10 +2792,681 @@ con <code>pull</code>.</li>
 
 </ul></form>
 </li>
-</ol>
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-programming">
+<h3 id="programming">Desarrollo de software</h3>
+</section>
+<section id="slide-org7bee7df">
+<h4 id="org7bee7df">El código es para comunicarse con humanos</h4>
+<p>
+<b>NOTE</b>: Los <i>slides</i> siguientes están basados en el trabajo de Kevin
+Wilson (<code>@khwilson</code>)
+</p>
+
+<blockquote>
+<p>
+El <b>código</b> es para humanos, no para computadoras.
+</p>
+</blockquote>
+
+</section>
+<section id="slide-org87e834f">
+<h4 id="org87e834f">Lo que escribes</h4>
+<aside class="notes">
+<p>
+Here is an example of a function. Why write this function? Well,
+literally, you give the function an integer <b>n</b>, and the function
+gives you back the *n*th Fibonnaci number. Writing code allows you to
+have the computer calculate the <b>n*th Fibonnaci number, which it can
+probably do much faster than you can, especially as *n</b> gets larger
+and larger. It also allows your human comrades to see for themselves
+how you rattle off arbitrary Fibonacci numbers so fast. But you don't
+really write code for the computer&#x2026;
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">fib</span><span style="color: #8c8c8c;">(</span>n<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">int n</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The Fibonnaci index you want to return</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The nth Fibonnaci number</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> int</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">if</span> n &lt; 2:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> 1</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> fib<span style="color: #8c8c8c;">(</span>n - 1<span style="color: #8c8c8c;">)</span> + fib<span style="color: #8c8c8c;">(</span>n - 2<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orga187e1b">
+<h4 id="orga187e1b">Lo que la computadora ve</h4>
+<div class="org-src-container">
+
+<pre  class="src src-:eval"><code>  2           0 LOAD_FAST                0 (n)</code>
+<code>              3 LOAD_CONST               1 (2)</code>
+<code>              6 COMPARE_OP               0 (&lt;)</code>
+<code>              9 POP_JUMP_IF_FALSE       16</code>
+<code>  3          12 LOAD_CONST               2 (1)</code>
+<code>             15 RETURN_VALUE</code>
+<code>  5     &gt;&gt;   16 LOAD_GLOBAL              0 (fib)</code>
+<code>             19 LOAD_FAST                0 (n)</code>
+<code>             22 LOAD_CONST               2 (1)</code>
+<code>             25 BINARY_SUBTRACT</code>
+<code>             26 CALL_FUNCTION            1</code>
+<code>             29 LOAD_GLOBAL              0 (fib)</code>
+<code>             32 LOAD_FAST                0 (n)</code>
+<code>             35 LOAD_CONST               1 (2)</code>
+<code>             38 BINARY_SUBTRACT</code>
+<code>             39 CALL_FUNCTION            1</code>
+<code>             42 BINARY_ADD</code>
+<code>             43 RETURN_VALUE</code>
+<code>             44 LOAD_CONST               0 (None)</code>
+<code>             47 RETURN_VALUE</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgc089400">
+<h4 id="orgc089400">En serio, es para tí</h4>
+<form><ul>
+<li>&#x2026; dentro de un mes, habrás olvidado completamente en que era esa
+&alpha; &#x2026;</li>
+<li>&#x2026;o mañana, tu compañero de trabajo se preguntará que son todos
+esos <code>3s</code> en la base de datos &#x2026;</li>
+<li>&#x2026;o cuando el sistema esté colapsando a las 2 am (la hora de las
+brujas en sistemas puestos en producción), y tú estés cansado, y tu
+jefe y clientes estén llamándote para saber que demonios está
+pasando &#x2026;</li>
+<li>Por eso, debes de comunicarte contigo y con tus compañeros humanos</li>
+
+</ul></form>
+
+</section>
+<section id="slide-org892d76f">
+<h4 id="org892d76f">Da nombres informativos</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">import</span> math</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">doit</span><span style="color: #8c8c8c;">(</span>x<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #61afef;">output</span> = <span style="color: #8c8c8c;">[]</span></code>
+<code>    <span style="color: #61afef;">y</span> = 2</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">while</span> x != 1:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">if</span> x % y == 0:</code>
+<code>            output.append<span style="color: #8c8c8c;">(</span>y<span style="color: #8c8c8c;">)</span></code>
+<code>            <span style="color: #61afef;">x</span> //= y</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>            <span style="color: #61afef;">y</span> += 1</code>
+<code>            <span style="color: #c678dd; font-weight: bold;">continue</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> output</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org390809f">
+<h4 id="org390809f">Da nombres informativos</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">magic</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef; font-weight: bold;">input</span><span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #61afef; font-weight: bold;">filter</span> = <span style="color: #61afef; font-weight: bold;">set</span><span style="color: #8c8c8c;">()</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> <span style="color: #61afef; font-weight: bold;">sorted</span><span style="color: #8c8c8c;">(</span>x <span style="color: #c678dd; font-weight: bold;">for</span> x <span style="color: #c678dd; font-weight: bold;">in</span> y</code>
+<code>                    <span style="color: #c678dd; font-weight: bold;">for</span> y <span style="color: #c678dd; font-weight: bold;">in</span> <span style="color: #61afef; font-weight: bold;">input</span></code>
+<code>                    <span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef; font-weight: bold;">len</span><span style="color: #b0b1a3;">(</span>x<span style="color: #b0b1a3;">)</span> &lt; 20 <span style="color: #c678dd; font-weight: bold;">and</span> x <span style="color: #c678dd; font-weight: bold;">not</span> <span style="color: #c678dd; font-weight: bold;">in</span> <span style="color: #61afef; font-weight: bold;">filter</span><span style="color: #93a8c6;">)</span> <span style="color: #c678dd; font-weight: bold;">or</span> <span style="color: #61afef; font-weight: bold;">filter</span>.add<span style="color: #93a8c6;">(</span>x<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org2eb0f24">
+<h4 id="org2eb0f24">Da nombres informativos</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">pretty_pictures</span><span style="color: #8c8c8c;">()</span>:</code>
+<code>    <span style="color: #61afef;">df</span> = pd.read_csv<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'2016.csv.gz'</span>, names=<span style="color: #93a8c6;">[</span><span style="color: #98be65;">'STATION'</span>, <span style="color: #98be65;">'DATE'</span>, <span style="color: #98be65;">'TYPE'</span>, <span style="color: #98be65;">'VALUE'</span>,</code>
+<code>                                           <span style="color: #98be65;">'MEASUREMENT_FLAG'</span>, <span style="color: #98be65;">'QUALITY_FLAG'</span>,</code>
+<code>                                           <span style="color: #98be65;">'SOURCE_FLAG'</span>, <span style="color: #98be65;">'OBS_TIME'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #61afef;">first</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == <span style="color: #98be65;">'US1ILCK0010'</span><span style="color: #8c8c8c;">]</span></code>
+<code>    first<span style="color: #8c8c8c;">[</span>first.TYPE == <span style="color: #98be65;">'PRCP'</span><span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'first_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #61afef;">second</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == <span style="color: #98be65;">'US1ILCK0014'</span><span style="color: #8c8c8c;">]</span></code>
+<code>    second<span style="color: #8c8c8c;">[</span>second.TYPE == <span style="color: #98be65;">'PRCP'</span><span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'second_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> first<span style="color: #8c8c8c;">[</span>first.TYPE == <span style="color: #98be65;">'PRCP'</span><span style="color: #8c8c8c;">]</span>.mean<span style="color: #8c8c8c;">()</span>, second<span style="color: #8c8c8c;">[</span>second.TYPE == <span style="color: #98be65;">'PRCP'</span><span style="color: #8c8c8c;">]</span>.mean<span style="color: #8c8c8c;">()</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org97c89c7">
+<h4 id="org97c89c7">Da nombres informativos</h4>
+<form><ul>
+<li>Los nombres deben de tener <i>significado</i> para los lectores de tú código, e.g.
+<form><ul>
+<li>Tú en una semana</li>
+<li>Tus compañeros mañana</li>
+<li>Tus compañeros del futuro que heredarán tu código</li>
+
+</ul></form></li>
+
+<li>\(i\), \(j\), \(k\) para <i>algunos</i> <b>iteradores</b> está bien, pero &alpha; que hace
+referencia a un artículo en específico, NO.</li>
+<li><code>kwargs</code> es un gran lugar para nombrar cosas (<code>python</code>)</li>
+<li><code>CONSTANTES</code></li>
+<li>No le temas a nombres largos; tienes <code>autocomplete</code></li>
+
+</ul></form>
+
+</section>
+<section id="slide-org4f38a8d">
+<h4 id="org4f38a8d">Documenta entradas y salidas</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">import</span> math</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">factor</span><span style="color: #8c8c8c;">(</span>x<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #61afef;">output</span> = <span style="color: #8c8c8c;">[]</span></code>
+<code>    <span style="color: #61afef;">fact</span> = 2</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">while</span> x != 1:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">if</span> x % fact == 0:</code>
+<code>            output.append<span style="color: #8c8c8c;">(</span>y<span style="color: #8c8c8c;">)</span></code>
+<code>            <span style="color: #61afef;">x</span> //= fact</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>            <span style="color: #61afef;">fact</span> += 1</code>
+<code>            <span style="color: #c678dd; font-weight: bold;">continue</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> output</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgf4d5add">
+<h4 id="orgf4d5add">Documenta entradas y salidas</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">unique_flatten</span><span style="color: #8c8c8c;">(</span>the_input, max_length=20<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #61afef;">flattened_set</span> = <span style="color: #8c8c8c;">{</span>val <span style="color: #c678dd; font-weight: bold;">for</span> val <span style="color: #c678dd; font-weight: bold;">in</span> row <span style="color: #c678dd; font-weight: bold;">for</span> row <span style="color: #c678dd; font-weight: bold;">in</span> the_input<span style="color: #8c8c8c;">}</span></code>
+<code>    <span style="color: #61afef;">filtered_list</span> = <span style="color: #8c8c8c;">[</span>val <span style="color: #c678dd; font-weight: bold;">for</span> val <span style="color: #c678dd; font-weight: bold;">in</span> flattened_set <span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #61afef; font-weight: bold;">len</span><span style="color: #93a8c6;">(</span>val<span style="color: #93a8c6;">)</span> &lt; max_length<span style="color: #8c8c8c;">]</span></code>
+<code>    filtered_list.sort<span style="color: #8c8c8c;">()</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> filtered_list</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orga296b34">
+<h4 id="orga296b34">Documenta entradas y salidas</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #61afef;">WEATHER_HEADERS</span> = <span style="color: #8c8c8c;">[</span><span style="color: #98be65;">'STATION'</span>, <span style="color: #98be65;">'DATE'</span>, <span style="color: #98be65;">'TYPE'</span>, <span style="color: #98be65;">'VALUE'</span>,</code>
+<code>                   <span style="color: #98be65;">'MEASUREMENT_FLAG'</span>, <span style="color: #98be65;">'QUALITY_FLAG'</span>,</code>
+<code>                   <span style="color: #98be65;">'SOURCE_FLAG'</span>, <span style="color: #98be65;">'OBS_TIME'</span><span style="color: #8c8c8c;">]</span></code>
+<code></code>
+<code><span style="color: #61afef;">PRECIPITATION_TYPE</span> = <span style="color: #98be65;">'PRCP'</span></code>
+<code><span style="color: #61afef;">CHICAGO_STATION_NAMES</span> = <span style="color: #8c8c8c;">[</span><span style="color: #98be65;">'US1ILCK0010'</span>, <span style="color: #98be65;">'US1ILCK0014'</span><span style="color: #8c8c8c;">]</span></code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">precipitation_in_chicago</span><span style="color: #8c8c8c;">()</span>:</code>
+<code>    <span style="color: #61afef;">df</span> = pd.read_csv<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'2016.csv.gz'</span>, names=WEATHER_HEADERS<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #61afef;">first</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == CHICAGO_STATION_NAMES<span style="color: #93a8c6;">[</span>0<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span></code>
+<code>    first<span style="color: #8c8c8c;">[</span>first.TYPE == PRECIPITATION_TYPE<span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'first_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #61afef;">second</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == CHICAGO_STATION_NAMES<span style="color: #8c8c8c;">]</span></code>
+<code>    second<span style="color: #8c8c8c;">[</span>second.TYPE == PRECIPITATION_TYPE<span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'second_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> <span style="color: #8c8c8c;">(</span>first<span style="color: #93a8c6;">[</span>first.TYPE == PRECIPITATION_TYPE<span style="color: #93a8c6;">]</span>.mean<span style="color: #93a8c6;">()</span>,</code>
+<code>            second<span style="color: #93a8c6;">[</span>second.TYPE == PRECIPITATION_TYPE<span style="color: #93a8c6;">]</span>.mean<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org6ffe4cc">
+<h4 id="org6ffe4cc">Documenta entradas y salidas</h4>
+<form><ul>
+<li>Cada función debe de tener un <i>docstring</i></li>
+<li>Los <i>docstring</i> <b>deben</b> de
+<form><ul>
+<li>Describir la función <i>brevemente</i></li>
+<li>Explícitamente documentar las entradas con <code>:param type name: description</code></li>
+<li>Explícitamente documantar el valor de retorno con <code>:returns: description</code></li>
+<li>Explícitamente documentar el tipo del retorno con <code>:rtype:</code></li>
+
+</ul></form></li>
+
+</ul></form>
+
+</section>
+<section id="slide-orgde2b62f">
+<h4 id="orgde2b62f">En <code>python 3.6</code> : <i>Static type checking</i></h4>
+<p>
+En versiones recientes de <code>python</code> es posible <i>indicar</i> el tipo de las
+variables:
+</p>
+
+<pre><code class="language-klipse-python" >
+<code><span style="color: #c678dd; font-weight: bold;">from</span> typing <span style="color: #c678dd; font-weight: bold;">import</span> Dict</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">do_ml_magic</span><span style="color: #8c8c8c;">(</span>algorithm: <span style="color: #61afef; font-weight: bold;">str</span>, hyperparams: Dict<span style="color: #8c8c8c;">)</span> -&gt; Model:</code>
+<code>    ...</code>
+<code></code>
+<code>    train_date: <span style="color: #61afef;">date</span> = ...</code>
+<code></code>
+<code>    model: <span style="color: #61afef;">Model</span> =  ...</code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> model</code>
+</code></pre>
+
+<p>
+Estas adiciones son <i>sugerencias</i>, es decir son estáticas. Puedes
+verificar tu  código con <code>mypy</code> o con tu editor (como GNU Emacs o PyCharm)
+</p>
+
+
+</section>
+<section id="slide-orgd25da6e">
+<h4 id="orgd25da6e"><i>Don't repeat yourself: DRY</i></h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">max_intersection</span><span style="color: #8c8c8c;">(</span>left, right<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""</span></code>
+<code><span style="color: #9eac8c;">    Compute the value counts of the left and right lists and then return</span></code>
+<code><span style="color: #9eac8c;">    the maximum for each value.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    :param list[object] left: The left list</span></code>
+<code><span style="color: #9eac8c;">    :param list[object] right: The right list</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> dict[object, int]</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> A dictionary from the value to</span></code>
+<code><span style="color: #9eac8c;">        max(# occurrences in left, # occurrences in right)</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">left_counts</span> = <span style="color: #8c8c8c;">{}</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">for</span> val <span style="color: #c678dd; font-weight: bold;">in</span> left:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">if</span> left <span style="color: #c678dd; font-weight: bold;">not</span> <span style="color: #c678dd; font-weight: bold;">in</span> left_counts:</code>
+<code>            <span style="color: #61afef;">left_counts</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> = 1</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>            <span style="color: #61afef;">left_counts</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> += 1</code>
+<code></code>
+<code>    <span style="color: #61afef;">right_counts</span> = <span style="color: #8c8c8c;">{}</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">for</span> val <span style="color: #c678dd; font-weight: bold;">in</span> right:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">if</span> right <span style="color: #c678dd; font-weight: bold;">not</span> <span style="color: #c678dd; font-weight: bold;">in</span> right_counts:</code>
+<code>            <span style="color: #61afef;">right_counts</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> = 1</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>            <span style="color: #61afef;">right_counts</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> += 1</code>
+<code></code>
+<code>    left_counts.update<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>key: <span style="color: #61afef; font-weight: bold;">max</span><span style="color: #b0b1a3;">(</span>left_counts.get<span style="color: #97b098;">(</span>key, 0<span style="color: #97b098;">)</span>, val<span style="color: #b0b1a3;">)</span></code>
+<code>                        <span style="color: #c678dd; font-weight: bold;">for</span> key, val <span style="color: #c678dd; font-weight: bold;">in</span> right_counts.items<span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> left_counts</code>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+En este caso, la lógica de conteo es redundante y puede ser abstraída
+en una función.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org49a5d5b">
+<h4 id="org49a5d5b">DRY (o a otros!)</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">value_counts</span><span style="color: #8c8c8c;">(</span>the_list<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""</span></code>
+<code><span style="color: #9eac8c;">    :param list[object] the_list: The list whose values we'll count</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> dict[object, int]</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> A dict from the value to its count</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">output</span> = <span style="color: #8c8c8c;">{}</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">for</span> val <span style="color: #c678dd; font-weight: bold;">in</span> the_list:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">if</span> val <span style="color: #c678dd; font-weight: bold;">not</span> <span style="color: #c678dd; font-weight: bold;">in</span> output:</code>
+<code>            <span style="color: #61afef;">output</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> = 1</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">else</span>:</code>
+<code>            <span style="color: #61afef;">output</span><span style="color: #8c8c8c;">[</span>val<span style="color: #8c8c8c;">]</span> += 1</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">max_intersection</span><span style="color: #8c8c8c;">(</span>left, right<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""</span></code>
+<code><span style="color: #9eac8c;">    Compute the value counts of the left and right lists and then return</span></code>
+<code><span style="color: #9eac8c;">    the maximum for each value.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    :param list[object] left: The left list</span></code>
+<code><span style="color: #9eac8c;">    :param list[object] right: The right list</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> dict[object, int]</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> A dictionary from the value to</span></code>
+<code><span style="color: #9eac8c;">        max(# occurrences in left, # occurrences in right)</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">left_counts</span> = value_counts<span style="color: #8c8c8c;">(</span>left<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #61afef;">right_counts</span> = value_counts<span style="color: #8c8c8c;">(</span>right<span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    left_counts.update<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>key: <span style="color: #61afef; font-weight: bold;">max</span><span style="color: #b0b1a3;">(</span>left_counts.get<span style="color: #97b098;">(</span>key, 0<span style="color: #97b098;">)</span>, val<span style="color: #b0b1a3;">)</span></code>
+<code>                        <span style="color: #c678dd; font-weight: bold;">for</span> key, val <span style="color: #c678dd; font-weight: bold;">in</span> right_counts.items<span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> left_counts</code>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Mucho mejor &#x2026; pero no hay necesidad de inventar la rueda de nuevo
+con la función <code>value_count</code> si ya ha sido implementada para tí
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org99117ff">
+<h4 id="org99117ff">DRY (solución)</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">from</span> collections <span style="color: #c678dd; font-weight: bold;">import</span> Counter</code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">max_intersection</span><span style="color: #8c8c8c;">(</span>left, right<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""</span></code>
+<code><span style="color: #9eac8c;">    Compute the value counts of the left and right lists and then return</span></code>
+<code><span style="color: #9eac8c;">    the maximum for each value.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    :param list[object] left: The left list</span></code>
+<code><span style="color: #9eac8c;">    :param list[object] right: The right list</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> dict[object, int]</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> A dictionary from the value to</span></code>
+<code><span style="color: #9eac8c;">        max(# occurrences in left, # occurrences in right)</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">left_counts</span> = Counter<span style="color: #8c8c8c;">(</span>left<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #61afef;">right_counts</span> = Counter<span style="color: #8c8c8c;">(</span>right<span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    left_counts.update<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>key: <span style="color: #61afef; font-weight: bold;">max</span><span style="color: #b0b1a3;">(</span>left_counts.get<span style="color: #97b098;">(</span>key, 0<span style="color: #97b098;">)</span>, val<span style="color: #b0b1a3;">)</span></code>
+<code>                        <span style="color: #c678dd; font-weight: bold;">for</span> key, val <span style="color: #c678dd; font-weight: bold;">in</span> right_counts.items<span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> left_counts</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org3c69bfb">
+<h4 id="org3c69bfb"><i>no DRY, WET</i></h4>
+<aside class="notes">
+<p>
+He aquí un ejemplo de una función que hace <i>plots</i>. Lo que está bien:
+Hay un <i>docstring</i>, tiene un nombre más o menos informativo. Lo que
+está mal: La función hace muchas cosas y  tiene un <code>path</code> <i>hardcoded</i>
+(<code>2016.csv.gz</code>)
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">precipitation_in_chicago</span><span style="color: #8c8c8c;">()</span>:</code>
+<code>    <span style="color: #9eac8c;">""" Saves plots of the precipitation from two Chicago weather stations</span></code>
+<code><span style="color: #9eac8c;">    in 2016 to `first_fig.png` and `second_fig.png` and returns the mean</span></code>
+<code><span style="color: #9eac8c;">    precipitation at them for the year.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The mean precipitation at two weather stations in 2016</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> (float, float)</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">df</span> = pd.read_csv<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'2016.csv.gz'</span>, names=WEATHER_HEADERS<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #61afef;">first</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == CHICAGO_STATION_NAMES<span style="color: #93a8c6;">[</span>0<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span></code>
+<code>    first<span style="color: #8c8c8c;">[</span>first.TYPE == PRECIPITATION_TYPE<span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'first_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #61afef;">second</span> = df<span style="color: #8c8c8c;">[</span>weather_df.STATION == CHICAGO_STATION_NAMES<span style="color: #93a8c6;">[</span>1<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span></code>
+<code>    second<span style="color: #8c8c8c;">[</span>second.TYPE == PRECIPITATION_TYPE<span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'second_fig.png'</span><span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> <span style="color: #8c8c8c;">(</span>first<span style="color: #93a8c6;">[</span>first.TYPE == PRECIPITATION_TYPE<span style="color: #93a8c6;">]</span>.mean<span style="color: #93a8c6;">()</span>,</code>
+<code>            second<span style="color: #93a8c6;">[</span>second.TYPE == PRECIPITATION_TYPE<span style="color: #93a8c6;">]</span>.mean<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org48c9ebc">
+<h4 id="org48c9ebc">DRY</h4>
+<aside class="notes">
+<p>
+En este ejemplo, hemos hecho una funcipón auziliar. También, la
+función tiene un mejor nombre, no carga el <i>dataframe</i> en la función,
+y el <i>docstring</i> especifica que las entradas, salidas y sus tipos.
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">plot_precipitation</span><span style="color: #8c8c8c;">(</span>df, station_id, output_file=<span style="color: #98be65;">'out.png'</span><span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">""" Plot the preciptation at the passed weather station and return</span></code>
+<code><span style="color: #9eac8c;">    the mean precipitation among all values.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">pd.DataFrame df</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> NOAA data (see parsers.py for more info)</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">str station_id</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The station to plot</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">str output_file</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> Where to store the output plot</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The mean precipitation in the data frame</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> float</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">res_df</span> = df<span style="color: #8c8c8c;">[</span>df.STATION == station_id<span style="color: #8c8c8c;">]</span></code>
+<code>    res_df<span style="color: #8c8c8c;">[</span>res_df.TYPE == PRECIPITATION_TYPE<span style="color: #8c8c8c;">][</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.plot<span style="color: #8c8c8c;">()</span></code>
+<code>    plt.title<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Precipitation values"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.xlabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Day"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.ylabel<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Value"</span><span style="color: #8c8c8c;">)</span></code>
+<code>    plt.savefig<span style="color: #8c8c8c;">(</span>output_file<span style="color: #8c8c8c;">)</span></code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> res_df<span style="color: #8c8c8c;">[</span><span style="color: #98be65;">'VALUE'</span><span style="color: #8c8c8c;">]</span>.mean<span style="color: #8c8c8c;">()</span></code>
+<code></code>
+<code></code>
+<code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">precipitation_in_chicago</span><span style="color: #8c8c8c;">()</span>:</code>
+<code>    <span style="color: #9eac8c;">""" Saves plots of the precipitation from two Chicago weather stations</span></code>
+<code><span style="color: #9eac8c;">    in 2016 to `first_fig.png` and `second_fig.png` and returns the mean</span></code>
+<code><span style="color: #9eac8c;">    precipitation at them for the year.</span></code>
+<code></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The mean precipitation at two weather stations in 2016</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> (float, float)</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #61afef;">df</span> = pd.read_csv<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'2016.csv.gz'</span>, names=WEATHER_HEADERS<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> <span style="color: #8c8c8c;">(</span>plot_precipitation<span style="color: #93a8c6;">(</span>df, CHICAGO_STATION_NAMES<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>, output_file=<span style="color: #98be65;">'first_fig.png'</span><span style="color: #93a8c6;">)</span>,</code>
+<code>            plot_precipitation<span style="color: #93a8c6;">(</span>df, CHICAGO_STATION_NAMES<span style="color: #b0b1a3;">[</span>1<span style="color: #b0b1a3;">]</span>, output_file=<span style="color: #98be65;">'second_fig.png'</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgbce4ef8">
+<h4 id="orgbce4ef8">DRY</h4>
+<form><ul>
+<li>Usa funciones para no repetirte a ti mismo</li>
+<li>Regla de dedo: Si llevas 20 líneas de código sin hacer ningún
+comentario (e.g. un <i>docstring</i>) probablemente debas de agregar uno</li>
+
+</ul></form>
+
+</section>
+<section id="slide-org1a733ac">
+<h4 id="org1a733ac">Reduce la carga cognitiva: PEP-8</h4>
+<aside class="notes">
+<p>
+How long does it take you to understand what this function is doing?
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">GCD</span><span style="color: #8c8c8c;">(</span>a,b<span style="color: #8c8c8c;">)</span>:</code>
+<code>   <span style="color: #9eac8c;">"""Return the GCD of a and b"""</span></code>
+<code>   <span style="color: #61afef;">a</span>,<span style="color: #61afef;">b</span>=<span style="color: #61afef; font-weight: bold;">max</span><span style="color: #8c8c8c;">(</span>a,b<span style="color: #8c8c8c;">)</span>,<span style="color: #61afef; font-weight: bold;">min</span><span style="color: #8c8c8c;">(</span>a,b<span style="color: #8c8c8c;">)</span></code>
+<code>   <span style="color: #c678dd; font-weight: bold;">return</span> b <span style="color: #c678dd; font-weight: bold;">if</span> a%b==0 <span style="color: #c678dd; font-weight: bold;">else</span> GCD<span style="color: #8c8c8c;">(</span>b,a%b<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">gcd</span><span style="color: #8c8c8c;">(</span>a, b<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""Return the GCD of a and b</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">int a</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The first number (positive)</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">int b</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The second number (positive)</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The GCD of a and b</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> int</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">if</span> a &lt; b:</code>
+<code>        <span style="color: #61afef;">b</span>, <span style="color: #61afef;">a</span> = a, b</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">if</span> a % b:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> gcd<span style="color: #8c8c8c;">(</span>b, a%b<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> b</code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org75261bd">
+<h4 id="org75261bd">¿Qué hace a esta implementación mejor?</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">gcd</span><span style="color: #8c8c8c;">(</span>a, b<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">"""Return the GCD of a and b</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">int a</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The first number (positive)</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">param</span><span style="color: #9eac8c;"> </span><span style="color: #61afef;">int b</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The second number (positive)</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">return</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> The GCD of a and b</span></code>
+<code><span style="color: #9eac8c;">    </span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #61afef;">rtype</span><span style="color: #c678dd; font-weight: bold;">:</span><span style="color: #9eac8c;"> int</span></code>
+<code><span style="color: #9eac8c;">    """</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">if</span> a &lt; b:</code>
+<code>        <span style="color: #61afef;">b</span>, <span style="color: #61afef;">a</span> = a, b</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">if</span> a % b:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> gcd<span style="color: #8c8c8c;">(</span>b, a%b<span style="color: #8c8c8c;">)</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> b</code>
+</pre>
+</div>
+
+</section>
+<section id="slide-org770b456">
+<h4 id="org770b456">PEP-8</h4>
+<form><ul>
+<li>79 character lines</li>
+<li>function_names are snake_case</li>
+<li>ClassNames are CamelCase</li>
+<li>CONSTANT_NAMES are BIG_CASE</li>
+<li>One statement per line</li>
+<li>Use spaces not tabs!</li>
+
+</ul></form>
+
+</section>
+<section id="slide-org024b343">
+<h4 id="org024b343">Puedes usar PEP-8 de manera automática</h4>
+<p>
+Instala <code>autopep8</code>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>pip install autopep8</code>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"><code>autopep8 --in-place mi_archivo.py</code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org0f1b809">
+<h4 id="org0f1b809">The Only Law of Good Coding</h4>
+<p>
+Code is for humans, not computers
+</p>
+
+<p>
+Give things informative names
+Document inputs and outputs
+Don't repeat yourself (or others!)
+PEP-8 is your friend
+</p>
+
+</section>
+<section id="slide-org3005818">
+<h4 id="org3005818">Fix this class!</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">class</span> <span style="color: #61afef;">myclass</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef; font-weight: bold;">object</span><span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">__init__</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">self</span>, R, I<span style="color: #8c8c8c;">)</span>:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">self</span>.R = R</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">self</span>.I = I</code>
+<code></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">Multiply</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">self</span>, other<span style="color: #8c8c8c;">)</span>:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> myclass<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">self</span>.R * other.R - <span style="color: #c678dd; font-weight: bold;">self</span>.I * other.I,</code>
+<code>                       <span style="color: #c678dd; font-weight: bold;">self</span>.R * other.I + <span style="color: #c678dd; font-weight: bold;">self</span>.I * other.R<span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orge81a4b8">
+<h4 id="orge81a4b8">Fix this function!</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">bang</span><span style="color: #8c8c8c;">(</span>n<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #c678dd; font-weight: bold;">return</span> n == 1 <span style="color: #c678dd; font-weight: bold;">or</span> <span style="color: #8c8c8c;">(</span>n * bang<span style="color: #93a8c6;">(</span>n<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span></code>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgd4f4a49">
+<h4 id="orgd4f4a49">Fix this function!</h4>
+<div class="org-src-container">
+
+<pre  class="src src-jupyter-python"><code><span style="color: #c678dd; font-weight: bold;">def</span> <span style="color: #61afef;">read_data</span><span style="color: #8c8c8c;">(</span>filename<span style="color: #8c8c8c;">)</span>:</code>
+<code>    <span style="color: #9eac8c;">""" Return the precipitation field from the csv passed in """</span></code>
+<code>    <span style="color: #c678dd; font-weight: bold;">with</span> <span style="color: #61afef; font-weight: bold;">open</span><span style="color: #8c8c8c;">(</span>filename, <span style="color: #98be65;">'r'</span><span style="color: #8c8c8c;">)</span> <span style="color: #c678dd; font-weight: bold;">as</span> f:</code>
+<code>        <span style="color: #c678dd; font-weight: bold;">return</span> <span style="color: #8c8c8c;">[</span>line.split<span style="color: #93a8c6;">(</span><span style="color: #98be65;">','</span><span style="color: #93a8c6;">)[</span>2<span style="color: #93a8c6;">]</span> <span style="color: #c678dd; font-weight: bold;">for</span> line <span style="color: #c678dd; font-weight: bold;">in</span> f<span style="color: #8c8c8c;">]</span></code>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org8c6c4f0">
+<h4 id="org8c6c4f0">Escalar</h4>
+<ul class="org-ul">
+<li><a id="orgabfffcc"></a>GNU Parallel<br />
+<form><ul>
+<li><a href="https://livefreeordichotomize.com/2019/06/04/using_awk_and_r_to_parse_25tb/">https://livefreeordichotomize.com/2019/06/04/using_awk_and_r_to_parse_25tb/</a></li>
+<li><a href="https://niektemme.com/2015/08/09/smart-thermostat/">https://niektemme.com/2015/08/09/smart-thermostat/</a></li>
+<li><a href="https://randyzwitch.com/gnu-parallel-medium-data/">https://randyzwitch.com/gnu-parallel-medium-data/</a></li>
+<li><a href="http://www.rankfocus.com/hello-world/">http://www.rankfocus.com/hello-world/</a></li>
+<li><a href="http://kenneth.geisshirt.dk/2012/10/11/mapreduce-and-gnu-parallel/">http://kenneth.geisshirt.dk/2012/10/11/mapreduce-and-gnu-parallel/</a></li>
+<li><a href="https://grapeot.me/easy-and-cheap-cluster-building-on-aws.html">https://grapeot.me/easy-and-cheap-cluster-building-on-aws.html</a></li>
+<li><a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a></li>
+
+</ul></form>
+</li>
+
+
+<li><a id="org9b9e2a0"></a>Dask<br /></li>
+
+<li><a id="org67e4943"></a>La nube<br /></li>
+</ul>
 </div>
 </div>
-Adolfo De Unánue
+<p> Basado en: </p>
 <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
 <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
 <script>
@@ -2768,7 +3476,7 @@ Reveal.initialize({
 
 controls: true,
 progress: true,
-history: false,
+history: true,
 center: true,
 slideNumber: 'c',
 rollingLinks: false,
@@ -2781,7 +3489,9 @@ pdfSeparateFragments: true,
 overview: true,
 width: 1920,
 height: 1080,
-margin: 0.00,
+margin: 0.10,
+minScale: 1.00,
+maxScale: 1.00,
 
 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 transition: Reveal.getQueryHash().transition || 'fade', // see README of reveal.js for options
@@ -2797,6 +3507,15 @@ dependencies: [
  { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
 
 });
+</script>
+<script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+<script>
+/* Recompute layout upon changes by klipse.  Code fragment from
+   asciidoctor-revealjs-klipse by Timothy Pratley under GPLv3:
+   https://github.com/timothypratley/asciidoctor-revealjs-klipse/blob/master/docs/docinfo-footer.html */
+Reveal.addEventListener( 'slidechanged', function( event ) {
+    window.dispatchEvent( new Event('resize') );
+} );
 </script>
 </body>
 </html>
