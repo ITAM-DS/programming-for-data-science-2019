@@ -1,0 +1,41 @@
+indice, nombre, precio, bloque, renta_inicial, costo_construccion
+0, México, 20000, NINGUNO,0,0
+1, Canadá, 5000, ROJO,0,0
+2, EE.UU., 6000, ROJO,0,0
+3, Visas, -10000, NINGUNO,0,0
+4, Costa Rica, 8000, ROJO,0,0
+5, Línea Aérea Americana, 20000, AEROPUERTOS,0,0
+6, Venezuela, 12000, MORADO,0,0
+7, Argentina, 15000, MORADO,0,0
+8, Carta, 0, COMUNICACIONES,0,0
+9, Brasil, 18000, MORADO,0,0
+10, Deportado, 0, NINGUNO,0,0
+11, España, 15000, VERDE,0,0
+12, Italia, 18000, VERDE,0,0
+13, Embajada, 15000, DIPLOMÁTICOS,0,0
+14, Francia, 20000, VERDE,0,0
+15, Línea Aérea Europea, 20000, AEROPUERTOS,0,0
+16, Inglaterra, 18000, NARANJA,0,0
+17, Telegrama, 0, COMUNICACIONES,0,0
+18, Alemania, 20000, NARANJA,0,0
+19, Holanda, 22000, NARANJA,0,0
+20, Oceanía, 0, NINGUNO,0,0
+21, U.R.S.S., 27000, AZUL,0,0
+22, India, 20000, AZUL,0,0
+23, Carta, 0, COMUNICACIONES,0,0
+24, Israel, 25000, AZUL,0,0
+25, Línea Aérea Asiática, 20000, AEROPUERTOS,0,0
+26, China, 27000, ROSA,0,0
+27, Japón, 25000, ROSA,0,0
+28, Aduana, 0, NINGUNO,0,0
+29, Hawaii, 27000, ROSA,0,0
+30, Groenlandia, -5000, NINGUNO,0,0
+31, Egipto, 25000, CAFÉ,0,0
+32, Consulado, 15000, DIPLOMÁTICOS,0,0
+33, Nigeria, 27000, CAFÉ,0,0
+34, Túnez, 30000, CAFÉ,0,0
+35, Línea Aérea Africana, 20000, AEROPUERTOS,0,0
+36, Etiopía, 30000, AMARILLO,0,0
+37, Telegrama, 0, COMUNICACIONES,0,0
+38, Argelia, 32000, AMARILLO,0,0
+39, Marruecos, 35000, AMARILLO,0,0
