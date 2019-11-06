@@ -11,6 +11,7 @@ seaborn = "^0.9.0"
 sphinx = {version = "^2.2", optional = true}
 sphinx_rtd_theme = {version = "^0.4.3", optional = true}
 colorama = "^0.4.1"
+click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.8"
