@@ -1,0 +1,2 @@
+[default]
+dburl = 'postgresql://service=berka'
