@@ -1,25 +1,29 @@
 create schema if not exists raw;
 
-drop table if exists raw.accounts;
+drop table if exists raw.account;
 
-create table accounts (
+create table raw.account (
   "account_id" TEXT,
   "district_id" TEXT,
   "frequency" TEXT,
   "date" TEXT
 );
 
-drop table if exists raw.clients;
+comment on table raw.account is 'describe las características estáticas de una cuenta';
 
-create table clients (
+drop table if exists raw.client;
+
+create table raw.client (
   "client_id" TEXT,
   "birth_number" TEXT,
   "district_id" TEXT
 );
 
-drop table if exists raw.districts;
+comment on table raw.client is 'describe las características de los clientes';
 
-create table districts(
+drop table if exists raw.district;
+
+create table raw.district (
   "A1" TEXT,
   "A2" TEXT,
   "A3" TEXT,
@@ -38,9 +42,11 @@ create table districts(
   "A16" TEXT
 );
 
-drop table if exists raw.orders;
+comment on table raw.district is 'describe las características demográficas de un distrito';
 
-create table orders (
+drop table if exists raw.order;
+
+create table raw.order (
   "order_id" TEXT,
   "account_id" TEXT,
   "bank_to" TEXT,
@@ -49,27 +55,33 @@ create table orders (
   "k_symbol" TEXT
 );
 
-drop table if exists raw.cards;
+comment on table raw.order is 'describe una orden de pago';
 
-create table cards (
+drop table if exists raw.card;
+
+create table raw.card (
   "card_id" TEXT,
   "disp_id" TEXT,
   "type" TEXT,
   "issued" TEXT
 );
 
-drop table if exists raw.dispositions;
+comment on table raw.card is 'describe las tarjetas de crédito emitidas para las cuentas';
 
-create table dispositions (
+drop table if exists raw.disp;
+
+create table raw.disp (
   "disp_id" TEXT,
   "client_id" TEXT,
   "account_id" TEXT,
   "type" TEXT
 );
 
-drop table if exists raw.loans;
+comment on table raw.disp is 'describe la relación entre clientes y cuentas';
 
-create table loans (
+drop table if exists raw.loan;
+
+create table raw.loan (
   "loan_id" TEXT,
   "account_id" TEXT,
   "date" TEXT,
@@ -79,9 +91,11 @@ create table loans (
   "status" TEXT
 );
 
-drop table if exists raw.transactions;
+comment on table raw.loan is 'describe préstamos otorgados a cuentas';
 
-create table transactions (
+drop table if exists raw.trans;
+
+create table raw.trans (
   "trans_id" TEXT,
   "account_id" TEXT,
   "date" TEXT,
@@ -93,3 +107,5 @@ create table transactions (
   "bank" TEXT,
   "account" TEXT
 );
+
+comment on table raw.trans is 'describe transacciones en una cuenta';
