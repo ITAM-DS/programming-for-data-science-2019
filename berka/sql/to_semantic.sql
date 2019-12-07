@@ -30,8 +30,11 @@ begin
           left join cleaned.dispositions using(client)
           left join cleaned.accounts using(account)
   );
-
   
+  create index semantic_entities_client_ix on semantic.entities(client);
+  create index semantic_entities_since_ix on semantic.entities(since);
+  create index semantic_entities_bod_ix on semantic.entities(bod);
+
   raise notice 'defining event types';
   drop type if exists event_type cascade;
               create type event_type as enum (
@@ -95,6 +98,13 @@ begin
                         inner join cleaned.dispositions using(account)
               )
               ;
+  
+  create index semantic_events_event_ix on semantic.events(event);
+  create index semantic_events_client_ix on semantic.events(client);
+  create index semantic_events_client_account_ix on semantic.events(client, account);
+  create index semantic_events_date_ix on semantic.events(date);
+  create index semantic_events_type_ix on semantic.events(type);
+  create index semantic_events_type_loan_granted_ix on semantic.events(type) where type = 'loan granted';
 
   end $semantic$;
 

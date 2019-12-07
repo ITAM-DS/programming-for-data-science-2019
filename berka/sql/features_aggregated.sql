@@ -9,7 +9,7 @@ select * from
     as_of_date,
     client
     from
-        labels.loan_granted
+        labels.loan_granted_3m
 ) as aod
              left join lateral ( -- for loop
                select
