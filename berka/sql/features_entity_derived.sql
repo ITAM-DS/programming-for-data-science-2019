@@ -20,3 +20,7 @@ select * from
              ) as t2
                  on true
 );
+
+create index features_entity_derived_client_ix on features.entity_derived(client);
+create index features_entity_derived_as_of_date_ix on features.entity_derived(as_of_date);
+create index features_entity_derived_client_as_of_date_ix on features.entity_derived(client, as_of_date);

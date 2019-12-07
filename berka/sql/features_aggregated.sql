@@ -22,3 +22,6 @@ count(*) as "COUNT(*)"
              ) as t2
                  on true
 );
+create index features_aggregated_as_of_date_ix on features.aggregated(as_of_date);
+create index features_aggregated_client_ix on features.aggregated(client);
+create index features_aggregated_client_as_of_date_ix on features.aggregated(client, as_of_date);
